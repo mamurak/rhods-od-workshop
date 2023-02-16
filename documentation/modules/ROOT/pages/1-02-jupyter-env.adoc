@@ -14,7 +14,7 @@ image::notebooks/git_icon.png[alt text]
 
 image::notebooks/clone_repo.png[alt text]
 
-* Enter the git *https* URL, `https://github.com/rh-aiservices-bu/object-detection-rest.git`, then click *CLONE*:
+* Enter the git *https* URL, `https://github.com/alexgroom/object-detection-rest.git`, then click *CLONE*:
 
 [.lines_space]
 [.console-input]

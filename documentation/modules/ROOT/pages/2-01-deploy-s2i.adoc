@@ -8,10 +8,10 @@ This repository was created as a source to image Python application.  A Python a
 
 Some interesting files to examine in the application::
 
-* https://github.com/rh-aiservices-bu/object-detection-rest/blob/master/wsgi.py[wsgi.py] - the main entrypoint for the python application and calls the prediction function.
-* https://github.com/rh-aiservices-bu/object-detection-rest/blob/master/prediction.py[prediction.py] -which contains the function the data scientist has extracted to make predictions.  Called from the application with a dictionary parameter.
-* https://github.com/rh-aiservices-bu/object-detection-rest/blob/master/requirements.txt[requirements.txt] - where both the app developer and data scientists add their python dependencies for the served application.
-* https://github.com/rh-aiservices-bu/object-detection-rest/tree/master/.s2i[s2i directory] - which contains files to customize the application deployment
+* https://github.com/alexgroom/object-detection-rest/blob/master/wsgi.py[wsgi.py] - the main entrypoint for the python application and calls the prediction function.
+* https://github.com/alexgroom/object-detection-rest/blob/master/prediction.py[prediction.py] -which contains the function the data scientist has extracted to make predictions.  Called from the application with a dictionary parameter.
+* https://github.com/alexgroom/object-detection-rest/blob/master/requirements.txt[requirements.txt] - where both the app developer and data scientists add their python dependencies for the served application.
+* https://github.com/alexgroom/object-detection-rest/tree/master/.s2i[s2i directory] - which contains files to customize the application deployment
 
 You can also learn more about https://access.redhat.com/documentation/en-us/red_hat_software_collections/2/html/using_red_hat_software_collections_container_images/sti[Source to Image] and the https://github.com/sclorg/s2i-python-container[Python builder image]:
 
