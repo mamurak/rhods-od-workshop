@@ -20,7 +20,7 @@ image::notebooks/clone_repo.png[alt text]
 [.console-input]
 [source,text]
 ----
-https://github.com/rh-aiservices-bu/object-detection-rest.git
+https://github.com/alexgroom/object-detection-rest.git
 ----
 
 image::notebooks/clone_start.png[alt text]

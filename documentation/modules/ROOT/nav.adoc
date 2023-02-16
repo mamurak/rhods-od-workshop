@@ -8,9 +8,3 @@
 ** xref:2-01-deploy-s2i.adoc[1. Deploy with Source to Image]
 ** xref:2-02-testing-deployment.adoc[2. Testing the Deployment]
 ** xref:2-03-calling-from-application.adoc[3. Calling from an Application]
-* 3. Working with Kafka
-** xref:3-01-create-kafka.adoc[1. Create a Kafka Instance]
-** xref:3-02-respawn-notebook.adoc[2. Restart a Notebook Server]
-** xref:3-03-explore-kafka.adoc[3. Explore Kafka in a Notebook]
-** xref:3-04-create-secret.adoc[4. Create a Secret to Connect]
-** xref:3-05-kakfa-consumer.adoc[5. Deploy a Kafka Consumer]

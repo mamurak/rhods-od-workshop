@@ -10,9 +10,12 @@ If you scroll down on the detail panel, you will see the route that was created 
 
 image::s2i/topology-route.png[alt text, 640]
 
-You can test it but simply clicking on the route link, or copy/paste it in your browser:
+You can test it but simply clicking on the HTTP route link, or copy/paste it in your browser. 
 
-image::s2i/app-status.png[alt text, 800]
+image::s2i/app-status.png[alt text, 700]
+
+Sometimes this action fails because your browser converts the URL to a secure protocol HTTPS route. Modify the 
+URL in the browser to make sure it is *http://*
 
 == Sample Request
 
