@@ -8,7 +8,9 @@ site:
 
 content:
   sources:
-    - url: ./
+    - url: git@github.com:alexgroom/rhods-od-workshop.git
+      tags: []
+      branches: ["master"]      
       start_path: documentation
 
 asciidoc:
