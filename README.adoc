@@ -1,1 +1,1 @@
-https://redhat-scholars.github.io/rhods-od-workshop
+https://alexgroom.github.io/rhods-od-workshop

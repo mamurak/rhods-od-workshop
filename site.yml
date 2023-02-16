@@ -3,7 +3,7 @@ runtime:
 
 site:
   title: Object Detection Workshop
-  url: https://redhat-scholars.github.io/rhods-od-workshop
+  url: https://alexgroom.github.io/rhods-od-workshop
   start_page: rhods-od-workshop::index.adoc
 
 content:
