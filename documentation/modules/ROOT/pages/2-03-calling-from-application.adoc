@@ -94,6 +94,9 @@ Then make sure that the *Deployment* option is selected
 
 image::s2i/resource-type.png[deployment, 700]
 
+=== Route
+For the detection application we want a *secure https* Route so we will use the default - so no changes required.
+
 === Configure the Deployment Environment Variables
 
 The application needs to know where to send its images for predictions. Earlier, we confirmed the service URL of the `object-detection-rest` deployment.  We'll use that value and add `/predictions`.  This will tell our front end application where to send the images by setting the variable `OBJECT_DETECTION_URL` to `http://<service-name>:<service-port/predictions`.
@@ -103,18 +106,15 @@ The application needs to know where to send its images for predictions. Earlier,
 image::s2i/create-app-deployment.png[alt text, 700]
 
 * Under *Environment variables (runtime only)*, create a Name / Value pair. 
-** *Name* = `OBJECT_DETECTION_URL`
-** *Value* = `http://<service-name>:<service-port/predictions`
 
-
-
+Name:
 [.lines_space]
 [.console-input]
 [source,text]
 ----
 OBJECT_DETECTION_URL
 ----
-
+Value:
 [.lines_space]
 [.console-input]
 [source,text]
@@ -133,11 +133,20 @@ image::s2i/create-button.png[alt text]
 
 == Checking your Application
 
-* You can see a new application has been created and is currently building.  Like before, wait for the build to complete and pods to deploy.
+You can see a new application has been created and is currently building.  Like before, wait for the build to complete and pods to deploy.
 
 image::s2i/topology-app.png[alt text, 800]
 
-* After the application is deployed click on the route to launch the application.  Try it out from your laptop or phone with a camera.
+After the application is deployed to OpenShift click on the Route URL to launch the application. 
+Try it out from your laptop or phone with a camera. 
 
-image::s2i/app-screenshot.png[alt text, 800]
+Here is a *fedora* we captured earlier. 
+
+image::s2i/app-screenshot.png[alt text, 400]
+
+NOTE: If you don't want to type that long Route URL into your phone browser maybe you can paste it into an email to yourself?
+
+*To finish the lab, see what your application can detect?*
+
+
 
