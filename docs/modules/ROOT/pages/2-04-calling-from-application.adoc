@@ -140,13 +140,6 @@ image::s2i/topology-app.png[alt text, 800]
 After the application is deployed to OpenShift click on the Route URL to launch the application. 
 Try it out from your laptop or phone with a camera. 
 
-Here is a *fedora* we captured earlier. 
+NOTE: If you don't want to type that long Route URL into your phone browser, try converting it into a QR code for your smartphone, for instance with xref:https://www.qr-code-generator.com[QR code generator].
 
-image::s2i/app-screenshot.png[alt text, 400]
-
-NOTE: If you don't want to type that long Route URL into your phone browser maybe you can paste it into an email to yourself?
-
-*To finish the lab, see what your application can detect?*
-
-
-
+Return here if you're ready to move on to xref:3-01-running-the-model-offline.adoc[offline scoring].

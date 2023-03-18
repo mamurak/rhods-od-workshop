@@ -3,10 +3,11 @@
 ** xref:1-02-jupyter-env.adoc[2. The Jupyter Environment]
 ** xref:1-03-notebooks.adoc[3. Using Notebooks]
 ** xref:1-04-object-detection.adoc[4. Object Detection]
-** xref:1-05-model-api.adoc[5. Serving a Model]
 * 2. Serving with OpenShift Data Science
-* 3. Deploying the object detection application
-** xref:2-01-deploy-s2i.adoc[1. Deploy with Source to Image]
-** xref:2-02-testing-deployment.adoc[2. Testing the Deployment]
-** xref:2-03-calling-from-application.adoc[3. Calling from an Application]
-* 4. Running offline object detection
+** xref:2-01-model-api.adoc[1. Serving a Model]
+** xref:2-02-deploy-s2i.adoc[2. Deploy with Source to Image]
+** xref:2-03-testing-deployment.adoc[3. Testing the Deployment]
+** xref:2-04-calling-from-application.adoc[4. Calling from an Application]
+* 3. Running offline object detection
+** xref:3-01-running-the-model-offline.adoc[1. Running the Model Offline]
+** xref:3-02-offline-scoring-pipelines.adoc[2. Offline Scoring Pipelines]

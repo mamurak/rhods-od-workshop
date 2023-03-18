@@ -2,16 +2,16 @@
 
 include::_attributes.adoc[]
 
-Now that the application code is working, we're ready to build it as a container image, create an OpenShift deployment, and have it running as a service you will be able to call from any other application.
+Now that the model has been deployed, we're ready to build its client as a container image, create an OpenShift deployment, and have it running as a service you will be able to call from any other application.
 
-This repository was created as a source to image Python application.  A Python application developer and a data scientist can work together in this repository to create the buildable application.  You can see the template https://github.com/opendatahub-io/odh-s2i-project-simple[GitHub repository] and try for yourself.
+This repository was created as a source-to-image Python application. You can see the template https://github.com/opendatahub-io/odh-s2i-project-simple[GitHub repository] and try for yourself.
 
 Some interesting files to examine in the application::
 
-* https://github.com/alexgroom/object-detection-rest/blob/master/wsgi.py[wsgi.py] - the main entrypoint for the python application and calls the prediction function.
-* https://github.com/alexgroom/object-detection-rest/blob/master/prediction.py[prediction.py] -which contains the function the data scientist has extracted to make predictions.  Called from the application with a dictionary parameter.
-* https://github.com/alexgroom/object-detection-rest/blob/master/requirements.txt[requirements.txt] - where both the app developer and data scientists add their python dependencies for the served application.
-* https://github.com/alexgroom/object-detection-rest/tree/master/.s2i[s2i directory] - which contains files to customize the application deployment
+* https://github.com/mamurak/object-detection-rest/blob/master/wsgi.py[wsgi.py] - the main entrypoint for the python application and calls the prediction function.
+* https://github.com/mamurak/object-detection-rest/blob/master/prediction.py[prediction.py] -which contains the function the data scientist has extracted to make predictions.  Called from the application with a dictionary parameter.
+* https://github.com/mamurak/object-detection-rest/blob/master/requirements.txt[requirements.txt] - where the app developer adds their python dependencies for the served application.
+* https://github.com/mamurak/object-detection-rest/tree/master/.s2i[s2i directory] - which contains files to customize the application deployment.
 
 You can also learn more about https://access.redhat.com/documentation/en-us/red_hat_software_collections/2/html/using_red_hat_software_collections_container_images/sti[Source to Image] and the https://github.com/sclorg/s2i-python-container[Python builder image]:
 
@@ -27,14 +27,9 @@ If you're at the OpenShift Data Science Dashboard and need to navigate to the Op
 
 image::s2i/rhods-dashboard-app-switcher.png[RHODS Dashboard App Switcher, 400]
 
-* From the OpenShift Console and switch to the developer view from the menu on the top left if it's not already selected:
+* From the OpenShift Console switch to the developer view from the menu on the top left if it's not already selected:
 
 image::s2i/dev-view.png[Developer View]
-
-* Make sure you have selected the correct project for your application. If you are using the Sandbox environment 
-then your project will look like *<username>-dev*. If you cannot see a project then use the *Create Project* option.
-
-image::s2i/select-project.png[Select Project, 640]
 
 == Add an Application from Git
 
@@ -46,13 +41,13 @@ image::s2i/from-git.png[Add from git, 800]
 
 === Set the Git Repo
 
-* In the ``Git Repo URL`` field, enter: `+https://github.com/alexgroom/object-detection-rest.git+`
+* In the ``Git Repo URL`` field, enter: `+https://github.com/mamurak/object-detection-rest.git+`
 
 [.lines_space]
 [.console-input]
 [source,text]
 ----
-https://github.com/alexgroom/object-detection-rest.git
+https://github.com/mamurak/object-detection-rest.git
 ----
 
 * Leave the other builder image selection to the default. You will see that OpenShift automatically recognized that our repo contains Python code, and that the right base image has been selected. Pretty neat, eh?!
@@ -104,19 +99,6 @@ image::s2i/unsecure-route.png[unsecure route, 700]
 
 === Resource Limits
 
-As TensorFlow models require significant memory and cpu, it is a best practice to set the deployment resource limits to something that will give enough resources.  
-
-* Click on *Resource Limits*
-
-image::s2i/create-app-limits.png[Create app limits, 700]
-
-* Enter in the following values
-** *CPU* Request: `500 millicores` and Limit: `1000 millicores` (or `1 core`)
-** *Memory* Request: `2200 Mi` and Limit: `3000 Mi` 
-
-image::s2i/create-app-limits-form.png[Create app limits form, 500]
-
-[CAUTION]
 .Troubleshooting Memory Issues
 ====
 Instead of receiving Out of memory (OOMKill) on the OpenShift pod, the application will not start correctly. 
@@ -128,6 +110,12 @@ This will result in messages in the log that look like:
 ```
 In these cases it's recommended to increase your pod deployment's memory limit.
 ====
+
+=== Configure the Deployment Environment Variables
+
+The application needs to know where to send its images for predictions. Earlier, we confirmed the inference endpoint of the model deployment.  We'll use that value.  This will tell our client service where to send the images by setting the variable `PREDICTION_URL` to the model's _Inference endpoint_.
+
+* Open the *Deployment*  options to set an evironment variable.
 
 === Create 
 
@@ -148,6 +136,6 @@ see the build is complete and the pod is running.
 
 image::s2i/topology-rest-complete.png[alt text, 700]
 
-Once the build is complete xref:2-02-testing-deployment.adoc[head to the next section.]
+Once the build is complete xref:2-03-testing-deployment.adoc[head to the next section.]
 
 
