@@ -36,4 +36,4 @@ video::C6xCF OwdFgY[youtube,list=PLf3vm0UK6HKoFFj46G26KeJLOr7FD9i86, width=640, 
 
 == Start!
 
-If you're ready,  xref:1-01-start-jupyter.adoc[let's start!]
+If you're ready,  xref:1-01-project-setup.adoc[let's start!]

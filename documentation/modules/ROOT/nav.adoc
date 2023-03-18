@@ -1,10 +1,12 @@
 * 1. Jupyter Notebooks
-** xref:1-01-start-jupyter.adoc[1. Starting an environment]
+** xref:1-01-project-setup.adoc[1. Settin up your Data Science Project]
 ** xref:1-02-jupyter-env.adoc[2. The Jupyter Environment]
 ** xref:1-03-notebooks.adoc[3. Using Notebooks]
 ** xref:1-04-object-detection.adoc[4. Object Detection]
 ** xref:1-05-model-api.adoc[5. Serving a Model]
-* 2. Serving with OpenShift
+* 2. Serving with OpenShift Data Science
+* 3. Deploying the object detection application
 ** xref:2-01-deploy-s2i.adoc[1. Deploy with Source to Image]
 ** xref:2-02-testing-deployment.adoc[2. Testing the Deployment]
 ** xref:2-03-calling-from-application.adoc[3. Calling from an Application]
+* 4. Running offline object detection

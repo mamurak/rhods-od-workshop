@@ -4,25 +4,33 @@ include::_attributes.adoc[]
 
 In the previous section, we learned how to create the code that will use an existing object detection model to identify object in a static image. But of course we cannot use a notebook directly like this in a production environment.
 
-So now we will learn how to service this model as an *API* that you can directly query from other applications.
+So now we will learn how to service this model as an *API* that you can directly query from other applications. For this, we will use the model serving capabilities of RHODS:
 
-Some explanations first:
+* Return to the RHODS Dashboard and enter your Project. Let's now set up the model server by selecting *Configure* in the model serving section and choosing these settings:
 
-* The code that we wrote in the notebook has been repackaged as a single Python file, `prediction.py`. Basically, it's just the code that was in all the cells of the notebook that was put together inside a single file.
-* To use this code as a function you can call, we just added a function called `predict` that takes a string as an input, the name of the picture, does the recognition, and sends back the result. Open the file directly in JupyterLab and see for yourself - you should recognize our previous code, with this new function added.
-* There are other files in the folder that are used to provide functions to launch a web server that will be used to serve our API.
+** Leave *Instance count* at 1.
 
-After these explanations, you are ready to open the file `2_predict.ipynb`, to see how we extract the code needed for the `prediction.py` file. Then, launch notebooks `3_run_flask.ipynb` and `4_test_flask.ipynb` and follow the instructions directly in the notebooks! 
+** Under *Instance size* choose `Small`.
 
-image::notebooks/od_run.png[alt text]
+** Select *Expose models through Route*.
 
-You'll first launch the Server in notebook `3_run_flask.ipynb`:
+** Leave *Token authorization* unselected.
 
-image::notebooks/launch_server.png[alt text]
+** Select *Configure* to finish model server setup.
 
-Then query the API from notebok `4_test_flask.ipynb`:
+* You're now ready to deploy the object detection model. Under model server select *Deploy model* and set it up as follows:
 
-image::notebooks/query_api.png[alt text]
+** Choose an arbitrary *Model name* such as `yolo-v3`.
+
+** Under *Model framework* select `ONNX`.
+
+** Under *Data connection* select the data connection that you have provisioned earlier.
+
+** Under *Model path* enter `tiny-yolov3-11.onnx`.
+
+* Select *Deploy* to instantiate the model server. Click on `1` below _Deployed models_ to monitor the status of the model deployment. It will indicate a green status once the model 
+
+
 
 Once you're finished, you can come back here and xref:2-01-deploy-s2i.adoc[head to the next section.]
 

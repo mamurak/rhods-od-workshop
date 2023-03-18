@@ -6,12 +6,6 @@ Now that you know how the environment works, the real work can begin!
 
 Still in you environment, just open the file `1_explore.ipynb`, and follow the instructions directly in the notebook!
 
-image::notebooks/notebook_od.png[alt text]
-
-At the end of the notebook, it will look like this:
-
-image::notebooks/od_result.png[alt text]
-
 Once you're finished, you can come back here and xref:1-05-model-api.adoc[head to the next section.]
 
 

@@ -14,13 +14,13 @@ image::notebooks/git_icon.png[alt text]
 
 image::notebooks/clone_repo.png[alt text]
 
-* Enter the git *https* URL, `https://github.com/alexgroom/object-detection-rest.git`, then click *CLONE*:
+* Enter the git *https* URL, `https://github.com/mamurak/object-detection-rest.git`, then click *CLONE*:
 
 [.lines_space]
 [.console-input]
 [source,text]
 ----
-https://github.com/alexgroom/object-detection-rest.git
+https://github.com/mamurak/object-detection-rest.git
 ----
 
 image::notebooks/clone_start.png[alt text]
@@ -33,6 +33,16 @@ image::notebooks/od_folder_click.png[alt text]
 
 image::notebooks/od_folder.png[alt text]
 
+This JupyterLab instance also features an *Object Storage Browser*. Let's connect to your S3 bucket and review its contents:
+
+* Open the Object Storage Browser by selecting the bucket icon on the top of the left toolbar.
+
+* Fill in the settings as follows:
+
+** In *Object storage endpoint* write `http://s3.openshift-storage.svc`.
+
+** For the *Access key* and *Secret key* values, copy and paste the corresponding values from the Secret that you reviewed in the former section.
+
+* Select *Connect* to access your S3 bucket. Double click on the bucket with your user ID. You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.
+
 xref:1-03-notebooks.adoc[Ready? Let's go to the next section.]
-
-
