@@ -11,7 +11,7 @@ content:
     - url: git@github.com:mamurak/rhods-od-workshop.git
       tags: []
       branches: ["master"]      
-      start_path: documentation
+      start_path: docs
 
 asciidoc:
   attributes:
