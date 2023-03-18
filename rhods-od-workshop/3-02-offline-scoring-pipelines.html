@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>1.3 Notebooks :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/1-03-notebooks.html">
-    <link rel="prev" href="1-02-jupyter-env.html">
-    <link rel="next" href="1-04-object-detection.html">
+    <title>3.1 Offline Scoring Pipelines :: Object Detection Workshop</title>
+    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/3-02-offline-scoring-pipelines.html">
+    <link rel="prev" href="3-01-running-the-model-offline.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -61,7 +60,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter Environment</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="1-03-notebooks.html">3. Using Notebooks</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -94,7 +93,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="3-01-running-the-model-offline.html">1. Running the Model Offline</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="3-02-offline-scoring-pipelines.html">2. Offline Scoring Pipelines</a>
   </li>
 </ul>
@@ -114,128 +113,77 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Object Detection Workshop</a></li>
-    <li>1. Jupyter Notebooks</li>
-    <li><a href="1-03-notebooks.html">3. Using Notebooks</a></li>
+    <li>3. Running offline object detection</li>
+    <li><a href="3-02-offline-scoring-pipelines.html">2. Offline Scoring Pipelines</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/1-03-notebooks.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/3-02-offline-scoring-pipelines.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">1.3 Notebooks</h1>
-<div id="preamble">
-<div class="sectionbody">
+<h1 class="page">3.1 Offline Scoring Pipelines</h1>
 <div class="paragraph">
-<p>This section provides a small introduction on how to use Jupyter Notebooks. If you&#8217;re already at ease with Jupyter, you can <a href="1-04-object-detection.html" class="xref page">head to the next section</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_whats_a_notebook"><a class="anchor" href="#_whats_a_notebook"></a>What&#8217;s a notebook?</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>A notebook is an environment where you have <em>cells</em> that can display formatted text, or code.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This is an empty cell:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/notebooks/cell.png" alt="alt text">
-</div>
-</div>
-<div class="paragraph">
-<p>And a cell where we have entered some code:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/notebooks/cell_code.png" alt="alt text">
-</div>
+<p>We just saw how to run offline scoring in a notebook. It works, but just like in the real-time inference case, notebooks are not a good choice for long-running processes and production-like scenarios. In the case of offline scoring, it&#8217;s best to define a <em>pipeline</em> as a series of tasks and submit that pipeline to a backend system that runs and orchestrates the pipeline tasks on the cluster. Let&#8217;s have a look at how this works with RHODS and Data Science Pipelines.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Code cells contain Python code that can be run interactively. Thats means you can modify the code, then run it. The code will not run on you computer or in the browser, but directly in the environment you are connected to, <strong>Red Hat OpenShift Data Science</strong> in our case.</p>
-</li>
-<li>
-<p>To run a code cell, just select it (click in the cell, or on the left side of it), and click the Run/Play button from the toolbar (you can also press CTRL+Enter to run a cell, or Shift+Enter to run the cell and automatically select the following one).</p>
+<p>In your workbench, double click on the <code>offline-scoring.pipeline</code> file. You can now see a graphical representation of the offline scoring pipeline within the Elyra Pipeline editor.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>The Run button on the toolbar:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/notebooks/run_button.png" alt="alt text">
-</div>
-</div>
-<div class="paragraph">
-<p>Our cell after pressing Run:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/notebooks/cell_run.png" alt="alt text">
-</div>
-</div>
-<div class="paragraph">
-<p>As you can see, you have the result of the code that was run in that cell, as well as information on when this particular cell has been run.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Elyra is an extension of JupyterLab, which offers a graphical editor for pipelines that can be run on Data Science Pipelines.
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>When you save a notebook, the code as well as the results are saved! So you can always reopen it to look at the results without having to run all the program again, while still having access to the code.</p>
+<p>If you compare this pipeline with the previous offline scoring notebook, you will find the same steps. In fact, the pipeline includes the very same code since the pipeline tasks represent the underlying Python modules of the notebook steps. While the notebook defines a purely linear sequence of steps, the pipeline allows to parallelize tasks such as ingesting the raw data and downloading the trained model, both of which are independent of each other.</p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Notebooks are so named because they are just like a physical <strong>Notebook</strong>: it&#8217;s exactly like if you were taking notes about your experiments (which you will do), along with the code itself, including any parameters you set. You see the output of the experiment inline (this is the result from a cell once it&#8217;s run), along with all the notes you want to take (to do that, switch the cell type from the menu from <code>Code</code> to <code>Markup</code>).</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_time_to_play"><a class="anchor" href="#_time_to_play"></a>Time to play</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Now that we have covered the basics, just give it a try!</p>
-</div>
+<li>
+<p>Before you can submit this pipeline for execution, you will have to update a few configuration parameters via the <code>Open Panel</code> button in the top right corner of the pipeline editor window:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>In your Jupyter environment (the file explorer-like interface), there is file called <code>0_sanbdbox.ipynb</code>. Double-click on it to launch the notebook (it will open another tab in the content section of the environment). Please feel free to experiment, run the cells, add some more and create functions. You can do what you want - it&#8217;s your environment, and there is no risk of breaking anything or impacting other users. This environment isolation is also a great advantage brought by <strong>Red Hat OpenShift Data Science</strong>.</p>
+<p>In <strong>Data Volumes</strong>, under <strong>Persistent Volume Claim Name</strong> enter your user ID.</p>
 </li>
 <li>
-<p>You can also create a new notebook by selecting <code>File</code>-&gt;<code>New</code>-&gt;<code>Notebook</code>from the menu on the top left, then select a Python 3 kernel. This instructs Jupyter that we want to create a new notebook where the code cells will be run using a Python 3 kernel. We could have different kernels, with different languages or versions that we can run into notebooks, but that&#8217;s a story for another time&#8230;&#8203;</p>
-</li>
-<li>
-<p>You can also create a notebook by simply clicking on the icon in the launcher:</p>
+<p>Under <strong>Environment Variables</strong>, copy and paste the access key and secret key of your S3 bucket into the corresponding fields. Under <strong>S3_BUCKET_NAME</strong>, enter your user ID.</p>
 </li>
 </ul>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/notebooks/new_notebook.png" alt="alt text">
-</div>
-</div>
-<div class="ulist">
-<ul>
+</li>
 <li>
-<p>If you want to learn more about notebooks, head to <a href="https://jupyter.org/">this page</a> .</p>
+<p>Save the pipeline (third button in top toolbar of the pipeline editor).</p>
+</li>
+<li>
+<p>Submit the pipeline by selecting <code>Run Pipeline</code> (second button in top toolbar). Change the pipeline name to your user ID to distinguish its run from those of the other workshop participants. Click <code>OK</code>.</p>
+</li>
+<li>
+<p>Revisit the RHODS Dashboard. In <code>Applications</code> &#8594; <code>Enabled</code> &#8594; <code>Data Science Pipelines</code>, select <code>Launch Application</code>. Authenticate and grant the requested permissions.</p>
+</li>
+<li>
+<p>In the Pipelines Dashboard, you can track all submitted pipelines including their versions. To monitor your pipeline, select <code>Runs</code> in the left menu. Each run represents an execution of a given pipeline. Find the run that you submitted and click on its name.</p>
+</li>
+<li>
+<p>You can now see a graphical representation of your pipeline which updates in real-time as the tasks are completed. You can select each task and monitor its progress. Once the final task is finished, you can verify its completion by finding the timestamped results table in your S3 bucket.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Now that you&#8217;re more familiar with notebooks, you&#8217;re ready to <a href="1-04-object-detection.html" class="xref page">go to the next section.</a></p>
-</div>
-</div>
+<p>Congratulations! You have run your first offline scoring pipeline in RHODS, which concludes this lab.</p>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="1-02-jupyter-env.html">2. The Jupyter Environment</a></span>
-  <span class="next"><a href="1-04-object-detection.html">4. Object Detection</a></span>
+  <span class="prev"><a href="3-01-running-the-model-offline.html">1. Running the Model Offline</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

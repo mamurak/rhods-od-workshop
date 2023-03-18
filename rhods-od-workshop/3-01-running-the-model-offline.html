@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Red Hat OpenShift Data Science Workshop - Object Detection :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/index.html">
-    <link rel="next" href="1-01-project-setup.html">
+    <title>3.1 Running the Model Offline :: Object Detection Workshop</title>
+    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/3-01-running-the-model-offline.html">
+    <link rel="prev" href="2-04-calling-from-application.html">
+    <link rel="next" href="3-02-offline-scoring-pipelines.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -90,7 +91,7 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">3. Running offline object detection</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="3-01-running-the-model-offline.html">1. Running the Model Offline</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -109,86 +110,31 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Object Detection Workshop</a></li>
-    <li><a href="index.html">Red Hat OpenShift Data Science Workshop - Object Detection</a></li>
+    <li>3. Running offline object detection</li>
+    <li><a href="3-01-running-the-model-offline.html">1. Running the Model Offline</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/3-01-running-the-model-offline.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Red Hat OpenShift Data Science Workshop - Object Detection</h1>
-<div class="sect1 text-center strong">
-<h2>Introduction</h2>
-<div class="sectionbody">
+<h1 class="page">3.1 Running the Model Offline</h1>
 <div class="paragraph">
-<p>Welcome!</p>
+<p>Serving models for real-time inference is great, but sometimes you&#8217;ll want to apply your model on a large set of existing data. For such <em>offline scoring</em> use cases, jobs and pipelines are oftentimes more useful than model servers. Let&#8217;s have a look at how we can run offline scoring with our object detection model.</p>
 </div>
 <div class="paragraph">
-<p>In this workshop, you&#8217;ll learn an easy way to incorporate data science and AI/ML into an OpenShift development workflow.
-As an example, you&#8217;ll use an object detection model in several different ways.</p>
+<p>Back in your workbench, follow and run the <code>offline-scoring</code> notebook.</p>
 </div>
 <div class="paragraph">
-<p>You will:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>use Jupyter Notebooks to explore a pre-trained object detection model</p>
-</li>
-<li>
-<p>deploy the model using OpenShift Data Science model serving</p>
-</li>
-<li>
-<p>integrate the model into a real-time object detection app</p>
-</li>
-<li>
-<p>run offline scoring object detection pipelines.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>And all of this without having to install anything on your own computer, thanks to <strong>Red Hat OpenShift Data Science</strong>.</p>
-</div>
-<div class="sect2">
-<h3>Environment</h3>
-<div class="paragraph">
-<p><a href="https://developers.redhat.com/products/red-hat-openshift-data-science/download">Set up your Red Hat OpenShift Data Science environment</a></p>
-</div>
-<div class="paragraph">
-<p>If you haven&#8217;t already got an instance of Red Hat OpenShift Data Science, find out more on the <a href="https://developers.redhat.com/products/red-hat-openshift-data-science/download">developer page</a>.  There, you can spin up your own account on the <strong>free OpenShift Data Science Sandbox</strong> or learn about installing on <strong>your own OpenShift cluster</strong>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3>Videos</h3>
-<div class="paragraph">
-<p><a href="https://developers.redhat.com/articles/2021/11/22/build-and-deploy-object-detection-model-using-openshift-data-science" target="_blank" rel="noopener">Related Video Article - Build and deploy an object detection model using OpenShift Data Science</a></p>
-</div>
-<div class="paragraph">
-<p>If you&#8217;d like to follow along with the accompanying videos of this workshop, you can find them in the article on the Red Hat Developer website or <a href="https://www.youtube.com/watch?v=C6xCFOwdFgY&amp;list=PLf3vm0UK6HKoFFj46G26KeJLOr7FD9i86" target="_blank" rel="noopener">watch on YouTube</a><br>
-&#160;<br></p>
-</div>
-<div class="videoblock">
-<div class="content">
-<iframe width="640" height="360" src="https://www.youtube.com/embed/C6xCF OwdFgY?rel=0&amp;list=PLf3vm0UK6HKoFFj46G26KeJLOr7FD9i86" frameborder="0" allowfullscreen></iframe>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2>Start!</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>If you&#8217;re ready,  <a href="1-01-project-setup.html" class="xref page">let&#8217;s start!</a></p>
-</div>
-</div>
+<p>When you&#8217;re done, return here to <a href="3-02-offline-scoring-pipelines.html" class="xref page">proceed to running offline scoring pipelines</a>.</p>
 </div>
 <nav class="pagination">
-  <span class="next"><a href="1-01-project-setup.html">1. Settin up your Data Science Project</a></span>
+  <span class="prev"><a href="2-04-calling-from-application.html">4. Calling from an Application</a></span>
+  <span class="next"><a href="3-02-offline-scoring-pipelines.html">2. Offline Scoring Pipelines</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
