@@ -1,0 +1,39 @@
+= Red Hat OpenShift Data Science Workshop - Object Detection
+:page-layout: home
+:!sectids:
+
+[.text-center.strong]
+== Introduction
+
+Welcome!
+
+In this workshop, you'll learn an easy way to incorporate data science and AI/ML into an OpenShift development workflow.  
+As an example, you'll use an object detection model in several different ways.
+
+You will:
+
+* use Jupyter Notebooks and TensorFlow to explore a pre-trained object detection model
+* serve the model in a REST API as a Flask App
+* use source-to-image (s2i) to build and deploy the Flask App
+
+And all of this without having to install anything on your own computer, thanks to *Red Hat OpenShift Data Science*. 
+
+
+=== Environment
+
+https://developers.redhat.com/products/red-hat-openshift-data-science/download[Set up your Red Hat OpenShift Data Science environment]
+
+If you haven't already got an instance of Red Hat OpenShift Data Science, find out more on the https://developers.redhat.com/products/red-hat-openshift-data-science/download[developer page].  There, you can spin up your own account on the *free OpenShift Data Science Sandbox* or learn about installing on *your own OpenShift cluster*.
+
+=== Videos
+
+https://developers.redhat.com/articles/2021/11/22/build-and-deploy-object-detection-model-using-openshift-data-science[Related Video Article - Build and deploy an object detection model using OpenShift Data Science, window="_blank"]
+
+If you'd like to follow along with the accompanying videos of this workshop, you can find them in the article on the Red Hat Developer website or https://www.youtube.com/watch?v=C6xCFOwdFgY&list=PLf3vm0UK6HKoFFj46G26KeJLOr7FD9i86[watch on YouTube, window="_blank"] +
+{nbsp} +
+
+video::C6xCF OwdFgY[youtube,list=PLf3vm0UK6HKoFFj46G26KeJLOr7FD9i86, width=640, height=360]
+
+== Start!
+
+If you're ready,  xref:1-01-project-setup.adoc[let's start!]

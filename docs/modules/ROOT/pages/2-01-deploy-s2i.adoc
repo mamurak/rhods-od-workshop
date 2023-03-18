@@ -1,0 +1,153 @@
+= 2.1 Deploying as Source To Image Application
+
+include::_attributes.adoc[]
+
+Now that the application code is working, we're ready to build it as a container image, create an OpenShift deployment, and have it running as a service you will be able to call from any other application.
+
+This repository was created as a source to image Python application.  A Python application developer and a data scientist can work together in this repository to create the buildable application.  You can see the template https://github.com/opendatahub-io/odh-s2i-project-simple[GitHub repository] and try for yourself.
+
+Some interesting files to examine in the application::
+
+* https://github.com/alexgroom/object-detection-rest/blob/master/wsgi.py[wsgi.py] - the main entrypoint for the python application and calls the prediction function.
+* https://github.com/alexgroom/object-detection-rest/blob/master/prediction.py[prediction.py] -which contains the function the data scientist has extracted to make predictions.  Called from the application with a dictionary parameter.
+* https://github.com/alexgroom/object-detection-rest/blob/master/requirements.txt[requirements.txt] - where both the app developer and data scientists add their python dependencies for the served application.
+* https://github.com/alexgroom/object-detection-rest/tree/master/.s2i[s2i directory] - which contains files to customize the application deployment
+
+You can also learn more about https://access.redhat.com/documentation/en-us/red_hat_software_collections/2/html/using_red_hat_software_collections_container_images/sti[Source to Image] and the https://github.com/sclorg/s2i-python-container[Python builder image]:
+
+Now, let's create the application.
+
+== OpenShift Console
+
+We'll start from the *OpenShift Console*.
+
+image::s2i/ocp-console.png[Ocp Console]
+
+If you're at the OpenShift Data Science Dashboard and need to navigate to the OpenShift Web Console, use the *Application Switcher* Icon in the top right of the navigation bar and click on the *OpenShift Console* menu item.
+
+image::s2i/rhods-dashboard-app-switcher.png[RHODS Dashboard App Switcher, 400]
+
+* From the OpenShift Console and switch to the developer view from the menu on the top left if it's not already selected:
+
+image::s2i/dev-view.png[Developer View]
+
+* Make sure you have selected the correct project for your application. If you are using the Sandbox environment 
+then your project will look like *<username>-dev*. If you cannot see a project then use the *Create Project* option.
+
+image::s2i/select-project.png[Select Project, 640]
+
+== Add an Application from Git
+
+* From the `+Add` menu, click on the `Import from Git` tile:
+
+image::s2i/from-git.png[Add from git, 800]
+
+== Configure the Application
+
+=== Set the Git Repo
+
+* In the ``Git Repo URL`` field, enter: `+https://github.com/alexgroom/object-detection-rest.git+`
+
+[.lines_space]
+[.console-input]
+[source,text]
+----
+https://github.com/alexgroom/object-detection-rest.git
+----
+
+* Leave the other builder image selection to the default. You will see that OpenShift automatically recognized that our repo contains Python code, and that the right base image has been selected. Pretty neat, eh?!
+
+image::s2i/builder.png[Builder Image, 800]
+
+=== Customize the App Names
+
+* Let's customize the name of our application.  Instead of `object-detection-rest-git-app` and `object-detection-rest-git`, let's change the *Application name* to `object-detection` and the *Name* to  `object-detection-rest`.  Later when we call our service internally from the same project, we'll use this name and the service port, `http://object-detection-rest:8080`.
+
+[.lines_space]
+[.console-input]
+[source,text]
+----
+object-detection
+----
+
+
+[.lines_space]
+[.console-input]
+[source,text]
+----
+object-detection-rest
+----
+
+image::s2i/general.png[General Options, 700]
+
+=== Deployment Resource Type
+
+Expand the *Resource Type* 
+
+image::s2i/resource-type-options.png[resource type, 700]
+
+Then make sure that the *Deployment* option is selected
+
+image::s2i/resource-type.png[deployment, 700]
+
+=== Route
+
+This controls the external access to the REST API. Expand the *Show Advanced Routing options* 
+
+image::s2i/advanced-route-options.png[advanced route, 700]
+
+Then make sure that the *Secure Route* option is unchecked, since we need the 
+object detection REST API to be available as an HTTP service.
+
+image::s2i/unsecure-route.png[unsecure route, 700]
+
+
+=== Resource Limits
+
+As TensorFlow models require significant memory and cpu, it is a best practice to set the deployment resource limits to something that will give enough resources.  
+
+* Click on *Resource Limits*
+
+image::s2i/create-app-limits.png[Create app limits, 700]
+
+* Enter in the following values
+** *CPU* Request: `500 millicores` and Limit: `1000 millicores` (or `1 core`)
+** *Memory* Request: `2200 Mi` and Limit: `3000 Mi` 
+
+image::s2i/create-app-limits-form.png[Create app limits form, 500]
+
+[CAUTION]
+.Troubleshooting Memory Issues
+====
+Instead of receiving Out of memory (OOMKill) on the OpenShift pod, the application will not start correctly. 
+If the memory limit is too low, *Gunicorn* will kill the worker process that is taking up too much memory as a runaway.  
+This will result in messages in the log that look like:
+```
+[2022-07-07 16:20:01 +0000] [1] [WARNING] Worker with pid 2135 was terminated due to signal 9
+[2022-07-07 16:20:01 +0000] [2144] [INFO] Booting worker with pid: 2144
+```
+In these cases it's recommended to increase your pod deployment's memory limit.
+====
+
+=== Create 
+
+Everything is ready, so you can click on *Create*:
+
+image::s2i/create-button.png[alt text]
+
+== Checking your Application
+
+* You will see that a build is going on from the build icon:
+
+image::s2i/topology.png[alt text, 400]
+
+* Click on the python logo in the center of the deployment to open a detail panel on the right. The automated 
+building process will take a few minutes. Some alerts (such as ImgPullBackOff) may appear while the first build 
+is still running, but that's OK. Then OpenShift will deploy the application (rollout).  When it's complete you can 
+see the build is complete and the pod is running.
+
+image::s2i/topology-rest-complete.png[alt text, 700]
+
+Once the build is complete xref:2-02-testing-deployment.adoc[head to the next section.]
+
+
