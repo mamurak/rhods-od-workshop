@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>1.5 Serving a model :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/rhods-od-workshop/rhods-od-workshop/1-05-model-api.html">
+    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/1-05-model-api.html">
     <link rel="prev" href="1-04-object-detection.html">
     <link rel="next" href="2-01-deploy-s2i.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
   <body class="article">
@@ -15,7 +15,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/NewRHDFullLogo_4-color_white-wordmark.png" height="40px" alt="Red Hat Developer Program"></a>
-      <a class="navbar-item" style="font-size: 24px; color: white" href="https://redhat-scholars.github.io/rhods-od-workshop">Object Detection Workshop</a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://mamurak.github.io/rhods-od-workshop">Object Detection Workshop</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -53,16 +53,16 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">1. Notebooks</span>
+    <span class="nav-text">1. Jupyter Notebooks</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-01-start-jupyter.html">1. Starting a Jupyter environment</a>
+    <a class="nav-link" href="1-01-project-setup.html">1. Settin up your Data Science Project</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter environment</a>
+    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter Environment</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-03-notebooks.html">3. Notebooks</a>
+    <a class="nav-link" href="1-03-notebooks.html">3. Using Notebooks</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="1-04-object-detection.html">4. Object Detection</a>
@@ -73,8 +73,11 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <span class="nav-text">2. Serving with OpenShift Data Science</span>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">2. Serving with S2I</span>
+    <span class="nav-text">3. Deploying the object detection application</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="2-01-deploy-s2i.html">1. Deploy with Source to Image</a>
@@ -88,25 +91,7 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">3. Working with Kafka</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-01-create-kafka.html">1. Create a Kafka Instance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-02-respawn-notebook.html">2. Restart a Notebook Server</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-03-explore-kafka.html">3. Explore Kafka in a Notebook</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-04-create-secret.html">4. Create a Secret to Connect</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-05-kakfa-consumer.html">5. Deploy a Kafka Consumer</a>
-  </li>
-</ul>
+    <span class="nav-text">4. Running offline object detection</span>
   </li>
 </ul>
   </li>
@@ -123,11 +108,11 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Object Detection Workshop</a></li>
-    <li>1. Notebooks</li>
+    <li>1. Jupyter Notebooks</li>
     <li><a href="1-05-model-api.html">5. Serving a Model</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/1-05-model-api.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/1-05-model-api.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -136,50 +121,58 @@
 <p>In the previous section, we learned how to create the code that will use an existing object detection model to identify object in a static image. But of course we cannot use a notebook directly like this in a production environment.</p>
 </div>
 <div class="paragraph">
-<p>So now we will learn how to service this model as an <strong>API</strong> that you can directly query from other applications.</p>
-</div>
-<div class="paragraph">
-<p>Some explanations first:</p>
+<p>So now we will learn how to service this model as an <strong>API</strong> that you can directly query from other applications. For this, we will use the model serving capabilities of RHODS:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The code that we wrote in the notebook has been repackaged as a single Python file, <code>prediction.py</code>. Basically, it&#8217;s just the code that was in all the cells of the notebook that was put together inside a single file.</p>
+<p>Return to the RHODS Dashboard and enter your Project. Let&#8217;s now set up the model server by selecting <strong>Configure</strong> in the model serving section and choosing these settings:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Leave <strong>Instance count</strong> at 1.</p>
 </li>
 <li>
-<p>To use this code as a function you can call, we just added a function called <code>predict</code> that takes a string as an input, the name of the picture, does the recognition, and sends back the result. Open the file directly in JupyterLab and see for yourself - you should recognize our previous code, with this new function added.</p>
+<p>Under <strong>Instance size</strong> choose <code>Small</code>.</p>
 </li>
 <li>
-<p>There are other files in the folder that are used to provide functions to launch a web server that will be used to serve our API.</p>
+<p>Select <strong>Expose models through Route</strong>.</p>
+</li>
+<li>
+<p>Leave <strong>Token authorization</strong> unselected.</p>
+</li>
+<li>
+<p>Select <strong>Configure</strong> to finish model server setup.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>You&#8217;re now ready to deploy the object detection model. Under model server select <strong>Deploy model</strong> and set it up as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Choose an arbitrary <strong>Model name</strong> such as <code>yolo-v3</code>.</p>
+</li>
+<li>
+<p>Under <strong>Model framework</strong> select <code>ONNX</code>.</p>
+</li>
+<li>
+<p>Under <strong>Data connection</strong> select the data connection that you have provisioned earlier.</p>
+</li>
+<li>
+<p>Under <strong>Model path</strong> enter <code>tiny-yolov3-11.onnx</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Select <strong>Deploy</strong> to instantiate the model server. Click on <code>1</code> below <em>Deployed models</em> to monitor the status of the model deployment. It will indicate a green status once the model</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>After these explanations, you are ready to open the file <code>2_predict.ipynb</code>, to see how we extract the code needed for the <code>prediction.py</code> file. Then, launch notebooks <code>3_run_flask.ipynb</code> and <code>4_test_flask.ipynb</code> and follow the instructions directly in the notebooks!</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/notebooks/od_run.png" alt="alt text">
-</div>
-</div>
-<div class="paragraph">
-<p>You&#8217;ll first launch the Server in notebook <code>3_run_flask.ipynb</code>:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/notebooks/launch_server.png" alt="alt text">
-</div>
-</div>
-<div class="paragraph">
-<p>Then query the API from notebok <code>4_test_flask.ipynb</code>:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/notebooks/query_api.png" alt="alt text">
-</div>
-</div>
-<div class="paragraph">
-<p>Once you&#8217;re finished, you can come back here and <a href="2-01-deploy-s2i.html" class="page">head to the next section.</a></p>
+<p>Once you&#8217;re finished, you can come back here and <a href="2-01-deploy-s2i.html" class="xref page">head to the next section.</a></p>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="1-04-object-detection.html">4. Object Detection</a></span>

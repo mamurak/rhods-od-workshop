@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>1.2 The Jupyter environment :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/rhods-od-workshop/rhods-od-workshop/1-02-jupyter-env.html">
-    <link rel="prev" href="1-01-start-jupyter.html">
+    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/1-02-jupyter-env.html">
+    <link rel="prev" href="1-01-project-setup.html">
     <link rel="next" href="1-03-notebooks.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
   <body class="article">
@@ -15,7 +15,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/NewRHDFullLogo_4-color_white-wordmark.png" height="40px" alt="Red Hat Developer Program"></a>
-      <a class="navbar-item" style="font-size: 24px; color: white" href="https://redhat-scholars.github.io/rhods-od-workshop">Object Detection Workshop</a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://mamurak.github.io/rhods-od-workshop">Object Detection Workshop</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -53,16 +53,16 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">1. Notebooks</span>
+    <span class="nav-text">1. Jupyter Notebooks</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-01-start-jupyter.html">1. Starting a Jupyter environment</a>
+    <a class="nav-link" href="1-01-project-setup.html">1. Settin up your Data Science Project</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter environment</a>
+    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter Environment</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-03-notebooks.html">3. Notebooks</a>
+    <a class="nav-link" href="1-03-notebooks.html">3. Using Notebooks</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="1-04-object-detection.html">4. Object Detection</a>
@@ -73,8 +73,11 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <span class="nav-text">2. Serving with OpenShift Data Science</span>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">2. Serving with S2I</span>
+    <span class="nav-text">3. Deploying the object detection application</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="2-01-deploy-s2i.html">1. Deploy with Source to Image</a>
@@ -88,25 +91,7 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">3. Working with Kafka</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-01-create-kafka.html">1. Create a Kafka Instance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-02-respawn-notebook.html">2. Restart a Notebook Server</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-03-explore-kafka.html">3. Explore Kafka in a Notebook</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-04-create-secret.html">4. Create a Secret to Connect</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-05-kakfa-consumer.html">5. Deploy a Kafka Consumer</a>
-  </li>
-</ul>
+    <span class="nav-text">4. Running offline object detection</span>
   </li>
 </ul>
   </li>
@@ -123,11 +108,11 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Object Detection Workshop</a></li>
-    <li>1. Notebooks</li>
-    <li><a href="1-02-jupyter-env.html">2. The Jupyter environment</a></li>
+    <li>1. Jupyter Notebooks</li>
+    <li><a href="1-02-jupyter-env.html">2. The Jupyter Environment</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/1-02-jupyter-env.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/1-02-jupyter-env.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -165,13 +150,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Enter the git <strong>https</strong> URL, <code><a href="https://github.com/rh-aiservices-bu/object-detection-rest.git" class="bare">https://github.com/rh-aiservices-bu/object-detection-rest.git</a></code>, then click <strong>CLONE</strong>:</p>
+<p>Enter the git <strong>https</strong> URL, <code><a href="https://github.com/mamurak/object-detection-rest.git" class="bare">https://github.com/mamurak/object-detection-rest.git</a></code>, then click <strong>CLONE</strong>:</p>
 </li>
 </ul>
 </div>
 <div class="listingblock lines_space console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">https://github.com/rh-aiservices-bu/object-detection-rest.git</code></pre>
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">https://github.com/mamurak/object-detection-rest.git</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -198,11 +183,37 @@
 </div>
 </div>
 <div class="paragraph">
-<p><a href="1-03-notebooks.html" class="page">Ready? Let&#8217;s go to the next section.</a></p>
+<p>This JupyterLab instance also features an <strong>Object Storage Browser</strong>. Let&#8217;s connect to your S3 bucket and review its contents:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Open the Object Storage Browser by selecting the bucket icon on the top of the left toolbar.</p>
+</li>
+<li>
+<p>Fill in the settings as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In <strong>Object storage endpoint</strong> write <code><a href="http://s3.openshift-storage.svc" class="bare">http://s3.openshift-storage.svc</a></code>.</p>
+</li>
+<li>
+<p>For the <strong>Access key</strong> and <strong>Secret key</strong> values, copy and paste the corresponding values from the Secret that you reviewed in the former section.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Select <strong>Connect</strong> to access your S3 bucket. Double click on the bucket with your user ID. You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="1-03-notebooks.html" class="xref page">Ready? Let&#8217;s go to the next section.</a></p>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="1-01-start-jupyter.html">1. Starting a Jupyter environment</a></span>
-  <span class="next"><a href="1-03-notebooks.html">3. Notebooks</a></span>
+  <span class="prev"><a href="1-01-project-setup.html">1. Settin up your Data Science Project</a></span>
+  <span class="next"><a href="1-03-notebooks.html">3. Using Notebooks</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

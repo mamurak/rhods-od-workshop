@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>2.1 Deploying as Source To Image Application :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/rhods-od-workshop/rhods-od-workshop/2-01-deploy-s2i.html">
+    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/2-01-deploy-s2i.html">
     <link rel="prev" href="1-05-model-api.html">
     <link rel="next" href="2-02-testing-deployment.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
   <body class="article">
@@ -15,7 +15,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/NewRHDFullLogo_4-color_white-wordmark.png" height="40px" alt="Red Hat Developer Program"></a>
-      <a class="navbar-item" style="font-size: 24px; color: white" href="https://redhat-scholars.github.io/rhods-od-workshop">Object Detection Workshop</a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://mamurak.github.io/rhods-od-workshop">Object Detection Workshop</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -53,16 +53,16 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">1. Notebooks</span>
+    <span class="nav-text">1. Jupyter Notebooks</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-01-start-jupyter.html">1. Starting a Jupyter environment</a>
+    <a class="nav-link" href="1-01-project-setup.html">1. Settin up your Data Science Project</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter environment</a>
+    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter Environment</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-03-notebooks.html">3. Notebooks</a>
+    <a class="nav-link" href="1-03-notebooks.html">3. Using Notebooks</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="1-04-object-detection.html">4. Object Detection</a>
@@ -73,8 +73,11 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <span class="nav-text">2. Serving with OpenShift Data Science</span>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">2. Serving with S2I</span>
+    <span class="nav-text">3. Deploying the object detection application</span>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="2-01-deploy-s2i.html">1. Deploy with Source to Image</a>
@@ -88,25 +91,7 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">3. Working with Kafka</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-01-create-kafka.html">1. Create a Kafka Instance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-02-respawn-notebook.html">2. Restart a Notebook Server</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-03-explore-kafka.html">3. Explore Kafka in a Notebook</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-04-create-secret.html">4. Create a Secret to Connect</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-05-kakfa-consumer.html">5. Deploy a Kafka Consumer</a>
-  </li>
-</ul>
+    <span class="nav-text">4. Running offline object detection</span>
   </li>
 </ul>
   </li>
@@ -123,11 +108,11 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Object Detection Workshop</a></li>
-    <li>2. Serving with S2I</li>
+    <li>3. Deploying the object detection application</li>
     <li><a href="2-01-deploy-s2i.html">1. Deploy with Source to Image</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/2-01-deploy-s2i.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/2-01-deploy-s2i.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -147,16 +132,16 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/rh-aiservices-bu/object-detection-rest/blob/master/wsgi.py">wsgi.py</a> - the main entrypoint for the python application and calls the prediction function.</p>
+<p><a href="https://github.com/alexgroom/object-detection-rest/blob/master/wsgi.py">wsgi.py</a> - the main entrypoint for the python application and calls the prediction function.</p>
 </li>
 <li>
-<p><a href="https://github.com/rh-aiservices-bu/object-detection-rest/blob/master/prediction.py">prediction.py</a> -which contains the function the data scientist has extracted to make predictions.  Called from the application with a dictionary parameter.</p>
+<p><a href="https://github.com/alexgroom/object-detection-rest/blob/master/prediction.py">prediction.py</a> -which contains the function the data scientist has extracted to make predictions.  Called from the application with a dictionary parameter.</p>
 </li>
 <li>
-<p><a href="https://github.com/rh-aiservices-bu/object-detection-rest/blob/master/requirements.txt">requirements.txt</a> - where both the app developer and data scientists add their python dependencies for the served application.</p>
+<p><a href="https://github.com/alexgroom/object-detection-rest/blob/master/requirements.txt">requirements.txt</a> - where both the app developer and data scientists add their python dependencies for the served application.</p>
 </li>
 <li>
-<p><a href="https://github.com/rh-aiservices-bu/object-detection-rest/tree/master/.s2i">s2i directory</a> - which contains files to customize the application deployment</p>
+<p><a href="https://github.com/alexgroom/object-detection-rest/tree/master/.s2i">s2i directory</a> - which contains files to customize the application deployment</p>
 </li>
 </ul>
 </div>
@@ -172,42 +157,64 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="_openshift_console"><a class="anchor" href="#_openshift_console"></a>OpenShift Console</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ll start from the <strong>OpenShift Console</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/ocp-console.png" alt="Ocp Console">
+</div>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re at the OpenShift Data Science Dashboard and need to navigate to the OpenShift Web Console, use the <strong>Application Switcher</strong> Icon in the top right of the navigation bar and click on the <strong>OpenShift Console</strong> menu item.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/rhods-dashboard-app-switcher.png" alt="RHODS Dashboard App Switcher" width="400">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From the OpenShift Console and switch to the developer view from the menu on the top left if it&#8217;s not already selected:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/dev-view.png" alt="Developer View">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Make sure you have selected the correct project for your application. If you are using the Sandbox environment
+then your project will look like <strong>&lt;username&gt;-dev</strong>. If you cannot see a project then use the <strong>Create Project</strong> option.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/select-project.png" alt="Select Project" width="640">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_add_an_application_from_git"><a class="anchor" href="#_add_an_application_from_git"></a>Add an Application from Git</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>Open your OpenShift UI and switch to the developer view from the menu on the top left:</p>
+<p>From the <code>+Add</code> menu, click on the <code>Import from Git</code> tile:</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/s2i/dev-view.png" alt="alt text">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Make sure you have selected the correct project for your application:</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/s2i/select-project.png" alt="alt text" width="640">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>From the <code>+Add</code> menu, click on the <code>From Git</code> tile:</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/s2i/from-git.png" alt="alt text" width="800">
+<img src="_images/s2i/from-git.png" alt="Add from git" width="800">
 </div>
 </div>
 </div>
@@ -220,18 +227,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>In the <code>Git Repo URL</code> field, enter: <code>https://github.com/rh-aiservices-bu/object-detection-rest.git</code></p>
+<p>In the <code>Git Repo URL</code> field, enter: <code>https://github.com/alexgroom/object-detection-rest.git</code></p>
 </li>
 </ul>
 </div>
 <div class="listingblock lines_space console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">https://github.com/rh-aiservices-bu/object-detection-rest.git</code></pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/s2i/git-repo.png" alt="alt text" width="800">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">https://github.com/alexgroom/object-detection-rest.git</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -243,7 +245,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/s2i/builder.png" alt="alt text" width="800">
+<img src="_images/s2i/builder.png" alt="Builder Image" width="800">
 </div>
 </div>
 </div>
@@ -268,22 +270,123 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/s2i/general.png" alt="alt text">
+<img src="_images/s2i/general.png" alt="General Options" width="700">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_create"><a class="anchor" href="#_create"></a>Create</h3>
+<h3 id="_deployment_resource_type"><a class="anchor" href="#_deployment_resource_type"></a>Deployment Resource Type</h3>
+<div class="paragraph">
+<p>Expand the <strong>Resource Type</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/resource-type-options.png" alt="resource type" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>Then make sure that the <strong>Deployment</strong> option is selected</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/resource-type.png" alt="deployment" width="700">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_route"><a class="anchor" href="#_route"></a>Route</h3>
+<div class="paragraph">
+<p>This controls the external access to the REST API. Expand the <strong>Show Advanced Routing options</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/advanced-route-options.png" alt="advanced route" width="700">
+</div>
+</div>
+<div class="paragraph">
+<p>Then make sure that the <strong>Secure Route</strong> option is unchecked, since we need the
+object detection REST API to be available as an HTTP service.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/unsecure-route.png" alt="unsecure route" width="700">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resource_limits"><a class="anchor" href="#_resource_limits"></a>Resource Limits</h3>
+<div class="paragraph">
+<p>As TensorFlow models require significant memory and cpu, it is a best practice to set the deployment resource limits to something that will give enough resources.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>If you continue to scroll down, you will see that everything is automatically selected to create a deployment of your application, and to create a Route through which you will be able to access it. Everything is ready, so you can click on <strong>Create</strong>:</p>
+<p>Click on <strong>Resource Limits</strong></p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/s2i/create-app.png" alt="alt text" width="800">
+<img src="_images/s2i/create-app-limits.png" alt="Create app limits" width="700">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enter in the following values</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>CPU</strong> Request: <code>500 millicores</code> and Limit: <code>1000 millicores</code> (or <code>1 core</code>)</p>
+</li>
+<li>
+<p><strong>Memory</strong> Request: <code>2200 Mi</code> and Limit: <code>3000 Mi</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/create-app-limits-form.png" alt="Create app limits form" width="500">
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="title">Troubleshooting Memory Issues</div>
+<div class="paragraph">
+<p>Instead of receiving Out of memory (OOMKill) on the OpenShift pod, the application will not start correctly.
+If the memory limit is too low, <strong>Gunicorn</strong> will kill the worker process that is taking up too much memory as a runaway.
+This will result in messages in the log that look like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">[2022-07-07 16:20:01 +0000] [1] [WARNING] Worker with pid 2135 was terminated due to signal 9
+[2022-07-07 16:20:01 +0000] [2144] [INFO] Booting worker with pid: 2144</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In these cases it&#8217;s recommended to increase your pod deployment&#8217;s memory limit.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create"><a class="anchor" href="#_create"></a>Create</h3>
+<div class="paragraph">
+<p>Everything is ready, so you can click on <strong>Create</strong>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/create-button.png" alt="alt text">
 </div>
 </div>
 </div>
@@ -295,41 +398,32 @@
 <div class="ulist">
 <ul>
 <li>
-<p>You will see that a build is going on:</p>
+<p>You will see that a build is going on from the build icon:</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/s2i/topology.png" alt="alt text" width="800">
+<img src="_images/s2i/topology.png" alt="alt text" width="400">
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Click on the python logo in the center of the deployment to open a detail panel on the right.</p>
+<p>Click on the python logo in the center of the deployment to open a detail panel on the right. The automated
+building process will take a few minutes. Some alerts (such as ImgPullBackOff) may appear while the first build
+is still running, but that&#8217;s OK. Then OpenShift will deploy the application (rollout).  When it&#8217;s complete you can
+see the build is complete and the pod is running.</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/s2i/topology-rest-building.png" alt="alt text" width="800">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The automated building process will take a few minutes. Some alerts (such as ImgPullBackOff) may appear while the first build is still running, but that&#8217;s OK. Then OpenShift will deploy the application (rollout).  When it&#8217;s complete you can see the build is complete and the pod is running.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/s2i/topology-rest-complete.png" alt="alt text" width="800">
+<img src="_images/s2i/topology-rest-complete.png" alt="alt text" width="700">
 </div>
 </div>
 <div class="paragraph">
-<p>Once the build is complete <a href="2-02-testing-deployment.html" class="page">head to the next section.</a></p>
+<p>Once the build is complete <a href="2-02-testing-deployment.html" class="xref page">head to the next section.</a></p>
 </div>
 </div>
 </div>

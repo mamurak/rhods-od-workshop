@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Red Hat OpenShift Data Science Workshop - Object Detection :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/rhods-od-workshop/rhods-od-workshop/index.html">
-    <link rel="next" href="1-01-start-jupyter.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/index.html">
+    <link rel="next" href="1-01-project-setup.html">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
   <body class="article">
@@ -14,7 +14,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/NewRHDFullLogo_4-color_white-wordmark.png" height="40px" alt="Red Hat Developer Program"></a>
-      <a class="navbar-item" style="font-size: 24px; color: white" href="https://redhat-scholars.github.io/rhods-od-workshop">Object Detection Workshop</a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://mamurak.github.io/rhods-od-workshop">Object Detection Workshop</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -52,16 +52,16 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">1. Notebooks</span>
+    <span class="nav-text">1. Jupyter Notebooks</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-01-start-jupyter.html">1. Starting a Jupyter environment</a>
+    <a class="nav-link" href="1-01-project-setup.html">1. Settin up your Data Science Project</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter environment</a>
+    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter Environment</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-03-notebooks.html">3. Notebooks</a>
+    <a class="nav-link" href="1-03-notebooks.html">3. Using Notebooks</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="1-04-object-detection.html">4. Object Detection</a>
@@ -72,8 +72,11 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <span class="nav-text">2. Serving with OpenShift Data Science</span>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">2. Serving with S2I</span>
+    <span class="nav-text">3. Deploying the object detection application</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="2-01-deploy-s2i.html">1. Deploy with Source to Image</a>
@@ -87,25 +90,7 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">3. Working with Kafka</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-01-create-kafka.html">1. Create a Kafka Instance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-02-respawn-notebook.html">2. Restart a Notebook Server</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-03-explore-kafka.html">3. Explore Kafka in a Notebook</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-04-create-secret.html">4. Create a Secret to Connect</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-05-kakfa-consumer.html">5. Deploy a Kafka Consumer</a>
-  </li>
-</ul>
+    <span class="nav-text">4. Running offline object detection</span>
   </li>
 </ul>
   </li>
@@ -125,7 +110,7 @@
     <li><a href="index.html">Red Hat OpenShift Data Science Workshop - Object Detection</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -137,7 +122,8 @@
 <p>Welcome!</p>
 </div>
 <div class="paragraph">
-<p>In this workshop, you&#8217;ll learn an easy way to incorporate data science and AI/ML into an OpenShift development workflow.  As an example, you&#8217;ll use an object detection model in several different ways.</p>
+<p>In this workshop, you&#8217;ll learn an easy way to incorporate data science and AI/ML into an OpenShift development workflow.
+As an example, you&#8217;ll use an object detection model in several different ways.</p>
 </div>
 <div class="paragraph">
 <p>You will:</p>
@@ -153,24 +139,47 @@
 <li>
 <p>use source-to-image (s2i) to build and deploy the Flask App</p>
 </li>
-<li>
-<p>explore Kafka streams from notebooks</p>
-</li>
-<li>
-<p>deploy a Kafka consumer with the same object detection model</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>And all of this without having to install anything on your own computer, thanks to <strong>Red Hat OpenShift Data Science</strong> and <strong>Red Hat OpenShift Streams for Apache Kafka</strong>.</p>
+<p>And all of this without having to install anything on your own computer, thanks to <strong>Red Hat OpenShift Data Science</strong>.</p>
+</div>
+<div class="sect2">
+<h3>Environment</h3>
+<div class="paragraph">
+<p><a href="https://developers.redhat.com/products/red-hat-openshift-data-science/download">Set up your Red Hat OpenShift Data Science environment</a></p>
 </div>
 <div class="paragraph">
-<p>If you&#8217;re ready,  <a href="1-01-start-jupyter.html" class="page">let&#8217;s start!</a></p>
+<p>If you haven&#8217;t already got an instance of Red Hat OpenShift Data Science, find out more on the <a href="https://developers.redhat.com/products/red-hat-openshift-data-science/download">developer page</a>.  There, you can spin up your own account on the <strong>free OpenShift Data Science Sandbox</strong> or learn about installing on <strong>your own OpenShift cluster</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3>Videos</h3>
+<div class="paragraph">
+<p><a href="https://developers.redhat.com/articles/2021/11/22/build-and-deploy-object-detection-model-using-openshift-data-science" target="_blank" rel="noopener">Related Video Article - Build and deploy an object detection model using OpenShift Data Science</a></p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;d like to follow along with the accompanying videos of this workshop, you can find them in the article on the Red Hat Developer website or <a href="https://www.youtube.com/watch?v=C6xCFOwdFgY&amp;list=PLf3vm0UK6HKoFFj46G26KeJLOr7FD9i86" target="_blank" rel="noopener">watch on YouTube</a><br>
+&#160;<br></p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="640" height="360" src="https://www.youtube.com/embed/C6xCF OwdFgY?rel=0&amp;list=PLf3vm0UK6HKoFFj46G26KeJLOr7FD9i86" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2>Start!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you&#8217;re ready,  <a href="1-01-project-setup.html" class="xref page">let&#8217;s start!</a></p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="next"><a href="1-01-start-jupyter.html">1. Starting a Jupyter environment</a></span>
+  <span class="next"><a href="1-01-project-setup.html">1. Settin up your Data Science Project</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

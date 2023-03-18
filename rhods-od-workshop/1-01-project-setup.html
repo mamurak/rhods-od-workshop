@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>1.1 Setting up your Data Science Project :: Object Detection Workshop</title>
+    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/1-01-project-setup.html">
+    <link rel="prev" href="index.html">
+    <link rel="next" href="1-02-jupyter-env.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/NewRHDFullLogo_4-color_white-wordmark.png" height="40px" alt="Red Hat Developer Program"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://mamurak.github.io/rhods-od-workshop">Object Detection Workshop</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://developers.redhat.com/ebooks/" target="_blank">Books</a>
+        <a class="navbar-item" href="https://developers.redhat.com/cheatsheets/" target="_blank">Cheat Sheets</a>
+        <a class="navbar-item" href="https://developers.redhat.com/events/" target="_blank">Upcoming Events</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">More Tutorials</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/kubernetes-tutorial/" target="_blank">Kubernetes</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/istio-tutorial/" target="_blank">Istio</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/quarkus-tutorial/" target="_blank">Quarkus</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/knative-tutorial/" target="_blank">Knative</a>
+            <a class="navbar-item" href="https://redhat-developer-demos.github.io/tekton-tutorial/" target="_blank">Tekton</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="rhods-od-workshop" data-version="master">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html"></a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">1. Jupyter Notebooks</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="1-01-project-setup.html">1. Settin up your Data Science Project</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="1-03-notebooks.html">3. Using Notebooks</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="1-04-object-detection.html">4. Object Detection</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="1-05-model-api.html">5. Serving a Model</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">2. Serving with OpenShift Data Science</span>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">3. Deploying the object detection application</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="2-01-deploy-s2i.html">1. Deploy with Source to Image</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="2-02-testing-deployment.html">2. Testing the Deployment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="2-03-calling-from-application.html">3. Calling from an Application</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <span class="nav-text">4. Running offline object detection</span>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Object Detection Workshop</a></li>
+    <li>1. Jupyter Notebooks</li>
+    <li><a href="1-01-project-setup.html">1. Settin up your Data Science Project</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/1-01-project-setup.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">1.1 Setting up your Data Science Project</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="index.html" class="xref page">Back to the introduction</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_openshift_data_science_dashboard"><a class="anchor" href="#_the_openshift_data_science_dashboard"></a>The OpenShift Data Science Dashboard</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We&#8217;re going to refer to <em>Red Hat OpenShift Data Science</em> as RHODS throughout this workshop.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You should be logged into <strong>Red Hat OpenShift Data Science</strong>, and be able to see the dashboard, that looks like this:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/notebooks/dashboard.png" alt="alt text">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you&#8217;re at the OpenShift Web Console and need to navigate back to the OpenShift Data Science Dashboard, use the <strong>Application Switcher</strong> Icon in the top right of the navigation bar.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/notebooks/ocp-console-app-switcher.png" alt="alt text" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Red Hat OpenShift Data Science</strong> brings you on-demand Jupyter Notebook environments. Don&#8217;t worry if you&#8217;ve never used notebooks before as this workshop will start with a small tutorial on what they are and how to use them.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Now that you are logged into to <strong>Red Hat OpenShift Data Science</strong>, navigate to Data Science Projects in the left menu. Here you can see the list of existing Projects that you have access to.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Projects allow you and your team to organize and collaborate on resources within separated namespaces.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>There is one Project that has been prepared for you. Enter the Project by clicking on its name. You can now see the initial state of an empty Project. There are four type of Project resources, which we will create throughout the next steps:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Workbenches</strong> are instances of your development and experimentation environment. Workbenches typically contain IDEs such as JupyterLab and Visual Studio Code.</p>
+</li>
+<li>
+<p>A <strong>Data Storage</strong> is a volume that persists the files and data you&#8217;re working on within a workbench. A workbench has access to one or more data storage instances.</p>
+</li>
+<li>
+<p><strong>Data Connections</strong> contain configuration parameters that are required to connect to a data source such as an S3 bucket.</p>
+</li>
+<li>
+<p><strong>Model Servers</strong> allow you to quickly serve a trained model for real-time inference. There is one model server per Project, and one model server can host multiple models.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Let&#8217;s create a workbench. Click on <em>Create</em> in the workbench section to proceed to the workbench configuration page. Choose the following settings:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Choose an arbitrary <strong>name</strong> such as <em>development</em>.</p>
+</li>
+<li>
+<p>Under <strong>workbench image</strong> select <code>object detection</code>.</p>
+</li>
+<li>
+<p>Under <strong>workbench size</strong> select <code>small</code>.</p>
+</li>
+<li>
+<p>Leave the <strong>environment variables</strong> section empty. We will populate the workbench&#8217;s environment variables through a data connection later.</p>
+</li>
+<li>
+<p>Under <strong>persistence</strong> select <code>Create a new data storage</code> with the default values.</p>
+</li>
+<li>
+<p>Click <strong>Create</strong> to initialize your workbench.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>You&#8217;re redirected to the Project page where you can see the status of your new workbench. The first time it&#8217;s initialized it will take about 1-2 minutes to start up. Subsequent starts will be faster.</p>
+</li>
+<li>
+<p>You can also see a new data storage instance that has been provisioned together with your workbench. All files you create in your workbench will be persisted in this data storage.</p>
+</li>
+<li>
+<p>Before we create our data connection, we&#8217;ll inspect the parameters of the S3 bucket that has been prepared for you. Switch to the OpenShift console by clicking on the <em>add-ons</em> icon (9 small squares) in the top right toolbar and selecting <code>OpenShift Console</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In the OpenShift console you can inspect and edit all resources that you create in the RHODS dashboard. We&#8217;ll use the console to deploy the object detection app later in this workshop.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure you&#8217;re seeing the Developer Console by selecting <code>Developer</code> in the top field of the left menu. The S3 credentials are stored within a Kubernetes Secret. To view it, navigate to <code>Secrets</code> in the left menu. You can now see the list of all Secrets that exist in your Project. Click on the name of the Secret that corresponds to your user ID. You can now review the credentials that are needed for accessing your S3 bucket. There&#8217;s a button on the right hand side of the credential fields that allow you to copy the respective value. Keep this tab open for reference and return to the RHODS Dashboard within a new tab.</p>
+</li>
+<li>
+<p>Let&#8217;s create a data connection to gain access to the object detection model. Under <em>Data Connection</em> select <code>Create</code>. In the configuration page, populate the fields as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Enter an arbitrary <strong>name</strong> like <code>S3 bucket</code>.</p>
+</li>
+<li>
+<p>For <strong>AWS Access Key</strong> and <strong>AWS Secret Key</strong>, copy and paste the respective values of the Secret that we reviewed in the previous step.</p>
+</li>
+<li>
+<p>Under <strong>S3 Endpoint</strong> enter <code><a href="http://s3.openshift-storage.svc" class="bare">http://s3.openshift-storage.svc</a></code>.</p>
+</li>
+<li>
+<p>Under <strong>Default bucket</strong> enter your user ID.</p>
+</li>
+<li>
+<p>In the <strong>Connected workbenches</strong> dropdown menu select your provisioned workbench.</p>
+</li>
+<li>
+<p>Select <strong>Create</strong> to instantiate the data connection. This will cause your workbench to restart, but this time the workbench will be up and running within a few seconds.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You&#8217;re now all set. You&#8217;ve configured your first Data Science Project. To start working with the object detection model, select <code>Enter</code> next to your running workbench instance and
+<a href="1-02-jupyter-env.html" class="xref page">head to the next section.</a></p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="index.html">Object Detection Workshop</a></span>
+  <span class="next"><a href="1-02-jupyter-env.html">2. The Jupyter Environment</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <a class="rhd-logo" href="https://developers.redhat.com" target="_blank"></div>
+</footer>
+<script src="../_/js/vendor/clipboard.js"></script>
+<script src="../_/js/site.js"></script>
+<script async src="../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

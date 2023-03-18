@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>1.3 Notebooks :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://redhat-scholars.github.io/rhods-od-workshop/rhods-od-workshop/1-03-notebooks.html">
+    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/1-03-notebooks.html">
     <link rel="prev" href="1-02-jupyter-env.html">
     <link rel="next" href="1-04-object-detection.html">
-    <meta name="generator" content="Antora 2.3.4">
+    <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
   <body class="article">
@@ -15,7 +15,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/NewRHDFullLogo_4-color_white-wordmark.png" height="40px" alt="Red Hat Developer Program"></a>
-      <a class="navbar-item" style="font-size: 24px; color: white" href="https://redhat-scholars.github.io/rhods-od-workshop">Object Detection Workshop</a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://mamurak.github.io/rhods-od-workshop">Object Detection Workshop</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -53,16 +53,16 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">1. Notebooks</span>
+    <span class="nav-text">1. Jupyter Notebooks</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-01-start-jupyter.html">1. Starting a Jupyter environment</a>
+    <a class="nav-link" href="1-01-project-setup.html">1. Settin up your Data Science Project</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter environment</a>
+    <a class="nav-link" href="1-02-jupyter-env.html">2. The Jupyter Environment</a>
   </li>
   <li class="nav-item is-current-page" data-depth="2">
-    <a class="nav-link" href="1-03-notebooks.html">3. Notebooks</a>
+    <a class="nav-link" href="1-03-notebooks.html">3. Using Notebooks</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="1-04-object-detection.html">4. Object Detection</a>
@@ -73,8 +73,11 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
+    <span class="nav-text">2. Serving with OpenShift Data Science</span>
+  </li>
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">2. Serving with S2I</span>
+    <span class="nav-text">3. Deploying the object detection application</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="2-01-deploy-s2i.html">1. Deploy with Source to Image</a>
@@ -88,25 +91,7 @@
 </ul>
   </li>
   <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">3. Working with Kafka</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-01-create-kafka.html">1. Create a Kafka Instance</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-02-respawn-notebook.html">2. Restart a Notebook Server</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-03-explore-kafka.html">3. Explore Kafka in a Notebook</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-04-create-secret.html">4. Create a Secret to Connect</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="3-05-kakfa-consumer.html">5. Deploy a Kafka Consumer</a>
-  </li>
-</ul>
+    <span class="nav-text">4. Running offline object detection</span>
   </li>
 </ul>
   </li>
@@ -123,11 +108,11 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Object Detection Workshop</a></li>
-    <li>1. Notebooks</li>
-    <li><a href="1-03-notebooks.html">3. Notebooks</a></li>
+    <li>1. Jupyter Notebooks</li>
+    <li><a href="1-03-notebooks.html">3. Using Notebooks</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-scholars/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/1-03-notebooks.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/documentation/modules/ROOT/pages/1-03-notebooks.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -135,7 +120,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section provides a small introduction on how to use Jupyter Notebooks. If you&#8217;re already at ease with Jupyter, you can <a href="1-04-object-detection.html" class="page">head to the next section</a>.</p>
+<p>This section provides a small introduction on how to use Jupyter Notebooks. If you&#8217;re already at ease with Jupyter, you can <a href="1-04-object-detection.html" class="xref page">head to the next section</a>.</p>
 </div>
 </div>
 </div>
@@ -238,12 +223,12 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Now that you&#8217;re more familiar with notebooks, you&#8217;re ready to <a href="1-04-object-detection.html" class="page">go to the next section.</a></p>
+<p>Now that you&#8217;re more familiar with notebooks, you&#8217;re ready to <a href="1-04-object-detection.html" class="xref page">go to the next section.</a></p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="1-02-jupyter-env.html">2. The Jupyter environment</a></span>
+  <span class="prev"><a href="1-02-jupyter-env.html">2. The Jupyter Environment</a></span>
   <span class="next"><a href="1-04-object-detection.html">4. Object Detection</a></span>
 </nav>
 </article>
