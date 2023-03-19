@@ -38,7 +38,7 @@ NOTE: Projects allow you and your team to organize and collaborate on resources 
 
 ** Choose an arbitrary *name* such as _development_.
 
-** Under *workbench image* select `object detection`.
+** Under *workbench image* select `object detection Elyra`.
 
 ** Under *workbench size* select `small`.
 
@@ -52,7 +52,7 @@ NOTE: Projects allow you and your team to organize and collaborate on resources 
 
 * You can also see a new data storage instance that has been provisioned together with your workbench. All files you create in your workbench will be persisted in this data storage.
 
-* Before we create our data connection, we'll inspect the parameters of the S3 bucket that has been prepared for you. Switch to the OpenShift console by clicking on the _add-ons_ icon (9 small squares) in the top right toolbar and selecting `OpenShift Console`. 
+* We are also going to create a data connection to get for accessing our data and model. Before we create our data connection, let's inspect the parameters of the S3 bucket that has been prepared for you. Switch to the OpenShift console by clicking on the _add-ons_ icon (9 small squares) in the top right toolbar and selecting `OpenShift Console`. 
 
 NOTE: In the OpenShift console you can inspect and edit all resources that you create in the RHODS dashboard. We'll use the console to deploy the object detection app later in this workshop.
 
@@ -66,7 +66,7 @@ NOTE: In the OpenShift console you can inspect and edit all resources that you c
 
 ** Under *S3 Endpoint* enter `http://s3.openshift-storage.svc`.
 
-** Under *Default bucket* enter your user ID.
+** Under *AWS_S3_BUCKET* enter your user ID.
 
 ** In the *Connected workbenches* dropdown menu select your provisioned workbench.
 

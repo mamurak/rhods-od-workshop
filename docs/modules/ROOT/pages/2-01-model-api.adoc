@@ -1,4 +1,4 @@
-= 1.5 Serving a model
+= 2.1 Serving a model
 
 include::_attributes.adoc[]
 
@@ -8,11 +8,11 @@ So now we will learn how to service this model as an *API* that you can directly
 
 * Return to the RHODS Dashboard and enter your Project. Let's now set up the model server by selecting *Configure* in the model serving section and choosing these settings:
 
-** Leave *Instance count* at 1.
+** Leave *Model server replicas* at 1.
 
-** Under *Instance size* choose `Small`.
+** Under *Model server size* choose `Small`.
 
-** Select *Expose models through Route*.
+** Select *Make deployed models available through an external route*.
 
 ** Leave *Token authorization* unselected.
 
@@ -26,7 +26,7 @@ So now we will learn how to service this model as an *API* that you can directly
 
 ** Under *Data connection* select the data connection that you have provisioned earlier.
 
-** Under *Model path* enter `tiny-yolov3-11.onnx`.
+** Under *Folder path* enter `tiny-yolov3-11.onnx`.
 
 * Select *Deploy* to instantiate the model server. Click on `1` below _Deployed models_ to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the _Inference endpoint_ so we can test the model deployment.
 
