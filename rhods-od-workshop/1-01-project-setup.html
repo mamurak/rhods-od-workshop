@@ -221,7 +221,7 @@ Projects allow you and your team to organize and collaborate on resources within
 <p>Choose an arbitrary <strong>name</strong> such as <em>development</em>.</p>
 </li>
 <li>
-<p>Under <strong>workbench image</strong> select <code>object detection</code>.</p>
+<p>Under <strong>workbench image</strong> select <code>object detection Elyra</code>.</p>
 </li>
 <li>
 <p>Under <strong>workbench size</strong> select <code>small</code>.</p>
@@ -245,7 +245,7 @@ Projects allow you and your team to organize and collaborate on resources within
 <p>You can also see a new data storage instance that has been provisioned together with your workbench. All files you create in your workbench will be persisted in this data storage.</p>
 </li>
 <li>
-<p>Before we create our data connection, we&#8217;ll inspect the parameters of the S3 bucket that has been prepared for you. Switch to the OpenShift console by clicking on the <em>add-ons</em> icon (9 small squares) in the top right toolbar and selecting <code>OpenShift Console</code>.</p>
+<p>We are also going to create a data connection to get for accessing our data and model. Before we create our data connection, let&#8217;s inspect the parameters of the S3 bucket that has been prepared for you. Switch to the OpenShift console by clicking on the <em>add-ons</em> icon (9 small squares) in the top right toolbar and selecting <code>OpenShift Console</code>.</p>
 </li>
 </ul>
 </div>
@@ -280,7 +280,7 @@ In the OpenShift console you can inspect and edit all resources that you create 
 <p>Under <strong>S3 Endpoint</strong> enter <code><a href="http://s3.openshift-storage.svc" class="bare">http://s3.openshift-storage.svc</a></code>.</p>
 </li>
 <li>
-<p>Under <strong>Default bucket</strong> enter your user ID.</p>
+<p>Under <strong>AWS_S3_BUCKET</strong> enter your user ID.</p>
 </li>
 <li>
 <p>In the <strong>Connected workbenches</strong> dropdown menu select your provisioned workbench.</p>

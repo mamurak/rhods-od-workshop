@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>3.1 Offline Scoring Pipelines :: Object Detection Workshop</title>
+    <title>3.2 Offline Scoring Pipelines :: Object Detection Workshop</title>
     <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/3-02-offline-scoring-pipelines.html">
     <link rel="prev" href="3-01-running-the-model-offline.html">
     <meta name="generator" content="Antora 3.0.0">
@@ -121,7 +121,7 @@
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">3.1 Offline Scoring Pipelines</h1>
+<h1 class="page">3.2 Offline Scoring Pipelines</h1>
 <div class="paragraph">
 <p>We just saw how to run offline scoring in a notebook. It works, but just like in the real-time inference case, notebooks are not a good choice for long-running processes and production-like scenarios. In the case of offline scoring, it&#8217;s best to define a <em>pipeline</em> as a series of tasks and submit that pipeline to a backend system that runs and orchestrates the pipeline tasks on the cluster. Let&#8217;s have a look at how this works with RHODS and Data Science Pipelines.</p>
 </div>
@@ -150,7 +150,8 @@ Elyra is an extension of JupyterLab, which offers a graphical editor for pipelin
 <p>If you compare this pipeline with the previous offline scoring notebook, you will find the same steps. In fact, the pipeline includes the very same code since the pipeline tasks represent the underlying Python modules of the notebook steps. While the notebook defines a purely linear sequence of steps, the pipeline allows to parallelize tasks such as ingesting the raw data and downloading the trained model, both of which are independent of each other.</p>
 </li>
 <li>
-<p>Before you can submit this pipeline for execution, you will have to update a few configuration parameters via the <code>Open Panel</code> button in the top right corner of the pipeline editor window:</p>
+<p>Before you can submit this pipeline for execution, you will have to update a few configuration parameters via the <code>Open Panel</code> button in the top right corner of the pipeline editor window:
+image::notebook/open-panel.png</p>
 <div class="ulist">
 <ul>
 <li>

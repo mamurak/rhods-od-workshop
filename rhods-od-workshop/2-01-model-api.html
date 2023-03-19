@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>1.5 Serving a model :: Object Detection Workshop</title>
+    <title>2.1 Serving a model :: Object Detection Workshop</title>
     <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/2-01-model-api.html">
     <link rel="prev" href="1-04-object-detection.html">
     <link rel="next" href="2-02-deploy-s2i.html">
@@ -122,7 +122,7 @@
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">1.5 Serving a model</h1>
+<h1 class="page">2.1 Serving a model</h1>
 <div class="paragraph">
 <p>In the previous section, we learned how to create the code that will use an existing object detection model to identify object in a static image. But of course we cannot use a notebook directly like this in a production environment.</p>
 </div>
@@ -136,13 +136,13 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Leave <strong>Instance count</strong> at 1.</p>
+<p>Leave <strong>Model server replicas</strong> at 1.</p>
 </li>
 <li>
-<p>Under <strong>Instance size</strong> choose <code>Small</code>.</p>
+<p>Under <strong>Model server size</strong> choose <code>Small</code>.</p>
 </li>
 <li>
-<p>Select <strong>Expose models through Route</strong>.</p>
+<p>Select <strong>Make deployed models available through an external route</strong>.</p>
 </li>
 <li>
 <p>Leave <strong>Token authorization</strong> unselected.</p>
@@ -167,7 +167,7 @@
 <p>Under <strong>Data connection</strong> select the data connection that you have provisioned earlier.</p>
 </li>
 <li>
-<p>Under <strong>Model path</strong> enter <code>tiny-yolov3-11.onnx</code>.</p>
+<p>Under <strong>Folder path</strong> enter <code>tiny-yolov3-11.onnx</code>.</p>
 </li>
 </ul>
 </div>
