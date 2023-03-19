@@ -1,4 +1,4 @@
-= 2.3 Calling the API from an Application
+= 2.4 Calling the API from an Application
 
 include::_attributes.adoc[]
 
@@ -83,16 +83,6 @@ same regardless of whether it came from source or a container.
 * By default, our new deployment will be added to the existing application `object-detection` we created during our previous app.  We can leave that as is.  Instead of `object-detection-app-git`, we can change the *Name* to  `object-detection-app`, but it's not required.
 
 image::s2i/general-app.png[alt text, 700]
-
-=== Deployment Resource Type
-
-Expand the *Resource Type* 
-
-image::s2i/resource-type-options.png[resource type, 700]
-
-Then make sure that the *Deployment* option is selected
-
-image::s2i/resource-type.png[deployment, 700]
 
 === Route
 For the detection application we want a *secure https* Route so we will use the default - so no changes required.

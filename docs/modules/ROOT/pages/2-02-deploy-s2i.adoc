@@ -1,4 +1,4 @@
-= 2.1 Deploying as Source To Image Application
+= 2.2 Deploying as Source To Image Application
 
 include::_attributes.adoc[]
 
@@ -75,16 +75,6 @@ object-detection-rest
 
 image::s2i/general.png[General Options, 700]
 
-=== Deployment Resource Type
-
-Expand the *Resource Type* 
-
-image::s2i/resource-type-options.png[resource type, 700]
-
-Then make sure that the *Deployment* option is selected
-
-image::s2i/resource-type.png[deployment, 700]
-
 === Route
 
 This controls the external access to the REST API. Expand the *Show Advanced Routing options* 
@@ -116,6 +106,8 @@ In these cases it's recommended to increase your pod deployment's memory limit.
 The application needs to know where to send its images for predictions. Earlier, we confirmed the inference endpoint of the model deployment.  We'll use that value.  This will tell our client service where to send the images by setting the variable `PREDICTION_URL` to the model's _Inference endpoint_.
 
 * Open the *Deployment*  options to set an evironment variable.
+
+image::s2i/deployment-settings.png
 
 === Create 
 
