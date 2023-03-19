@@ -30,6 +30,6 @@ So now we will learn how to service this model as an *API* that you can directly
 
 * Select *Deploy* to instantiate the model server. Click on `1` below _Deployed models_ to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the _Inference endpoint_ so we can test the model deployment.
 
-* In your workbench, open the `online-scoring` notebook. Insert the inference endpoint into the `prediction_url` placeholder and execute the notebook. You should see bounding boxes of the objects that the deployed model detected based on the image that it received.
+* In your workbench, open the `2_online-scoring` notebook. Insert the inference endpoint into the `prediction_url` placeholder and execute the notebook. You should see bounding boxes of the objects that the deployed model detected based on the image that it received.
 
 You just deployed your first model with RHODS model serving. Let's now xref:2-02-deploy-s2i.adoc[deploy a small application that consumer the model].

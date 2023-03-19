@@ -2,7 +2,7 @@
 
 Serving models for real-time inference is great, but sometimes you'll want to apply your model on a large set of existing data. For such _offline scoring_ use cases, jobs and pipelines are oftentimes more useful than model servers. Let's have a look at how we can run offline scoring with our object detection model.
 
-Back in your workbench, follow and run the `offline-scoring` notebook.
+Back in your workbench, follow and run the `3_offline-scoring` notebook.
 This will lead you through loading and pre-processing data, loading the model, running inference on it and finally upload the results to S3.
 
 When you're done, return here to xref:3-02-offline-scoring-pipelines.adoc[proceed to running offline scoring pipelines].
