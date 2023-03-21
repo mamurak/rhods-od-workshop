@@ -107,7 +107,7 @@ The application needs to know where to send its images for predictions. Earlier,
 
 * Open the *Deployment*  options to set an evironment variable.
 
-image::s2i/deployment-settings.png
+image::s2i/deployment-settings.png[]
 
 === Create 
 

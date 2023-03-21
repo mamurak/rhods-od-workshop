@@ -37,7 +37,7 @@ This JupyterLab instance also features an *Object Storage Browser*. Let's connec
 
 * Open the Object Storage Browser by selecting the bucket icon on the top of the left toolbar.
 
-image::notebooks/od_icon.png
+image::notebooks/od_icon.png[]
 
 * Fill in the settings as follows:
 
