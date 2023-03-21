@@ -6,7 +6,7 @@ In the previous section, we learned how to create the code that will use an exis
 
 So now we will learn how to service this model as an *API* that you can directly query from other applications. For this, we will use the model serving capabilities of RHODS:
 
-* Return to the RHODS Dashboard and enter your Project. Let's now set up the model server by selecting *Configure* in the model serving section and choosing these settings:
+* Return to the RHODS Dashboard and enter your Project. Let's now set up the model server by selecting *Configure server* in the model serving section and choosing these settings:
 
 ** Leave *Model server replicas* at 1.
 

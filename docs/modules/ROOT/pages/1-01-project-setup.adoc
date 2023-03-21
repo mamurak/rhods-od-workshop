@@ -44,7 +44,7 @@ NOTE: Projects allow you and your team to organize and collaborate on resources 
 
 ** Leave the *environment variables* section empty. We will populate the workbench's environment variables through a data connection later.
 
-** Under *persistence* select `Create a new data storage` with the default values.
+** Under *persistence* select `Create new persistent storage` with the default values.
 
 ** Click *Create* to initialize your workbench.
 
