@@ -14,8 +14,7 @@ You will:
 
 * use Jupyter Notebooks to explore a pre-trained object detection model
 * deploy the model using OpenShift Data Science model serving
-* integrate the model into a real-time object detection app
-* run offline scoring object detection pipelines.
+* integrate the model into a real-time object detection app.
 
 And all of this without having to install anything on your own computer, thanks to *Red Hat OpenShift Data Science*. 
 

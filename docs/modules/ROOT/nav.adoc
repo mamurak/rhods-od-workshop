@@ -8,6 +8,3 @@
 ** xref:2-02-deploy-s2i.adoc[2. Deploy with Source to Image]
 ** xref:2-03-testing-deployment.adoc[3. Testing the Deployment]
 ** xref:2-04-calling-from-application.adoc[4. Calling from an Application]
-* 3. Running offline object detection
-** xref:3-01-running-the-model-offline.adoc[1. Running the Model Offline]
-** xref:3-02-offline-scoring-pipelines.adoc[2. Offline Scoring Pipelines]

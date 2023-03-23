@@ -131,5 +131,3 @@ After the application is deployed to OpenShift click on the Route URL to launch 
 Try it out from your laptop or phone with a camera. 
 
 NOTE: If you don't want to type that long Route URL into your phone browser, try converting it into a QR code for your smartphone, for instance with https://www.qr-code-generator.com[QR code generator].
-
-Return here if you're ready to move on to xref:3-01-running-the-model-offline.adoc[offline scoring].

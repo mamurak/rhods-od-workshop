@@ -41,10 +41,10 @@ image::notebooks/od_icon.png[]
 
 * Fill in the settings as follows:
 
-** In *Object storage endpoint* write `http://s3.openshift-storage.svc`.
+** In *Object storage endpoint* write TODO.
 
-** For the *Access key* and *Secret key* values, copy and paste the corresponding values from the Secret that you reviewed in the former section.
+** For the *Access key* and *Secret key* values, enter TODO.
 
-* Select *Connect* to access your S3 bucket. Double click on the bucket with your user ID. You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.
+* Select *Connect* to access your S3 bucket. You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.
 
 xref:1-03-notebooks.adoc[Ready? Let's go to the next section.]

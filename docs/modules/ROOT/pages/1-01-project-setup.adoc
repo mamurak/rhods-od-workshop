@@ -24,7 +24,7 @@ image::notebooks/ocp-console-app-switcher.png[alt text, 400]
 
 NOTE: Projects allow you and your team to organize and collaborate on resources within separated namespaces.
 
-* There is one Project that has been prepared for you. Enter the Project by clicking on its name. You can now see the initial state of an empty Project. There are four type of Project resources, which we will create throughout the next steps:
+* Select `Create new project`. You can now see the initial state of an empty Project. There are four type of Project resources, which we will create throughout the next steps:
 
 ** *Workbenches* are instances of your development and experimentation environment. Workbenches typically contain IDEs such as JupyterLab and Visual Studio Code.
 
@@ -38,7 +38,7 @@ NOTE: Projects allow you and your team to organize and collaborate on resources 
 
 ** Choose an arbitrary *name* such as _development_.
 
-** Under *workbench image* select `object detection Elyra`.
+** Under *workbench image* select `Generic data science`.
 
 ** Under *workbench size* select `small`.
 
@@ -52,21 +52,15 @@ NOTE: Projects allow you and your team to organize and collaborate on resources 
 
 * You can also see a new data storage instance that has been provisioned together with your workbench. All files you create in your workbench will be persisted in this data storage.
 
-* We are also going to create a data connection to get for accessing our data and model. Before we create our data connection, let's inspect the parameters of the S3 bucket that has been prepared for you. Switch to the OpenShift console by clicking on the _add-ons_ icon (9 small squares) in the top right toolbar and selecting `OpenShift Console`. 
-
-NOTE: In the OpenShift console you can inspect and edit all resources that you create in the RHODS dashboard. We'll use the console to deploy the object detection app later in this workshop.
-
-* Ensure you're seeing the Developer Console by selecting `Developer` in the top field of the left menu. The S3 credentials are stored within a Kubernetes Secret. To view it, navigate to `Secrets` in the left menu. You can now see the list of all Secrets that exist in your Project. Click on the name of the Secret that corresponds to your user ID. You can now review the credentials that are needed for accessing your S3 bucket. There's a button on the right hand side of the credential fields that allow you to copy the respective value. Keep this tab open for reference and return to the RHODS Dashboard within a new tab.
-
 * Let's create a data connection to gain access to the object detection model. Under _Data Connection_ select `Create`. In the configuration page, populate the fields as follows:
 
 ** Enter an arbitrary *name* like `S3 bucket`.
 
-** For *AWS Access Key* and *AWS Secret Key*, copy and paste the respective values of the Secret that we reviewed in the previous step.
+** Enter the *AWS Access Key* and *AWS Secret Key* TODO.
 
-** Under *S3 Endpoint* enter `http://s3.openshift-storage.svc`.
+** Under *S3 Endpoint* enter TODO.
 
-** Under *AWS_S3_BUCKET* enter your user ID.
+** Under *AWS_S3_BUCKET* enter TODO.
 
 ** In the *Connected workbenches* dropdown menu select your provisioned workbench.
 
