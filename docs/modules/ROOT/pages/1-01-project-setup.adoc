@@ -49,13 +49,14 @@ NOTE: Projects allow you and your team to organize and collaborate on resources 
 * You're redirected to the Project page where you can see the status of your new workbench. The first time it's initialized it will take about 1-2 minutes to start up. Subsequent starts will be faster.
 
 To recap
+
 * All files you create in your workbench will be persisted in the cluster storage volume.
 
 * The data connection named _object-detection_ points to an S3 bucket where the data and models are stored, while the _pipelines_ data connection will hold metadate and logs from the Data Science Pipelines runs.
 
 Before we continue, let's inspect the parameters of the _object-detection_ data connection that has been prepared for you.
 
-* Under *Data connections*, find _object-detection_ and select `Edit data connection` under the *vertical ellipsis*, *⋮*. In the configuration page, you can review the typical fields for an S3 connection. When done hit `Cancel` or simply close the window.
+* Under *Data connections*, find _object-detection_ and select `Edit data connection` under the *vertical ellipsis*, *⋮*. In the configuration page, you can review the typical fields for an S3 data connection, such as the S3 provider and the S3 bucket which were provisioned earlier for your convenience. You will learn more about them in the next section. When done reviewing hit `Cancel` or simply close the window.
 
 If you are curious about where the *Cluster storage* is managed, you can make use the `OpenShift Console`. To switch to it, click on the _add-ons_ icon (9 small squares) in the top right toolbar and select `OpenShift Console` to open it in a new tab.
 

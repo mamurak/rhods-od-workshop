@@ -48,4 +48,6 @@ image::notebooks/minio_console.png[S3 Provider Console]
 
 You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.
 
+The _object-detection_ data connection that was provisioned earlier for you and which you reviewed previously is pointing to your user S3 bucket.
+
 xref:1-03-notebooks.adoc[Ready? Let's go to the next section.]
