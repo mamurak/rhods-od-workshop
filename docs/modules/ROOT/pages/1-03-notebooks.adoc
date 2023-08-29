@@ -37,7 +37,7 @@ Notebooks are so named because they are just like a physical *Notebook*: it's ex
 
 Now that we have covered the basics, just give it a try!
 
-* In your Jupyter environment (the file explorer-like interface), there is file called `0_sandbox.ipynb`. Double-click on it to launch the notebook (it will open another tab in the content section of the environment). Please feel free to experiment, run the cells, add some more and create functions. You can do what you want - it's your environment, and there is no risk of breaking anything or impacting other users. This environment isolation is also a great advantage brought by *Red Hat OpenShift Data Science*.
+* In your Jupyter environment (the file explorer-like interface), there is file called `0_sandbox.ipynb`. Double-click on it to launch the notebook (it will open another tab in the content section of the environment). Please feel free to experiment, run the cells, add some more and create functions. You can do what you want - it's your environment, and there is no risk of breaking anything or impacting other users. This environment isolation is also a great advantage brought by *RHODS*.
 * You can also create a new notebook by selecting `File`\->``New``\->``Notebook``from the menu on the top left, then select a Python 3 kernel. This instructs Jupyter that we want to create a new notebook where the code cells will be run using a Python 3 kernel. We could have different kernels, with different languages or versions that we can run into notebooks, but that's a story for another time...
 * You can also create a notebook by simply clicking on the icon in the launcher:
 
@@ -46,5 +46,3 @@ image::notebooks/new_notebook.png[alt text]
 * If you want to learn more about notebooks, head to https://jupyter.org/[this page] .
 
 Now that you're more familiar with notebooks, you're ready to xref:1-04-object-detection.adoc[go to the next section.]
-
-

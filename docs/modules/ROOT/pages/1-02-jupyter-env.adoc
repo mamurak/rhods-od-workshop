@@ -40,7 +40,7 @@ Now let's open another tab and connect to your `S3 Provider Console` with the UR
 
 NOTE: For simplicity, we are leveraging https://min.io/product/private-cloud-red-hat-openshift[MinIO] in this case as the S3 Provider and an instance has already been deployed on OpenShift next to RHODS. S3 buckets and users have been already provisioned for your convenience as well. For production environments we recommend scalable solutions like https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation[OpenShift Data Foundations (ODF)] or solutions from other storage vendors.
 
-Log into the S3 Provider Console with the credentials provided and you should be able to see the dashboard, that looks like this:
+Log into the S3 Provider Console with the URL and credentials provided. You should be able to see the dashboard, that looks like this:
 
 image::notebooks/minio_console.png[S3 Provider Console]
 
