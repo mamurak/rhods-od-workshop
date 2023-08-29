@@ -12,11 +12,6 @@ You should be logged into *Red Hat OpenShift Data Science*, and be able to see t
 
 image::notebooks/rhods_dashboard.png[alt text]
 
-NOTE: If you're at the OpenShift Web Console and need to navigate back to the OpenShift Data Science Dashboard, use the *Application Switcher* icon in the top right of the navigation bar.
-
-image::notebooks/ocp-console-app-switcher.png[alt text, 400]
-
-
 *Red Hat OpenShift Data Science* brings you a variety of containerized on-demand environments, such as Jupyter Notebooks. Don't worry if you've never used notebooks before as this workshop will start with a small tutorial on what they are and how to use them.
 
 * Now that you are logged into to *Red Hat OpenShift Data Science*, navigate to `Data Science Projects` in the left menu. Here you can see the list of existing projects that you have access to.
@@ -66,9 +61,13 @@ If you are curious about where the *Cluster storage* is managed, you can make us
 
 * Ensure you're seeing the Administrator Perspective by selecting `Administrator` in the top field of the left menu. The cluster storage volume allocated to your Data Science Project can be found under `Storage` and the `PersistentVolumeClaims`. You will see that in addition to the _development_ volume, there are others which have been prepared and will be leverage in the next chapters of the workshop.
 
-NOTE: OpenShift is the hybrid cloud Kubernetes-based engine that powers the RHODS platform and provides all the needed resources like storage, memory, CPUs and GPUs, as well as the DevSecOps and GitOps pipeline capabilities needed for Data Science Pipelines and MLOps flows. In the OpenShift Console you have two perspectives, `Administrator` and `Developer`, between which you can easily switch by selecting `Developer` or `Administrator` respectively in the top field of the left menu. Here you can inspect and edit all resources that you create throughout the workshop in the RHODS dashboard, as part of your Data Science Projects. 
+NOTE: OpenShift is the hybrid cloud Kubernetes-based engine that powers the RHODS platform and provides all the needed resources like storage, memory, CPUs and GPUs, as well as the DevSecOps and GitOps pipeline capabilities needed for Data Science Pipelines and MLOps flows. In the OpenShift Console you have two perspectives, `Administrator` and `Developer`, between which you can easily switch by selecting `Developer` or `Administrator` respectively in the top field of the left menu. Here you can inspect and edit all resources that you create throughout the workshop in the RHODS dashboard, as part of your Data Science Projects.
 
 We'll use the the OpenShift Console tab to deploy the object detection app later in this workshop. For now, keep the tab open for reference and return to the RHODS Dashboard tab.
+
+NOTE: If you're at the OpenShift Web Console and need to navigate back to the OpenShift Data Science Dashboard, use the *Application Switcher* icon in the top right of the navigation bar.
+
+image::notebooks/ocp-console-app-switcher.png[alt text, 400]
 
 You're now all set. You got a bit familiar with the 'Red Hat OpenShift Data Science' dashboard as well as the `OpenShift Console`. You've also configured your first Data Science Project!
 
