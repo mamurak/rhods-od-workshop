@@ -16,7 +16,7 @@ You will:
 * deploy the model using OpenShift Data Science model serving
 * integrate the model into a real-time object detection app
 * run offline scoring object detection pipelines
-* refine the model
+* refine and train the model
 
 And all of this without having to install anything on your own computer, thanks to *Red Hat OpenShift Data Science*. 
 
