@@ -18,7 +18,7 @@ You will:
 * run offline scoring object detection pipelines
 * refine and train the model
 
-And all of this without having to install anything on your own computer, thanks to *Red Hat OpenShift Data Science*.
+And all of this without having to install anything on your own computer, thanks to https://www.redhat.com/en/technologies/cloud-computing/openshift/openshift-data-science[Red Hat OpenShift Data Science].
 
 
 === Environment
