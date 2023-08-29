@@ -8,6 +8,8 @@ So now we will learn how to service this model as an *API* that you can directly
 
 * Return to the RHODS Dashboard and enter your project. Let's now take a look at the model server that was already provisioned and configured for your convenience. Let's take a look at its configuration.
 
+image::notebooks/model_serving.png[Models and model servers]
+
 Under *Models and model servers*, find _OVMS_ and select `Edit model server` under the *vertical ellipsis*, *⋮*. In the configuration page, you can review the typical fields for a model server. When done hit `Cancel` or simply close the window.
 
 * You're now ready to deploy the object detection model. Under the _OVMS_ model server select *Deploy model* and set it up as follows:
@@ -22,7 +24,7 @@ Under *Models and model servers*, find _OVMS_ and select `Edit model server` und
 
 * Select *Deploy* to deploy and start serving your object detection model on the model server. Click on `1` below _Deployed models_ to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the _Inference endpoint_ so we can test the model deployment.
 
-image::notebooks/model_serving.png[alt text]
+image::notebooks/testing_model_deployment.png[Testing the Model Deployment]
 
 * In your workbench, open the `2_online-scoring` notebook. Insert the inference endpoint into the `prediction_url` placeholder and execute the notebook. You should see bounding boxes of the objects that the deployed model detected based on the image that it received.
 
