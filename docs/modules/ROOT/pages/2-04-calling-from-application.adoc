@@ -8,18 +8,18 @@ Until now, we have been using a route which exposes the service externally.  Som
 
 == Verify your service URL
 
-If you followed previous naming instructions, your service should be `http://object-detection-rest:8080`.  You can verify your rest service's name and port on the service detail screen.  
+If you followed previous naming instructions, your service should be `http://object-detection-rest:8080`.  You can verify your rest service's name and port on the service detail screen.
 
-* From the project topology, open your deployment's detail screen. Check the service *name* and *port*.  
+* From the project topology, open your deployment's detail screen. Check the service *name* and *port*.
 Your internal URL will be `http://<service-name>:<service-port>`
 
 image::s2i/topology-rest-service.png[alt text, 700]
 
 == Create the Front End Application
 
-There are two options for creating the Front End Application. If you have time you can build this 
+There are two options for creating the Front End Application. If you have time you can build this
 NodeJS app from source like we did for the REST API. If however you are in a rush we can run
-the application from a pre-built container which is much *faster*. 
+the application from a pre-built container which is much *faster*.
 
 [tabs, subs="attributes+,+macros"]
 ====
@@ -27,13 +27,13 @@ the application from a pre-built container which is much *faster*.
 Use pre-built container::
 +
 --
-We will create the test app using a pre-built container from a public contaner registry
+We will create the test app using a pre-built container from a public container registry
 
 From the `+Add` menu, click on the `Container images` tile:
 
 image::s2i/from-container-image.png[alt text, 800]
 
-Set the container location in the ``Image name``field, enter: `+quay.io/agroom/object-detection-app+`. 
+Set the container location in the ``Image name``field, enter: `+quay.io/agroom/object-detection-app+`.
 
 [.lines_space]
 [.console-input]
@@ -52,13 +52,13 @@ runtime icon from something other than OpenShift, in the example screen *nodejs*
 Build from source::
 +
 --
-We will create the test app the exact same way we created the REST service, but instead, we'll be creating an `object-detection-app` 
+We will create the test app the exact same way we created the REST service, but instead, we'll be creating an `object-detection-app`
 
 From the `+Add` menu, click on the `Import from Git` tile:
 
 image::s2i/from-git.png[alt text, 800]
 
-Now set the Git repo ``Git Repo URL``field, enter: `+https://github.com/rh-aiservices-bu/object-detection-app.git+`. 
+Now set the Git repo ``Git Repo URL``field, enter: `+https://github.com/rh-aiservices-bu/object-detection-app.git+`.
 
 [.lines_space]
 [.console-input]
@@ -75,7 +75,7 @@ image::s2i/git-repo-app.png[alt text, 800]
 
 == Configuring the application
 
-Don't hit that *Create* button just yet. We have to configure the runtime aspects of the application, this is then the 
+Don't hit that *Create* button just yet. We have to configure the runtime aspects of the application, this is then the
 same regardless of whether it came from source or a container.
 
 === Set the App Name
@@ -91,11 +91,11 @@ For the detection application we want a *secure https* Route so we will use the 
 
 The application needs to know where to send its images for predictions. Earlier, we confirmed the service URL of the `object-detection-rest` deployment.  We'll use that value and add `/predictions`.  This will tell our front end application where to send the images by setting the variable `OBJECT_DETECTION_URL` to `http://<service-name>:<service-port/predictions`.
 
-* Open the *Deployment*  options to set an evironment variable:
+* Open the *Deployment*  options to set an environment variable:
 
 image::s2i/create-app-deployment.png[alt text, 700]
 
-* Under *Environment variables (runtime only)*, create a Name / Value pair. 
+* Under *Environment variables (runtime only)*, create a Name / Value pair.
 
 Name:
 [.lines_space]
@@ -127,8 +127,8 @@ You can see a new application has been created and is currently building.  Like 
 
 image::s2i/topology-app.png[alt text, 800]
 
-After the application is deployed to OpenShift click on the Route URL to launch the application. 
-Try it out from your laptop or phone with a camera. 
+After the application is deployed to OpenShift click on the Route URL to launch the application.
+Try it out from your laptop or phone with a camera.
 
 NOTE: If you don't want to type that long Route URL into your phone browser, try converting it into a QR code for your smartphone, for instance with https://www.qr-code-generator.com[QR code generator].
 

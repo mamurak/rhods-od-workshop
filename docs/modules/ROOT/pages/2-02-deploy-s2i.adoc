@@ -107,6 +107,20 @@ The application needs to know where to send its images for predictions. Earlier,
 
 * Open the *Deployment*  options to set an environment variable.
 
+Name:
+[.lines_space]
+[.console-input]
+[source,text]
+----
+PREDICTION_URL
+----
+Value:
+[.lines_space]
+[.console-input]
+[source,text]
+----
+<Your model's inference endpoint you copied from under *Models and model servers*>
+----
 
 image::s2i/env_prediction_url.png[Prediction URL for the inference endpoint]
 
