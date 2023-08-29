@@ -107,6 +107,9 @@ The application needs to know where to send its images for predictions. Earlier,
 
 * Open the *Deployment*  options to set an environment variable.
 
+
+image::s2i/env_prediction_url.png[Prediction URL for the inference endpoint]
+
 //image::s2i/deployment-settings.png[]
 
 === Create
