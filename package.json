@@ -1,11 +1,11 @@
 {
   "name": "rhods-od-workshop",
   "description": "Red Hat OpenShift Data Science Object Detection",
-  "homepage": "https://mamurak.github.io/rhods-od-workshop",
+  "homepage": "https://codrinbucur.github.io/rhods-od-workshop",
   "author": {
     "email": "cchase@redhat.com",
     "name": "Chris Chase",
-    "url": "https://github.com/mamurak/rhods-od-workshop"
+    "url": "https://github.com/codrinbucur/rhods-od-workshop"
   },
   "dependencies": {
     "@antora/cli": "^2.3.1",
@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mamurak/rhods-od-workshop.git"
+    "url": "git+https://github.com/codrinbucur/rhods-od-workshop.git"
   },
   "license": "Apache-2.0",
   "babel": {
