@@ -69,7 +69,7 @@ NOTE: If you're at the OpenShift Web Console and need to navigate back to the Op
 
 image::notebooks/ocp-console-app-switcher.png[alt text, 400]
 
-You're now all set. You got a bit familiar with the 'Red Hat OpenShift Data Science' dashboard as well as the `OpenShift Console`. You've also configured your first Data Science Project!
+You're now all set. You got a bit familiar with the `RHODS dashboard` as well as the `OpenShift Console`. You've also configured your first Data Science Project!
 
 To start working with the object detection model, select the `Open` link next to your running workbench instance and
 xref:1-02-jupyter-env.adoc[head to the next section.]
