@@ -2,7 +2,7 @@
 
 NOTE: This is a new and advanced section of the workshop.
 
-Now is time to fine tune and train a model using RHODS and Data Science Pipelines.
+Now it is time to fine tune and train a model using RHODS and Data Science Pipelines.
 
 * In Jupyter, go to the *model-training* folder
 * Run the *model-training.pipeline*
@@ -18,9 +18,9 @@ Make sure you use the specific `class_labels = ['Laptop', 'Computer keyboard', '
 
 In order to used the new model in the applications deployed before, you need to the reconfigure the service app created in section 2.2. You can try the following:
 
-* Following the guidelines from section 2.1 Service a model, deploy the new model under *Models and model servers*
+* Following the guidelines from section 2.1 Serving a model, deploy the new model under *Models and model servers*
 * Copy the Inference endpoint of the new model
-* Using the *OpenShift Console* and update the PREDICTION_URL environmental variable of the service application created in section 2.2
+* Using the *OpenShift Console*, go to the service application created in section 2.2 and update the PREDICTION_URL environmental variable to the new model's inference endpoint (effectively switching models)
 * In addition, while in the *OpenShift Console* create a ConfigMap containing the class labels 'Laptop', 'Computer keyboard', 'Table'
 * In the same service application, add also the CLASS_LABELS environmental variable pointing to the created ConfigMap
 
