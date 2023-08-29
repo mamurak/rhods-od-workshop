@@ -10,7 +10,7 @@ NOTE: We're going to refer to _Red Hat OpenShift Data Science_ as _RHODS_ throug
 
 You should be logged into *Red Hat OpenShift Data Science*, and be able to see the dashboard, that looks like this:
 
-image::notebooks/dashboard.png[alt text]
+image::notebooks/rhods_dashboard.png[alt text]
 
 NOTE: If you're at the OpenShift Web Console and need to navigate back to the OpenShift Data Science Dashboard, use the *Application Switcher* icon in the top right of the navigation bar.
 
