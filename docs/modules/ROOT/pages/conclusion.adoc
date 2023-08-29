@@ -1,7 +1,6 @@
-= Red Hat OpenShift Data Science Workshop - Object Detection
+= Object Detection Workshop with Red Hat OpenShift Data Science
 :page-layout: home
 :!sectids:
 
 [.text-center.strong]
 == Conclusion
-

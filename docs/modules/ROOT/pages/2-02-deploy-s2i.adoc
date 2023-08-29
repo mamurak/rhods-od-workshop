@@ -119,7 +119,7 @@ Value:
 [.console-input]
 [source,text]
 ----
-<Your model's inference endpoint you copied from under *Models and model servers*>
+<Your model's inference endpoint you copied from your RHODS project under Models and model servers>
 ----
 
 image::s2i/env_prediction_url.png[Prediction URL for the inference endpoint]
