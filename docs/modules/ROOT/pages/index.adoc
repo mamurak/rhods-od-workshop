@@ -1,4 +1,4 @@
-= Red Hat OpenShift Data Science Workshop - Object Detection
+= Object Detection Workshop with Red Hat OpenShift Data Science
 :page-layout: home
 :!sectids:
 
@@ -7,7 +7,7 @@
 
 Welcome!
 
-In this workshop, you'll learn an easy way to incorporate data science and AI/ML into an OpenShift development workflow.  
+In this workshop, you'll learn an easy way to incorporate data science and AI/ML into an OpenShift development workflow.
 As an example, you'll use an object detection model in several different ways.
 
 You will:
@@ -18,7 +18,7 @@ You will:
 * run offline scoring object detection pipelines
 * refine and train the model
 
-And all of this without having to install anything on your own computer, thanks to *Red Hat OpenShift Data Science*. 
+And all of this without having to install anything on your own computer, thanks to *Red Hat OpenShift Data Science*.
 
 
 === Environment
