@@ -2,9 +2,11 @@
 
 include::_attributes.adoc[]
 
-You are now inside your Jupyter environment. As you can see, it's a web-based environment, but everything you'll do here is in fact happening on the *Red Hat OpenShift Data Science* cluster. This means that without having to install and maintain anything on your own computer, and without disposing of lots of local resources like CPU and RAM, you can still conduct your Data Science work in this powerful and stable managed environment.
+You are now inside your Jupyter environment. As you can see, it's a web-based environment, but everything you'll do here is in fact happening on the *Red Hat OpenShift Data Science*, powered underneath by the *OpenShift* cluster. This means that without having to install and maintain anything on your own computer, and without disposing of lots of local resources like CPU, GPU and RAM, you can still conduct your Data Science work in this powerful and stable managed environment.
 
-In the "file-browser" like window you're in right now, you'll find the files and folders that are saved inside your own personal space inside *Red Hat OpenShift Data Science*. It's pretty empty right now though... So the first thing we will do is to bring the content of the workshop inside this environment.
+In the "file-browser" like window you're in right now, you'll find the files and folders that are saved inside your own personal space inside *RHODS*.
+
+It's pretty empty right now though... So the first thing we will do is to bring the content of the workshop inside this environment.
 
 * On the left toolbar, click on the Git icon:
 
@@ -33,18 +35,17 @@ image::notebooks/od_folder_click.png[alt text]
 
 image::notebooks/od_folder.png[alt text]
 
-This JupyterLab instance also features an *Object Storage Browser*. Let's connect to your S3 bucket and review its contents:
 
-* Open the Object Storage Browser by selecting the bucket icon on the top of the left toolbar.
+Now let's open another tab and connect to your `S3 Provider Console` with the URL provided by the workshop instructor.
 
-image::notebooks/od_icon.png[]
+NOTE: For simplicity, we are leveraging Minio in this case as the S3 Provider and instance has already been deployed on OpenShift next to RHODS. S3 buckets and users have been already provisioned for your convenience. For production environments we recommend scalable solutions like https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation[OpenShift Data Foundations (ODF)] or solutions from other storage vendors.
 
-* Fill in the settings as follows:
+Log into the S3 Provider Console with the credentials provided and be able to see the dashboard, that looks like this:
 
-** In *Object storage endpoint* write `http://s3.openshift-storage.svc`.
+image::notebooks/minio_console.png[S3 Provider Console]
 
-** For the *Access key* and *Secret key* values, copy and paste the corresponding values from the Secret that you reviewed in the former section.
+* Use the `Object Browser` to navigate to the bucket associated with your user name.
 
-* Select *Connect* to access your S3 bucket. Double click on the bucket with your user ID. You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.
+You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.
 
 xref:1-03-notebooks.adoc[Ready? Let's go to the next section.]
