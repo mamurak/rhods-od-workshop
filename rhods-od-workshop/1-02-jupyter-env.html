@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>1.2 The Jupyter environment :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/1-02-jupyter-env.html">
+    <link rel="canonical" href="https://codrinbucur.github.io/rhods-od-workshop/rhods-od-workshop/1-02-jupyter-env.html">
     <link rel="prev" href="1-01-project-setup.html">
     <link rel="next" href="1-03-notebooks.html">
     <meta name="generator" content="Antora 3.0.0">
@@ -15,7 +15,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/RHDLogo.svg" height="40px" alt="Red Hat Developer Program"></a>
-      <a class="navbar-item" style="font-size: 24px; color: white" href="https://mamurak.github.io/rhods-od-workshop">Object Detection Workshop</a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://codrinbucur.github.io/rhods-od-workshop">Object Detection Workshop</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -71,7 +71,7 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">2. Serving with OpenShift Data Science</span>
+    <span class="nav-text">2. Model Serving with OpenShift Data Science</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="2-01-model-api.html">1. Serving a Model</a>
@@ -89,13 +89,22 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">3. Running offline object detection</span>
+    <span class="nav-text">3. Running Offline Object Detection</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="3-01-running-the-model-offline.html">1. Running the Model Offline</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="3-02-offline-scoring-pipelines.html">2. Offline Scoring Pipelines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">4. Fine Tuning and Training a Model</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="4-01-training-the-model.html">1. Training a Model</a>
   </li>
 </ul>
   </li>
@@ -118,16 +127,19 @@
     <li><a href="1-02-jupyter-env.html">2. The Jupyter Environment</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/1-02-jupyter-env.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/codrinbucur/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/1-02-jupyter-env.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
 <h1 class="page">1.2 The Jupyter environment</h1>
 <div class="paragraph">
-<p>You are now inside your Jupyter environment. As you can see, it&#8217;s a web-based environment, but everything you&#8217;ll do here is in fact happening on the <strong>Red Hat OpenShift Data Science</strong> cluster. This means that without having to install and maintain anything on your own computer, and without disposing of lots of local resources like CPU and RAM, you can still conduct your Data Science work in this powerful and stable managed environment.</p>
+<p>You are now inside your Jupyter environment. As you can see, it&#8217;s a web-based environment, but everything you&#8217;ll do here is in fact happening on the <strong>Red Hat OpenShift Data Science</strong>, powered underneath by the <strong>OpenShift</strong> cluster. This means that without having to install and maintain anything on your own computer, and without disposing of lots of local resources like CPU, GPU and RAM, you can still conduct your Data Science work in this powerful and stable managed environment.</p>
 </div>
 <div class="paragraph">
-<p>In the "file-browser" like window you&#8217;re in right now, you&#8217;ll find the files and folders that are saved inside your own personal space inside <strong>Red Hat OpenShift Data Science</strong>. It&#8217;s pretty empty right now though&#8230;&#8203; So the first thing we will do is to bring the content of the workshop inside this environment.</p>
+<p>In the "file-browser" like window you&#8217;re in right now, you&#8217;ll find the files and folders that are saved inside your own personal space inside <strong>RHODS</strong>.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s pretty empty right now though&#8230;&#8203; So the first thing we will do is to bring the content of the workshop inside this environment.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -189,39 +201,40 @@
 </div>
 </div>
 <div class="paragraph">
-<p>This JupyterLab instance also features an <strong>Object Storage Browser</strong>. Let&#8217;s connect to your S3 bucket and review its contents:</p>
+<p>Now let&#8217;s open another tab and connect to your <code>S3 Provider Console</code> with the URL provided by the workshop instructor.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Open the Object Storage Browser by selecting the bucket icon on the top of the left toolbar.</p>
-</li>
-</ul>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For simplicity, we are leveraging <a href="https://min.io/product/private-cloud-red-hat-openshift">MinIO</a> in this case as the S3 Provider and an instance has already been deployed on OpenShift next to RHODS. S3 buckets and users have been already provisioned for your convenience as well. For production environments we recommend scalable solutions like <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation">OpenShift Data Foundations (ODF)</a> or solutions from other storage vendors.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Log into the S3 Provider Console with the URL and credentials provided. You should be able to see the dashboard, that looks like this:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/notebooks/od_icon.png" alt="od icon">
+<img src="_images/notebooks/minio_console.png" alt="S3 Provider Console">
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Fill in the settings as follows:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>In <strong>Object storage endpoint</strong> write <code><a href="http://s3.openshift-storage.svc" class="bare">http://s3.openshift-storage.svc</a></code>.</p>
-</li>
-<li>
-<p>For the <strong>Access key</strong> and <strong>Secret key</strong> values, copy and paste the corresponding values from the Secret that you reviewed in the former section.</p>
+<p>Use the <code>Object Browser</code> to navigate to the bucket associated with your user name.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Select <strong>Connect</strong> to access your S3 bucket. Double click on the bucket with your user ID. You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.</p>
+</div>
+<div class="paragraph">
+<p>The <em>object-detection</em> data connection that was provisioned earlier for you and which you reviewed previously is pointing to your user S3 bucket.</p>
 </div>
 <div class="paragraph">
 <p><a href="1-03-notebooks.html" class="xref page">Ready? Let&#8217;s go to the next section.</a></p>

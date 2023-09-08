@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>1.3 Notebooks :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/1-03-notebooks.html">
+    <link rel="canonical" href="https://codrinbucur.github.io/rhods-od-workshop/rhods-od-workshop/1-03-notebooks.html">
     <link rel="prev" href="1-02-jupyter-env.html">
     <link rel="next" href="1-04-object-detection.html">
     <meta name="generator" content="Antora 3.0.0">
@@ -15,7 +15,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/RHDLogo.svg" height="40px" alt="Red Hat Developer Program"></a>
-      <a class="navbar-item" style="font-size: 24px; color: white" href="https://mamurak.github.io/rhods-od-workshop">Object Detection Workshop</a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://codrinbucur.github.io/rhods-od-workshop">Object Detection Workshop</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -71,7 +71,7 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">2. Serving with OpenShift Data Science</span>
+    <span class="nav-text">2. Model Serving with OpenShift Data Science</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="2-01-model-api.html">1. Serving a Model</a>
@@ -89,13 +89,22 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">3. Running offline object detection</span>
+    <span class="nav-text">3. Running Offline Object Detection</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="3-01-running-the-model-offline.html">1. Running the Model Offline</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="3-02-offline-scoring-pipelines.html">2. Offline Scoring Pipelines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">4. Fine Tuning and Training a Model</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="4-01-training-the-model.html">1. Training a Model</a>
   </li>
 </ul>
   </li>
@@ -118,7 +127,7 @@
     <li><a href="1-03-notebooks.html">3. Using Notebooks</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/1-03-notebooks.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/codrinbucur/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/1-03-notebooks.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -206,7 +215,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>In your Jupyter environment (the file explorer-like interface), there is file called <code>0_sandbox.ipynb</code>. Double-click on it to launch the notebook (it will open another tab in the content section of the environment). Please feel free to experiment, run the cells, add some more and create functions. You can do what you want - it&#8217;s your environment, and there is no risk of breaking anything or impacting other users. This environment isolation is also a great advantage brought by <strong>Red Hat OpenShift Data Science</strong>.</p>
+<p>In your Jupyter environment (the file explorer-like interface), there is file called <code>0_sandbox.ipynb</code>. Double-click on it to launch the notebook (it will open another tab in the content section of the environment). Please feel free to experiment, run the cells, add some more and create functions. You can do what you want - it&#8217;s your environment, and there is no risk of breaking anything or impacting other users. This environment isolation is also a great advantage brought by <strong>RHODS</strong>.</p>
 </li>
 <li>
 <p>You can also create a new notebook by selecting <code>File</code>-&gt;<code>New</code>-&gt;<code>Notebook</code>from the menu on the top left, then select a Python 3 kernel. This instructs Jupyter that we want to create a new notebook where the code cells will be run using a Python 3 kernel. We could have different kernels, with different languages or versions that we can run into notebooks, but that&#8217;s a story for another time&#8230;&#8203;</p>

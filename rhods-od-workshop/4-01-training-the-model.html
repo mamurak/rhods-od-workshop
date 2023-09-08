@@ -3,10 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>1.4 Object Detection :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://codrinbucur.github.io/rhods-od-workshop/rhods-od-workshop/1-04-object-detection.html">
-    <link rel="prev" href="1-03-notebooks.html">
-    <link rel="next" href="2-01-model-api.html">
+    <title>4.1 Fine Tuning and Training a Model :: Object Detection Workshop</title>
+    <link rel="canonical" href="https://codrinbucur.github.io/rhods-od-workshop/rhods-od-workshop/4-01-training-the-model.html">
+    <link rel="prev" href="3-02-offline-scoring-pipelines.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -64,7 +63,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="1-03-notebooks.html">3. Using Notebooks</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="1-04-object-detection.html">4. Object Detection</a>
   </li>
 </ul>
@@ -103,7 +102,7 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">4. Fine Tuning and Training a Model</span>
 <ul class="nav-list">
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="4-01-training-the-model.html">1. Training a Model</a>
   </li>
 </ul>
@@ -123,32 +122,97 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Object Detection Workshop</a></li>
-    <li>1. Jupyter Notebooks</li>
-    <li><a href="1-04-object-detection.html">4. Object Detection</a></li>
+    <li>4. Fine Tuning and Training a Model</li>
+    <li><a href="4-01-training-the-model.html">1. Training a Model</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/codrinbucur/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/1-04-object-detection.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/codrinbucur/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/4-01-training-the-model.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">1.4 Object Detection</h1>
-<div class="paragraph">
-<p>Now that you know how the environment works, the real work can begin!</p>
+<h1 class="page">4.1 Fine Tuning and Training a Model</h1>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a new and advanced section of the workshop.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Still in you environment, just open the file <code>1_explore.ipynb</code>, and follow the instructions directly in the notebook!</p>
+<p>Now it is time to fine tune and train a model using RHODS and Data Science Pipelines.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In Jupyter, go to the <strong>model-training</strong> folder</p>
+</li>
+<li>
+<p>Run the <strong>model-training.pipeline</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Depending on the resources available, this may take some time.</p>
+</div>
+<div class="paragraph">
+<p>The training pipeline will upload the refined model in your bucket.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+With the current workshop implementation, only one training pipeline can run for each user at the same time.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To test the updated model, go back to <code>2_online_scoring.ipynb</code> notebook.
+Make sure you use the specific <code>class_labels = ['Laptop', 'Computer keyboard', 'Table']</code></p>
+</div>
+<div class="paragraph">
+<p>In order to used the new model in the applications deployed before, you need to the reconfigure the service app created in section 2.2. You can try the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Following the guidelines from section 2.1 Serving a model, deploy the new model under <strong>Models and model servers</strong></p>
+</li>
+<li>
+<p>Copy the Inference endpoint of the new model</p>
+</li>
+<li>
+<p>Using the <strong>OpenShift Console</strong>, go to the service application created in section 2.2 and update the PREDICTION_URL environmental variable to the new model&#8217;s inference endpoint (effectively switching models)</p>
+</li>
+<li>
+<p>In addition, while in the <strong>OpenShift Console</strong> create a ConfigMap containing the class labels 'Laptop', 'Computer keyboard', 'Table'</p>
+</li>
+<li>
+<p>In the same service application, add also the CLASS_LABELS environmental variable pointing to the created ConfigMap</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once both environmental variables have been updated/added, the application will be redeployed. Like in section 2.2, you will see that a build is going on from the build icon:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/notebooks/1_explore.png" alt="alt text">
+<img src="_images/s2i/topology.png" alt="alt text" width="400">
 </div>
 </div>
 <div class="paragraph">
-<p>Once you&#8217;re finished, you can come back here and <a href="2-01-model-api.html" class="xref page">head to the next chapter.</a></p>
+<p>Once the service has been redeployed and started exposing the new model predictions as REST APIs, you can test the changes brought by the new model using the NodeJS app deployed in section 2.4 (which consumes the REST APIs) and makes use of the camera / your mobile device.</p>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="1-03-notebooks.html">3. Using Notebooks</a></span>
-  <span class="next"><a href="2-01-model-api.html">1. Serving a Model</a></span>
+  <span class="prev"><a href="3-02-offline-scoring-pipelines.html">2. Offline Scoring Pipelines</a></span>
 </nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">

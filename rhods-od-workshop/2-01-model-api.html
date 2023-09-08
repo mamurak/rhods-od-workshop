@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>2.1 Serving a model :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/2-01-model-api.html">
+    <link rel="canonical" href="https://codrinbucur.github.io/rhods-od-workshop/rhods-od-workshop/2-01-model-api.html">
     <link rel="prev" href="1-04-object-detection.html">
     <link rel="next" href="2-02-deploy-s2i.html">
     <meta name="generator" content="Antora 3.0.0">
@@ -15,7 +15,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/RHDLogo.svg" height="40px" alt="Red Hat Developer Program"></a>
-      <a class="navbar-item" style="font-size: 24px; color: white" href="https://mamurak.github.io/rhods-od-workshop">Object Detection Workshop</a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://codrinbucur.github.io/rhods-od-workshop">Object Detection Workshop</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -71,7 +71,7 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">2. Serving with OpenShift Data Science</span>
+    <span class="nav-text">2. Model Serving with OpenShift Data Science</span>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="2-01-model-api.html">1. Serving a Model</a>
@@ -89,13 +89,22 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">3. Running offline object detection</span>
+    <span class="nav-text">3. Running Offline Object Detection</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="3-01-running-the-model-offline.html">1. Running the Model Offline</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="3-02-offline-scoring-pipelines.html">2. Offline Scoring Pipelines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">4. Fine Tuning and Training a Model</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="4-01-training-the-model.html">1. Training a Model</a>
   </li>
 </ul>
   </li>
@@ -114,11 +123,11 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Object Detection Workshop</a></li>
-    <li>2. Serving with OpenShift Data Science</li>
+    <li>2. Model Serving with OpenShift Data Science</li>
     <li><a href="2-01-model-api.html">1. Serving a Model</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/2-01-model-api.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/codrinbucur/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/2-01-model-api.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -132,49 +141,51 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Return to the RHODS Dashboard and enter your Project. Let&#8217;s now set up the model server by selecting <strong>Configure server</strong> in the model serving section and choosing these settings:</p>
+<p>Return to the RHODS Dashboard and enter your project. Let&#8217;s now take a look at the model server that was already provisioned and configured for your convenience. Let&#8217;s take a look at its configuration.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/notebooks/model_serving.png" alt="Models and model servers">
+</div>
+</div>
+<div class="paragraph">
+<p>Under <strong>Models and model servers</strong>, find <em>OVMS</em> and select <code>Edit model server</code> under the <strong>vertical ellipsis</strong>, <strong>⋮</strong>. In the configuration page, you can review the typical fields for a model server. When done hit <code>Cancel</code> or simply close the window.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Leave <strong>Model server replicas</strong> at 1.</p>
+<p>You&#8217;re now ready to deploy the object detection model. Under the <em>OVMS</em> model server select <strong>Deploy model</strong> and set it up as follows:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Choose an arbitrary <strong>Model Name</strong> such as <code>model</code>.</p>
 </li>
 <li>
-<p>Under <strong>Model server size</strong> choose <code>Small</code>.</p>
+<p>Under <strong>Model framework</strong> select <code>onnx-1</code>.</p>
 </li>
 <li>
-<p>Select <strong>Make deployed models available through an external route</strong>.</p>
+<p>Under <strong>Model location</strong>, <strong>Existing data connection</strong> select the <em>object-detection</em> data connection that was provisioned earlier for you. As you have seen in sections 1.1 and 1.2, this data connection points to your user S3 bucket where the model and other data reside.</p>
 </li>
 <li>
-<p>Leave <strong>Token authorization</strong> unselected.</p>
-</li>
-<li>
-<p>Select <strong>Configure</strong> to finish model server setup.</p>
+<p>Under <strong>Path</strong> enter <code>yolov5m.onnx</code>.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>You&#8217;re now ready to deploy the object detection model. Under model server select <strong>Deploy model</strong> and set it up as follows:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Choose an arbitrary <strong>Model name</strong> such as <code>yolo-v3</code>.</p>
-</li>
-<li>
-<p>Under <strong>Model framework</strong> select <code>ONNX</code>.</p>
-</li>
-<li>
-<p>Under <strong>Data connection</strong> select the data connection that you have provisioned earlier.</p>
-</li>
-<li>
-<p>Under <strong>Folder path</strong> enter <code>tiny-yolov3-11.onnx</code>.</p>
+<p>Select <strong>Deploy</strong> to deploy and start serving your object detection model on the model server. Click on <code>1</code> below <em>Deployed models</em> to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the <em>Inference endpoint</em> so we can test the model deployment.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Select <strong>Deploy</strong> to instantiate the model server. Click on <code>1</code> below <em>Deployed models</em> to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the <em>Inference endpoint</em> so we can test the model deployment.</p>
-</li>
+<div class="imageblock">
+<div class="content">
+<img src="_images/notebooks/testing_model_deployment.png" alt="Testing the Model Deployment">
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>In your workbench, open the <code>2_online-scoring</code> notebook. Insert the inference endpoint into the <code>prediction_url</code> placeholder and execute the notebook. You should see bounding boxes of the objects that the deployed model detected based on the image that it received.</p>
 </li>
