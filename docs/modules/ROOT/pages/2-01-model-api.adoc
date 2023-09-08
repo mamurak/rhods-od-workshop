@@ -6,29 +6,25 @@ In the previous section, we learned how to create the code that will use an exis
 
 So now we will learn how to service this model as an *API* that you can directly query from other applications. For this, we will use the model serving capabilities of RHODS:
 
-* Return to the RHODS Dashboard and enter your Project. Let's now set up the model server by selecting *Configure server* in the model serving section and choosing these settings:
+* Return to the RHODS Dashboard and enter your project. Let's now take a look at the model server that was already provisioned and configured for your convenience. Let's take a look at its configuration.
 
-** Leave *Model server replicas* at 1.
+image::notebooks/model_serving.png[Models and model servers]
 
-** Under *Model server size* choose `Small`.
+Under *Models and model servers*, find _OVMS_ and select `Edit model server` under the *vertical ellipsis*, *⋮*. In the configuration page, you can review the typical fields for a model server. When done hit `Cancel` or simply close the window.
 
-** Select *Make deployed models available through an external route*.
+* You're now ready to deploy the object detection model. Under the _OVMS_ model server select *Deploy model* and set it up as follows:
 
-** Leave *Token authorization* unselected.
+** Choose an arbitrary *Model Name* such as `model`.
 
-** Select *Configure* to finish model server setup.
+** Under *Model framework* select `onnx-1`.
 
-* You're now ready to deploy the object detection model. Under model server select *Deploy model* and set it up as follows:
+** Under *Model location*, *Existing data connection* select the _object-detection_ data connection that was provisioned earlier for you. As you have seen in sections 1.1 and 1.2, this data connection points to your user S3 bucket where the model and other data reside.
 
-** Choose an arbitrary *Model name* such as `yolo-v3`.
+** Under *Path* enter `yolov5m.onnx`.
 
-** Under *Model framework* select `ONNX`.
+* Select *Deploy* to deploy and start serving your object detection model on the model server. Click on `1` below _Deployed models_ to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the _Inference endpoint_ so we can test the model deployment.
 
-** Under *Data connection* select the data connection that you have provisioned earlier.
-
-** Under *Folder path* enter `tiny-yolov3-11.onnx`.
-
-* Select *Deploy* to instantiate the model server. Click on `1` below _Deployed models_ to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the _Inference endpoint_ so we can test the model deployment.
+image::notebooks/testing_model_deployment.png[Testing the Model Deployment]
 
 * In your workbench, open the `2_online-scoring` notebook. Insert the inference endpoint into the `prediction_url` placeholder and execute the notebook. You should see bounding boxes of the objects that the deployed model detected based on the image that it received.
 

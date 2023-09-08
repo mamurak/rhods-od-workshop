@@ -6,73 +6,71 @@ xref:index.adoc[Back to the introduction]
 
 == The OpenShift Data Science Dashboard
 
-
-NOTE: We're going to refer to _Red Hat OpenShift Data Science_ as RHODS throughout this workshop.
+NOTE: We're going to refer to _Red Hat OpenShift Data Science_ as _RHODS_ throughout this workshop.
 
 You should be logged into *Red Hat OpenShift Data Science*, and be able to see the dashboard, that looks like this:
 
-image::notebooks/dashboard.png[alt text]
+image::notebooks/rhods_dashboard.png[alt text]
 
-NOTE: If you're at the OpenShift Web Console and need to navigate back to the OpenShift Data Science Dashboard, use the *Application Switcher* Icon in the top right of the navigation bar.
+*Red Hat OpenShift Data Science* brings you a variety of containerized on-demand environments, such as Jupyter Notebooks. Don't worry if you've never used notebooks before as this workshop will start with a small tutorial on what they are and how to use them.
 
-image::notebooks/ocp-console-app-switcher.png[alt text, 400]
-
-
-*Red Hat OpenShift Data Science* brings you on-demand Jupyter Notebook environments. Don't worry if you've never used notebooks before as this workshop will start with a small tutorial on what they are and how to use them.
-
-* Now that you are logged into to *Red Hat OpenShift Data Science*, navigate to Data Science Projects in the left menu. Here you can see the list of existing Projects that you have access to. 
+* Now that you are logged into to *Red Hat OpenShift Data Science*, navigate to `Data Science Projects` in the left menu. Here you can see the list of existing projects that you have access to.
 
 NOTE: Projects allow you and your team to organize and collaborate on resources within separated namespaces.
 
-* There is one Project that has been prepared for you. Enter the Project by clicking on its name. You can now see the initial state of an empty Project. There are four type of Project resources, which we will create throughout the next steps:
+* There is one Data Science Project that has been prepared already for you, having the same name like your username. Enter the project by clicking on its name. You can now see its initial state. There are five types of Project resources, some of which have been pre-provisioned for your convenience and which we will review throughout the next steps:
 
-** *Workbenches* are instances of your development and experimentation environment. Workbenches typically contain IDEs such as JupyterLab and Visual Studio Code.
+** *Workbenches* are instances of your development and experimentation environment. They typically contain IDEs such as JupyterLab, RStudio and Visual Studio Code.
 
-** A *Data Storage* is a volume that persists the files and data you're working on within a workbench. A workbench has access to one or more data storage instances.
+** A *Cluster storage* is a volume that persists the files and data you're working on within a workbench. A workbench has access to one or more cluster storage instances. One a volume named _development_ was already provisioned ahead of the workshop for your convenience.
 
-** *Data Connections* contain configuration parameters that are required to connect to a data source such as an S3 bucket.
+** *Data connections* contain configuration parameters that are required to connect to a data source such as an S3 object bucket. Two data connections named _object-detection_ and _pipelines_ were already provisioned ahead of the workshop for your convenience.
 
-** *Model Servers* allow you to quickly serve a trained model for real-time inference. There is one model server per Project, and one model server can host multiple models.
+** *Pipelines* contain the Data Science Pipelines that have been executed within the Project.
+
+** *Models and model servers* allow you to quickly serve a trained model for real-time inference. You can have multiple model servers per Project, and one model server can host multiple models.
 
 * Let's create a workbench. Click on _Create_ in the workbench section to proceed to the workbench configuration page. Choose the following settings:
 
-** Choose an arbitrary *name* such as _development_.
+** Choose an arbitrary *name* such as _object-detection-workbench_.
 
-** Under *workbench image* select `object detection Elyra`.
+** Under *Notebook image* select `Object detection`.
 
-** Under *workbench size* select `small`.
+** Under *Deployment size* select `Small`.
 
-** Leave the *environment variables* section empty. We will populate the workbench's environment variables through a data connection later.
+** Leave the *Environment variables* section empty. We will populate the workbench's environment variables through a data connection later.
 
-** Under *persistence* select `Create new persistent storage` with the default values.
+** Under *Cluster storage* select `Use existing persistent storage` and select _development_, a volume that was provisioned ahead of the workshop for your convenience.
 
-** Click *Create* to initialize your workbench.
+** Under *Data connections* check the box `Use a data connection`, select `Use existing data storage` and then choose _object-detection_, an S3 bucket that was provisioned ahead of the workshop for your convenience.
+
+** Click *Create workbench* to initialize your workbench based on your selected configuration.
 
 * You're redirected to the Project page where you can see the status of your new workbench. The first time it's initialized it will take about 1-2 minutes to start up. Subsequent starts will be faster.
 
-* You can also see a new data storage instance that has been provisioned together with your workbench. All files you create in your workbench will be persisted in this data storage.
+To recap
 
-* We are also going to create a data connection to get for accessing our data and model. Before we create our data connection, let's inspect the parameters of the S3 bucket that has been prepared for you. Switch to the OpenShift console by clicking on the _add-ons_ icon (9 small squares) in the top right toolbar and selecting `OpenShift Console`. 
+* All files you create in your workbench will be persisted in the cluster storage volume.
 
-NOTE: In the OpenShift console you can inspect and edit all resources that you create in the RHODS dashboard. We'll use the console to deploy the object detection app later in this workshop.
+* The data connection named _object-detection_ points to an S3 bucket where the data and models are stored, while the _pipelines_ data connection will hold metadate and logs from the Data Science Pipelines runs.
 
-* Ensure you're seeing the Developer Console by selecting `Developer` in the top field of the left menu. The S3 credentials are stored within a Kubernetes Secret. To view it, navigate to `Secrets` in the left menu. You can now see the list of all Secrets that exist in your Project. Click on the name of the Secret that corresponds to your user ID. You can now review the credentials that are needed for accessing your S3 bucket. There's a button on the right hand side of the credential fields that allow you to copy the respective value. Keep this tab open for reference and return to the RHODS Dashboard within a new tab.
+Before we continue, let's inspect the parameters of the _object-detection_ data connection that has been prepared for you.
 
-* Let's create a data connection to gain access to the object detection model. Under _Data Connection_ select `Create`. In the configuration page, populate the fields as follows:
+* Under *Data connections*, find _object-detection_ and select `Edit data connection` under the *vertical ellipsis*, *⋮*. In the configuration page, you can review the typical fields for an S3 data connection, such as the S3 provider and the S3 bucket which were provisioned earlier for your convenience. You will learn more about them in the next section. When done reviewing hit `Cancel` or simply close the window.
 
-** Enter an arbitrary *name* like `S3 bucket`.
+If you are curious about where the *Cluster storage* is managed, you can make use the `OpenShift Console`. To switch to it, click on the _add-ons_ icon (9 small squares) in the top right toolbar and select `OpenShift Console` to open it in a new tab.
 
-** For *AWS Access Key* and *AWS Secret Key*, copy and paste the respective values of the Secret that we reviewed in the previous step.
+* Ensure you're seeing the Administrator Perspective by selecting `Administrator` in the top field of the left menu. The cluster storage volume allocated to your Data Science Project can be found under `Storage` and the `PersistentVolumeClaims`. You will see that in addition to the _development_ volume, there are others which have been prepared and will be leverage in the next chapters of the workshop.
 
-** Under *S3 Endpoint* enter `http://s3.openshift-storage.svc`.
+NOTE: https://www.redhat.com/en/technologies/cloud-computing/openshift[Red Hat OpenShift] is the hybrid cloud Kubernetes-based engine that powers the RHODS platform and provides all the needed resources like storage, memory, CPUs and GPUs, as well as the DevSecOps and GitOps pipeline capabilities needed for Data Science Pipelines and MLOps flows. In the OpenShift Console you have two perspectives, `Administrator` and `Developer`, between which you can easily switch by selecting `Developer` or `Administrator` respectively in the top field of the left menu. Here you can inspect and edit all resources that you create throughout the workshop in the RHODS dashboard, as part of your Data Science Projects.
 
-** Under *AWS_S3_BUCKET* enter your user ID.
+We'll use the OpenShift Console tab to deploy the object detection app later in this workshop. For now, keep the tab open for reference and return to the RHODS Dashboard tab.
 
-** In the *Connected workbenches* dropdown menu select your provisioned workbench.
+NOTE: If you're at the OpenShift Web Console and need to navigate back to the OpenShift Data Science Dashboard, use the *Application Switcher* icon in the top right of the navigation bar.
 
-** Select *Create* to instantiate the data connection. This will cause your workbench to restart, but this time the workbench will be up and running within a few seconds.
+image::notebooks/ocp-console-app-switcher.png[alt text, 400]
 
-You're now all set. You've configured your first Data Science Project. To start working with the object detection model, select `Enter` next to your running workbench instance and
+You're now all set. You got a bit familiar with the `RHODS dashboard` as well as the `OpenShift Console`. You've also configured your first Data Science Project!
+
+To start working with the object detection model, select the `Open` link next to your running workbench instance and
 xref:1-02-jupyter-env.adoc[head to the next section.]
-
-

@@ -1,0 +1,31 @@
+= 4.1 Fine Tuning and Training a Model
+
+NOTE: This is a new and advanced section of the workshop.
+
+Now it is time to fine tune and train a model using RHODS and Data Science Pipelines.
+
+* In Jupyter, go to the *model-training* folder
+* Run the *model-training.pipeline*
+
+Depending on the resources available, this may take some time.
+
+The training pipeline will upload the refined model in your bucket.
+
+NOTE: With the current workshop implementation, only one training pipeline can run for each user at the same time.
+
+To test the updated model, go back to `2_online_scoring.ipynb` notebook.
+Make sure you use the specific `class_labels = ['Laptop', 'Computer keyboard', 'Table']`
+
+In order to used the new model in the applications deployed before, you need to the reconfigure the service app created in section 2.2. You can try the following:
+
+* Following the guidelines from section 2.1 Serving a model, deploy the new model under *Models and model servers*
+* Copy the Inference endpoint of the new model
+* Using the *OpenShift Console*, go to the service application created in section 2.2 and update the PREDICTION_URL environmental variable to the new model's inference endpoint (effectively switching models)
+* In addition, while in the *OpenShift Console* create a ConfigMap containing the class labels 'Laptop', 'Computer keyboard', 'Table'
+* In the same service application, add also the CLASS_LABELS environmental variable pointing to the created ConfigMap
+
+Once both environmental variables have been updated/added, the application will be redeployed. Like in section 2.2, you will see that a build is going on from the build icon:
+
+image::s2i/topology.png[alt text, 400]
+
+Once the service has been redeployed and started exposing the new model predictions as REST APIs, you can test the changes brought by the new model using the NodeJS app deployed in section 2.4 (which consumes the REST APIs) and makes use of the camera / your mobile device.
