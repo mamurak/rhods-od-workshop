@@ -8,15 +8,6 @@ NOTE: Elyra is an extension of JupyterLab, which offers a graphical editor for p
 
 * If you compare this pipeline with the previous offline scoring notebook, you will find the same steps. In fact, the pipeline includes the very same code since the pipeline tasks represent the underlying Python modules of the notebook steps. While the notebook defines a purely linear sequence of steps, the pipeline allows to parallelize tasks such as ingesting the raw data and downloading the trained model, both of which are independent of each other.
 
-* Before you can submit this pipeline for execution, you will have to update a few configuration parameters via the `Open Panel` button in the top right corner of the pipeline editor window:
-image::notebook/open-panel.png
-
-** In *Data Volumes*, under *Persistent Volume Claim Name* enter your user ID.
-
-** Under *Environment Variables*, copy and paste the access key and secret key of your S3 bucket into the corresponding fields. Under *S3_BUCKET_NAME*, enter your user ID.
-
-* Save the pipeline (third button in top toolbar of the pipeline editor).
-
 * Submit the pipeline by selecting `Run Pipeline` (second button in top toolbar). Change the pipeline name to your user ID to distinguish its run from those of the other workshop participants. Click `OK`.
 
 * Revisit the RHODS Dashboard. In `Applications` -> `Enabled` -> `Data Science Pipelines`, select `Launch Application`. Authenticate and grant the requested permissions.
