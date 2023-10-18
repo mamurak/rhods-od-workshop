@@ -21,8 +21,13 @@ In order to used the new model in the applications deployed before, you need to 
 * Following the guidelines from section 2.1 Serving a model, deploy the new model under *Models and model servers*
 * Copy the Inference endpoint of the new model
 * Using the *OpenShift Console*, go to the service application created in section 2.2 and update the PREDICTION_URL environmental variable to the new model's inference endpoint (effectively switching models)
-* In addition, while in the *OpenShift Console* create a ConfigMap containing the class labels 'Laptop', 'Computer keyboard', 'Table'
-* In the same service application, add also the CLASS_LABELS environmental variable pointing to the created ConfigMap
+* In addition, while in the *OpenShift Console* create a ConfigMap containing the class labels 'Laptop', 'Computer keyboard', 'Table':
+
+image::app/configmap.png[alt text]
+
+* In the same service application, add also the CLASS_LABELS environmental variable pointing to the created ConfigMap:
+
+image::app/deployment.png[alt text]
 
 Once both environmental variables have been updated/added, the application will be redeployed. Like in section 2.2, you will see that a build is going on from the build icon:
 
