@@ -160,30 +160,22 @@ Elyra is an extension of JupyterLab, which offers a graphical editor for pipelin
 <p>If you compare this pipeline with the previous offline scoring notebook, you will find the same steps. In fact, the pipeline includes the very same code since the pipeline tasks represent the underlying Python modules of the notebook steps. While the notebook defines a purely linear sequence of steps, the pipeline allows to parallelize tasks such as ingesting the raw data and downloading the trained model, both of which are independent of each other.</p>
 </li>
 <li>
-<p>Before you can submit this pipeline for execution, you will have to update a few configuration parameters via the <code>Open Panel</code> button in the top right corner of the pipeline editor window:
-image::notebook/open-panel.png</p>
-<div class="ulist">
-<ul>
-<li>
-<p>In <strong>Data Volumes</strong>, under <strong>Persistent Volume Claim Name</strong> enter your user ID.</p>
+<p>Submit the pipeline by selecting <code>Run Pipeline</code> (second button in top toolbar). Click <code>OK</code>.</p>
 </li>
 <li>
-<p>Under <strong>Environment Variables</strong>, copy and paste the access key and secret key of your S3 bucket into the corresponding fields. Under <strong>S3_BUCKET_NAME</strong>, enter your user ID.</p>
+<p>Revisit the RHODS Dashboard and go to the <code>Data Science Pipelines</code> section on the left side. Here you can track all submitted pipelines including their versions.</p>
 </li>
 </ul>
 </div>
-</li>
+<div class="imageblock">
+<div class="content">
+<img src="_images/notebooks/data_science_pipelines.png" alt="alt text">
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>Save the pipeline (third button in top toolbar of the pipeline editor).</p>
-</li>
-<li>
-<p>Submit the pipeline by selecting <code>Run Pipeline</code> (second button in top toolbar). Change the pipeline name to your user ID to distinguish its run from those of the other workshop participants. Click <code>OK</code>.</p>
-</li>
-<li>
-<p>Revisit the RHODS Dashboard. In <code>Applications</code> &#8594; <code>Enabled</code> &#8594; <code>Data Science Pipelines</code>, select <code>Launch Application</code>. Authenticate and grant the requested permissions.</p>
-</li>
-<li>
-<p>In the Pipelines Dashboard, you can track all submitted pipelines including their versions. To monitor your pipeline, select <code>Runs</code> in the left menu. Each run represents an execution of a given pipeline. Find the run that you submitted and click on its name.</p>
+<p>To monitor your pipeline, select <code>Runs</code> in the left menu and look at the <code>Triggered</code> tab. Each run represents an execution of a given pipeline. Find the run that you submitted and click on its name.</p>
 </li>
 <li>
 <p>You can now see a graphical representation of your pipeline which updates in real-time as the tasks are completed. You can select each task and monitor its progress. Once the final task is finished, you can verify its completion by finding the timestamped results table in your S3 bucket.</p>
