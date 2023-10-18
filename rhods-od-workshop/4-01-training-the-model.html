@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>4.1 Fine Tuning and Training a Model :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://codrinbucur.github.io/rhods-od-workshop/rhods-od-workshop/4-01-training-the-model.html">
+    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/4-01-training-the-model.html">
     <link rel="prev" href="3-02-offline-scoring-pipelines.html">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
@@ -14,7 +14,7 @@
   <nav class="navbar">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://developers.redhat.com" target="_blank"><img src="../_/img/RHDLogo.svg" height="40px" alt="Red Hat Developer Program"></a>
-      <a class="navbar-item" style="font-size: 24px; color: white" href="https://codrinbucur.github.io/rhods-od-workshop">Object Detection Workshop</a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="https://mamurak.github.io/rhods-od-workshop">Object Detection Workshop</a>
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -126,7 +126,7 @@
     <li><a href="4-01-training-the-model.html">1. Training a Model</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/codrinbucur/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/4-01-training-the-model.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/4-01-training-the-model.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
@@ -193,12 +193,26 @@ Make sure you use the specific <code>class_labels = ['Laptop', 'Computer keyboar
 <p>Using the <strong>OpenShift Console</strong>, go to the service application created in section 2.2 and update the PREDICTION_URL environmental variable to the new model&#8217;s inference endpoint (effectively switching models)</p>
 </li>
 <li>
-<p>In addition, while in the <strong>OpenShift Console</strong> create a ConfigMap containing the class labels 'Laptop', 'Computer keyboard', 'Table'</p>
-</li>
-<li>
-<p>In the same service application, add also the CLASS_LABELS environmental variable pointing to the created ConfigMap</p>
+<p>In addition, while in the <strong>OpenShift Console</strong> create a ConfigMap containing the class labels 'Laptop', 'Computer keyboard', 'Table':</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/app/configmap.png" alt="alt text" width="400">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In the same service application, add also the CLASS_LABELS environmental variable pointing to the created ConfigMap:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/app/deployment.png" alt="alt text" width="400">
+</div>
 </div>
 <div class="paragraph">
 <p>Once both environmental variables have been updated/added, the application will be redeployed. Like in section 2.2, you will see that a build is going on from the build icon:</p>
