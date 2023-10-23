@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>2.2 Deploying as Source To Image Application :: Object Detection Workshop</title>
+    <title>2.2 Deploying the Containerized Application :: Object Detection Workshop</title>
     <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/2-02-deploy-s2i.html">
     <link rel="prev" href="2-01-model-api.html">
     <link rel="next" href="2-03-testing-deployment.html">
@@ -131,11 +131,11 @@
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">2.2 Deploying as Source To Image Application</h1>
+<h1 class="page">2.2 Deploying the Containerized Application</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that the model has been deployed, we&#8217;re ready to build its client as a container image, create an OpenShift deployment, and have it running as a service you will be able to call from any other application.</p>
+<p>Now that the model has been deployed, we&#8217;re ready to deploy its client as a container via creating an OpenShift deployment and have it running as a service which you will be able to call from any other application.</p>
 </div>
 <div class="paragraph">
 <p>This repository was created as a source-to-image (S2I) Python application. You can see the template <a href="https://github.com/opendatahub-io/odh-s2i-project-simple">GitHub repository</a> and try for yourself.</p>
@@ -156,7 +156,7 @@
 <p><a href="https://github.com/mamurak/object-detection-rest/blob/master/requirements.txt">requirements.txt</a> - where the app developer adds their python dependencies for the served application.</p>
 </li>
 <li>
-<p><a href="https://github.com/mamurak/object-detection-rest/blob/customize/.s2i">s2i directory</a> - which contains files to customize the application deployment.</p>
+<p><a href="https://github.com/mamurak/object-detection-rest/blob/master/Dockerfile">Dockerfile</a> - which contains the instructions for how to build the container image of the object detection REST component.</p>
 </li>
 </ul>
 </div>
@@ -165,6 +165,9 @@
 </div>
 <div class="paragraph">
 <p>You can also learn more about <a href="https://access.redhat.com/documentation/en-us/red_hat_software_collections/2/html/using_red_hat_software_collections_container_images/sti">Source to Image</a> framework which allows you to write images that use the application source code as an input and produce a new image that runs the assembled application as an output, as well as the <a href="https://github.com/sclorg/s2i-python-container">Python builder image</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;d like to learn more about building container images with a Dockerfile, check out this <a href="https://docs.docker.com/build/guide/">guide</a>.</p>
 </div>
 <div class="paragraph">
 <p>Now, let&#8217;s create the application.</p>
@@ -211,11 +214,58 @@ If you&#8217;re at the RHODS Dashboard and need to navigate to the OpenShift Web
 <img src="_images/s2i/dev-view.png" alt="Developer Perspective">
 </div>
 </div>
+<div class="tabset is-loading">
+<div class="ulist tabs">
+<ul>
+<li>
+<p><a id="tabset1_use-pre-built-container"></a>Use pre-built container</p>
+</li>
+<li>
+<p><a id="tabset1_build-from-source"></a>Build from source</p>
+</li>
+</ul>
+</div>
+<div class="content">
+<div class="tab-pane" aria-labelledby="tabset1_use-pre-built-container">
+<div class="paragraph">
+<p>We will create the model client using a pre-built container from a public container registry.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>From the <code>+Add</code> menu, click on the <code>Container images</code> tile:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock unresolved">
+<div class="content">
+<img src="s2i/from-registry.png" alt="Add from registry" width="800">
 </div>
 </div>
-<div class="sect1">
-<h2 id="_add_an_application_from_git"><a class="anchor" href="#_add_an_application_from_git"></a>Add an Application from Git</h2>
-<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>In the <code>Image name from external registry</code> field, enter: <code>quay.io/mmurakam/object-detection-rest:v0.1.0</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock lines_space console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">quay.io/mmurakam/object-detection-rest:v0.1.0</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You will see that OpenShift automatically validates the container image.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="tab-pane" aria-labelledby="tabset1_build-from-source">
+<div class="paragraph">
+<p>We will build the model client container on the cluster by referencing the git repository that contains the Dockerfile.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -228,13 +278,6 @@ If you&#8217;re at the RHODS Dashboard and need to navigate to the OpenShift Web
 <img src="_images/s2i/from-git.png" alt="Add from git" width="800">
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_configure_the_application"><a class="anchor" href="#_configure_the_application"></a>Configure the Application</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_set_the_git_repo"><a class="anchor" href="#_set_the_git_repo"></a>Set the Git Repo</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -250,13 +293,15 @@ If you&#8217;re at the RHODS Dashboard and need to navigate to the OpenShift Web
 <div class="ulist">
 <ul>
 <li>
-<p>Leave the other builder image selection to the default. You will see that OpenShift automatically recognized that our repo contains Python code, and that the right base image has been selected. Pretty neat, eh?!</p>
+<p>You will see that OpenShift automatically recognized that our repo contains a Dockerfile, which can be used to build the container image.</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/s2i/builder.png" alt="Builder Image" width="800">
+<img src="_images/s2i/docker.png" alt="Builder Image" width="800">
+</div>
+</div>
 </div>
 </div>
 </div>
