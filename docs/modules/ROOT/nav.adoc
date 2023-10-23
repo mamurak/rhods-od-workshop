@@ -5,7 +5,7 @@
 ** xref:1-04-object-detection.adoc[4. Object Detection]
 * 2. Model Serving with OpenShift Data Science
 ** xref:2-01-model-api.adoc[1. Serving a Model]
-** xref:2-02-deploy-s2i.adoc[2. Deploy with Source to Image]
+** xref:2-02-deploy-s2i.adoc[2. Deploying the Containerized Application]
 ** xref:2-03-testing-deployment.adoc[3. Testing the Deployment]
 ** xref:2-04-calling-from-application.adoc[4. Calling from an Application]
 * 3. Running Offline Object Detection
