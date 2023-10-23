@@ -43,7 +43,7 @@ We will create the model client using a pre-built container from a public contai
 
 * From the `+Add` menu, click on the `Container images` tile:
 
-image::s2i/from_registry.png[Add from registry, 800]
+image::s2i/from-registry.png[Add from registry, 800]
 
 * In the ``Image name from external registry`` field, enter: `+quay.io/mmurakam/object-detection-rest:v0.1.0+`
 
