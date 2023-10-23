@@ -1,8 +1,8 @@
-= 2.2 Deploying as Source To Image Application
+= 2.2 Deploying the Containerized Application
 
 include::_attributes.adoc[]
 
-Now that the model has been deployed, we're ready to build its client as a container image, create an OpenShift deployment, and have it running as a service you will be able to call from any other application.
+Now that the model has been deployed, we're ready to deploy its client as a container via creating an OpenShift deployment and have it running as a service which you will be able to call from any other application.
 
 This repository was created as a source-to-image (S2I) Python application. You can see the template https://github.com/opendatahub-io/odh-s2i-project-simple[GitHub repository] and try for yourself.
 
@@ -11,9 +11,11 @@ Some interesting files to examine in the application::
 * https://github.com/mamurak/object-detection-rest/blob/master/wsgi.py[wsgi.py] - the main entry point for the python application and calls the prediction function.
 * https://github.com/mamurak/object-detection-rest/blob/master/prediction.py[prediction.py] - contains the function the data scientist has extracted to make predictions. Called from the application with a dictionary parameter.
 * https://github.com/mamurak/object-detection-rest/blob/master/requirements.txt[requirements.txt] - where the app developer adds their python dependencies for the served application.
-* https://github.com/mamurak/object-detection-rest/blob/customize/.s2i[s2i directory] - which contains files to customize the application deployment.
+* https://github.com/mamurak/object-detection-rest/blob/master/Dockerfile[Dockerfile] - which contains the instructions for how to build the container image of the object detection REST component.
 
 You can also learn more about https://access.redhat.com/documentation/en-us/red_hat_software_collections/2/html/using_red_hat_software_collections_container_images/sti[Source to Image] framework which allows you to write images that use the application source code as an input and produce a new image that runs the assembled application as an output, as well as the https://github.com/sclorg/s2i-python-container[Python builder image].
+
+If you'd like to learn more about building container images with a Dockerfile, check out this https://docs.docker.com/build/guide/[guide].
 
 Now, let's create the application.
 
@@ -31,15 +33,40 @@ image::s2i/rhods-dashboard-app-switcher.png[RHODS Dashboard App Switcher, 400]
 
 image::s2i/dev-view.png[Developer Perspective]
 
-== Add an Application from Git
+[tabs, subs="attributes+,+macros"]
+====
+
+Use pre-built container::
++
+--
+We will create the model client using a pre-built container from a public container registry.
+
+* From the `+Add` menu, click on the `Container images` tile:
+
+image::s2i/from-registry.png[Add from registry, 800]
+
+* In the ``Image name from external registry`` field, enter: `+quay.io/mmurakam/object-detection-rest:v0.1.0+`
+
+[.lines_space]
+[.console-input]
+[source, text]
+----
+quay.io/mmurakam/object-detection-rest:v0.1.0
+----
+
+* You will see that OpenShift automatically validates the container image.
+
+--
+
+Build from source::
++
+--
+We will build the model client container on the cluster by referencing the git repository that contains the Dockerfile.
 
 * From the `+Add` menu, click on the `Import from Git` tile:
 
 image::s2i/from-git.png[Add from git, 800]
 
-== Configure the Application
-
-=== Set the Git Repo
 
 * In the ``Git Repo URL`` field, enter: `+https://github.com/mamurak/object-detection-rest.git+`
 
@@ -50,9 +77,11 @@ image::s2i/from-git.png[Add from git, 800]
 https://github.com/mamurak/object-detection-rest.git
 ----
 
-* Leave the other builder image selection to the default. You will see that OpenShift automatically recognized that our repo contains Python code, and that the right base image has been selected. Pretty neat, eh?!
+* You will see that OpenShift automatically recognized that our repo contains a Dockerfile, which can be used to build the container image.
 
-image::s2i/builder.png[Builder Image, 800]
+image::s2i/docker.png[Builder Image, 800]
+--
+====
 
 === Customize the App Names
 
