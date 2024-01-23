@@ -1,5 +1,5 @@
 * 1. Jupyter Notebooks
-** xref:1-01-project-setup.adoc[1. Settin up your Data Science Project]
+** xref:1-01-project-setup.adoc[1. Setting up your Data Science Project]
 ** xref:1-02-jupyter-env.adoc[2. The Jupyter Environment]
 ** xref:1-03-notebooks.adoc[3. Using Notebooks]
 ** xref:1-04-object-detection.adoc[4. Object Detection]
