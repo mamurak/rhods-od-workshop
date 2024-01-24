@@ -2,7 +2,6 @@
 :page-layout: home
 :!sectids:
 
-[.text-center.strong]
 == Introduction
 
 Welcome!
@@ -12,11 +11,12 @@ As an example, you'll use an object detection model in several different ways.
 
 You will:
 
-* use Jupyter Notebooks to explore a pre-trained object detection model
-* deploy the model using OpenShift AI model serving
-* integrate the model into a real-time object detection app
-* run offline scoring object detection pipelines
-* refine and train the model
+* use Jupyter Notebooks to explore a pre-trained object detection model,
+* deploy the model using OpenShift AI model serving,
+* integrate the model into a real-time object detection app,
+* run offline scoring object detection pipelines,
+* refine and train the model,
+* and finally update the object detection app using the trained model.
 
 And all of this without having to install anything on your own computer, thanks to https://www.redhat.com/en/technologies/cloud-computing/openshift/openshift-data-science[Red Hat OpenShift AI].
 
