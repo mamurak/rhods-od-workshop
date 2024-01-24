@@ -1,6 +1,6 @@
 = 3.2 Offline Scoring Pipelines
 
-We just saw how to run offline scoring in a notebook. It works, but just like in the real-time inference case, notebooks are not a good choice for long-running processes and production-like scenarios. In the case of offline scoring, it's best to define a _pipeline_ as a series of tasks and submit that pipeline to a backend system that runs and orchestrates the pipeline tasks on the cluster. Let's have a look at how this works with RHODS and Data Science Pipelines.
+We just saw how to run offline scoring in a notebook. It works, but just like in the real-time inference case, notebooks are not a good choice for long-running processes and production-like scenarios. In the case of offline scoring, it's best to define a _pipeline_ as a series of tasks and submit that pipeline to a backend system that runs and orchestrates the pipeline tasks on the cluster. Let's have a look at how this works with RHOAI and Data Science Pipelines.
 
 * In your workbench, double click on the `offline-scoring.pipeline` file. You can now see a graphical representation of the offline scoring pipeline within the Elyra Pipeline editor.
 
@@ -10,7 +10,7 @@ NOTE: Elyra is an extension of JupyterLab, which offers a graphical editor for p
 
 * Submit the pipeline by selecting `Run Pipeline` (second button in top toolbar). Click `OK`.
 
-* Revisit the RHODS Dashboard and go to the `Data Science Pipelines` section on the left side. Here you can track all submitted pipelines including their versions.
+* Revisit the RHOAI Dashboard and go to the `Data Science Pipelines` section on the left side. Here you can track all submitted pipelines including their versions.
 
 image::notebooks/data_science_pipelines.png[alt text]
 
@@ -18,4 +18,4 @@ image::notebooks/data_science_pipelines.png[alt text]
 
 * You can now see a graphical representation of your pipeline which updates in real-time as the tasks are completed. You can select each task and monitor its progress. Once the final task is finished, you can verify its completion by finding the timestamped results table in your S3 bucket.
 
-Congratulations! You have run your first offline scoring pipeline in RHODS, which concludes this lab.
+Congratulations! You have run your first offline scoring pipeline in RHOAI, which concludes this section of the lab.

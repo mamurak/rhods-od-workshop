@@ -1,4 +1,4 @@
-= Object Detection Workshop with Red Hat OpenShift Data Science
+= Object Detection Workshop with Red Hat OpenShift AI
 :page-layout: home
 :!sectids:
 

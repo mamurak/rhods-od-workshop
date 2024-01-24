@@ -25,9 +25,9 @@ We'll start from the *OpenShift Console*.
 
 image::s2i/ocp-console.png[Ocp Console]
 
-NOTE: If you're at the RHODS Dashboard and need to navigate to the OpenShift Web Console, use the *Application Switcher* Icon in the top right of the navigation bar and click on the *OpenShift Console* menu item.
+NOTE: If you're at the RHOAI Dashboard and need to navigate to the OpenShift Web Console, use the *Application Switcher* Icon in the top right of the navigation bar and click on the *OpenShift Console* menu item.
 
-image::s2i/rhods-dashboard-app-switcher.png[RHODS Dashboard App Switcher, 400]
+image::s2i/rhods-dashboard-app-switcher.png[RHOAI Dashboard App Switcher, 400]
 
 * From the `OpenShift Console` switch to the Developer Perspective from the menu on the top left if it's not already selected:
 
@@ -55,6 +55,8 @@ quay.io/mmurakam/object-detection-rest:v0.1.0
 ----
 
 * You will see that OpenShift automatically validates the container image.
+
+* Under Runtime icon, select `python`.
 --
 
 Build from source::
@@ -147,7 +149,7 @@ Value:
 [.console-input]
 [source,text]
 ----
-<Your model's inference endpoint you copied from your RHODS project under Models and model servers>
+<Your model's inference endpoint you copied from your RHOAI project under Models and model servers>
 ----
 
 image::s2i/env_prediction_url.png[Prediction URL for the inference endpoint]
@@ -160,9 +162,9 @@ Everything is ready, so you can click on *Create*:
 
 //image::s2i/create-button.png[alt text]
 
-== Checking your Application
+== Checking your Application 
 
-* You will see that a build is going on from the build icon:
+* If you're building the application container from source, you will see that a build is going on from the build icon:
 
 image::s2i/topology.png[alt text, 400]
 

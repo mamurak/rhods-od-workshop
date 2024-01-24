@@ -13,3 +13,4 @@
 ** xref:3-02-offline-scoring-pipelines.adoc[2. Offline Scoring Pipelines]
 * 4. Fine Tuning and Training a Model
 ** xref:4-01-training-the-model.adoc[1. Training a Model]
+** xref:4-02-integrating-the-new-model.adoc[2. Deploying and Integrating the New Model]

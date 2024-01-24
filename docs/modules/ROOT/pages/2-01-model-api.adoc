@@ -4,28 +4,28 @@ include::_attributes.adoc[]
 
 In the previous section, we learned how to create the code that will use an existing object detection model to identify object in a static image. But of course we cannot use a notebook directly like this in a production environment.
 
-So now we will learn how to service this model as an *API* that you can directly query from other applications. For this, we will use the model serving capabilities of RHODS:
+So now we will learn how to service this model as an *API* that you can directly query from other applications. For this, we will use the model serving capabilities of RHOAI:
 
-* Return to the RHODS Dashboard and enter your project. Let's now take a look at the model server that was already provisioned and configured for your convenience. Let's take a look at its configuration.
+* Return to the RHOAI Dashboard and enter your project. Let's now take a look at the model server that was already provisioned and configured for your convenience. Let's take a look at its configuration.
 
 image::notebooks/model_serving.png[Models and model servers]
 
 Under *Models and model servers*, find _OVMS_ and select `Edit model server` under the *vertical ellipsis*, *⋮*. In the configuration page, you can review the typical fields for a model server. When done hit `Cancel` or simply close the window.
 
-* You're now ready to deploy the object detection model. Under the _OVMS_ model server select *Deploy model* and set it up as follows:
+You're now ready to deploy the object detection model. Under the _OVMS_ model server select *Deploy model* and set it up as follows:
 
-** Choose an arbitrary *Model Name* such as `model`.
+* Choose an arbitrary *Model Name* such as `model`.
 
-** Under *Model framework* select `onnx-1`.
+* Under *Model framework* select `onnx-1`.
 
-** Under *Model location*, *Existing data connection* select the _object-detection_ data connection that was provisioned earlier for you. As you have seen in sections 1.1 and 1.2, this data connection points to your user S3 bucket where the model and other data reside.
+* Under *Model location*, *Existing data connection* select the _object-detection_ data connection that was provisioned earlier for you. As you have seen in sections 1.1 and 1.2, this data connection points to your user S3 bucket where the model and other data reside.
 
-** Under *Path* enter `yolov5m.onnx`.
+* Under *Path* enter `models/yolov5m.onnx`.
 
-* Select *Deploy* to deploy and start serving your object detection model on the model server. Click on `1` below _Deployed models_ to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the _Inference endpoint_ so we can test the model deployment.
+Select *Deploy* to deploy and start serving your object detection model on the model server. Click on `1` below _Deployed models_ to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the _Inference endpoint_ so we can test the model deployment.
 
 image::notebooks/testing_model_deployment.png[Testing the Model Deployment]
 
-* In your workbench, open the `2_online-scoring` notebook. Insert the inference endpoint into the `prediction_url` placeholder and execute the notebook. You should see bounding boxes of the objects that the deployed model detected based on the image that it received.
+In your workbench, open the `2_online-scoring` notebook. Insert the inference endpoint into the `prediction_url` placeholder and execute the notebook. You should see bounding boxes of the objects that the deployed model detected based on the image that it received.
 
-You just deployed your first model with RHODS model serving. Let's now xref:2-02-deploy-s2i.adoc[deploy a small application that consumer the model].
+You just deployed your first model with RHOAI model serving. Let's now xref:2-02-deploy-s2i.adoc[deploy a small application that consumer the model].

@@ -2,9 +2,9 @@
 
 include::_attributes.adoc[]
 
-You are now inside your Jupyter environment. As you can see, it's a web-based environment, but everything you'll do here is in fact happening on the *Red Hat OpenShift Data Science*, powered underneath by the *OpenShift* cluster. This means that without having to install and maintain anything on your own computer, and without disposing of lots of local resources like CPU, GPU and RAM, you can still conduct your Data Science work in this powerful and stable managed environment.
+You are now inside your Jupyter environment. As you can see, it's a web-based environment, but everything you'll do here is in fact happening on the *Red Hat OpenShift AI*, powered underneath by the *OpenShift* cluster. This means that without having to install and maintain anything on your own computer, and without disposing of lots of local resources like CPU, GPU and RAM, you can still conduct your Data Science work in this powerful and stable managed environment.
 
-In the "file-browser" like window you're in right now, you'll find the files and folders that are saved inside your own personal space inside *RHODS*.
+In the "file-browser" like window you're in right now, you'll find the files and folders that are saved inside your own personal space inside *RHOAI*.
 
 It's pretty empty right now though... So the first thing we will do is to bring the content of the workshop inside this environment.
 
@@ -36,18 +36,43 @@ image::notebooks/od_folder_click.png[alt text]
 image::notebooks/od_folder.png[alt text]
 
 
-Now let's open another tab and connect to your `S3 Provider Console` with the URL provided by the workshop instructor.
+Now let's open another tab and connect to the S3 object storage provider that we're going to use throughout this course.
 
-NOTE: For simplicity, we are leveraging https://min.io/product/private-cloud-red-hat-openshift[MinIO] in this case as the S3 Provider and an instance has already been deployed on OpenShift next to RHODS. S3 buckets and users have been already provisioned for your convenience as well. For production environments we recommend scalable solutions like https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation[OpenShift Data Foundations (ODF)] or solutions from other storage vendors.
+NOTE: For simplicity, we are leveraging https://min.io/product/private-cloud-red-hat-openshift[MinIO] in this case as the S3 Provider and an instance has already been deployed on OpenShift next to RHOAI. S3 buckets and users have been already provisioned for your convenience as well. For production environments we recommend scalable solutions like https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation[OpenShift Data Foundations (ODF)] or solutions from other storage vendors.
 
-Log into the S3 Provider Console with the URL and credentials provided. You should be able to see the dashboard, that looks like this:
+Open the OpenShift Console through the Application Switcher in the top right navigation bar of the OpenShift AI dashboard.
 
-image::notebooks/minio_console.png[S3 Provider Console]
+NOTE: If you're at the RHOAI Dashboard and need to navigate to the OpenShift Web Console, use the *Application Switcher* Icon in the top right of the navigation bar and click on the *OpenShift Console* menu item.
 
-* Use the `Object Browser` to navigate to the bucket associated with your user name.
+image::s2i/rhods-dashboard-app-switcher.png[RHOAI Dashboard App Switcher, 400]
 
-You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.
+From the `OpenShift Console` switch to the Developer Perspective from the menu on the top left if it's not already selected:
 
-The _object-detection_ data connection that was provisioned earlier for you and which you reviewed previously is pointing to your user S3 bucket.
+image::s2i/dev-view.png[Developer Perspective]
+
+Navigate to the Topology view of your project (userX). You should now see a number of circular icons representing the pods running in your project. Find the `minio` pod and click on the small arrow icon in its top right corner.
+
+image::notebooks/minio-access.png[alt text]
+
+A new tab opens with the login screen of Minio. Authenticate with the following login:
+[.lines_space]
+[.console-input]
+[source,text]
+----
+minio
+----
+and password:
+[.lines_space]
+[.console-input]
+[source,text]
+----
+minio123
+----
+
+You can now browse the S3 buckets that are provided within this Minio instance. For the remainder of this course, we're using the contents of the `object detection` bucket, which you can select in the left navigation bar. It includes a number of images in the `data` folder and some model artifacts in the `models` folder. We will access and work with these models in the following sections.
+
+image::notebooks/minio-od-bucket.png[alt text]
+
+The _object-detection_ data connection that was provisioned earlier for you and which you reviewed previously is pointing to this object detection bucket.
 
 xref:1-03-notebooks.adoc[Ready? Let's go to the next section.]
