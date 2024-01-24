@@ -104,7 +104,10 @@
     <span class="nav-text">4. Fine Tuning and Training a Model</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="4-01-training-the-model.html">1. Training a Model</a>
+    <a class="nav-link" href="#4-01-training-the-model.adoc">1. Training a Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="4-02-integrating-the-new-model.html">2. Deploying and Integrating the New Model</a>
   </li>
 </ul>
   </li>
@@ -192,14 +195,14 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If you&#8217;re at the RHODS Dashboard and need to navigate to the OpenShift Web Console, use the <strong>Application Switcher</strong> Icon in the top right of the navigation bar and click on the <strong>OpenShift Console</strong> menu item.
+If you&#8217;re at the RHOAI Dashboard and need to navigate to the OpenShift Web Console, use the <strong>Application Switcher</strong> Icon in the top right of the navigation bar and click on the <strong>OpenShift Console</strong> menu item.
 </td>
 </tr>
 </table>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/s2i/rhods-dashboard-app-switcher.png" alt="RHODS Dashboard App Switcher" width="400">
+<img src="_images/s2i/rhods-dashboard-app-switcher.png" alt="RHOAI Dashboard App Switcher" width="400">
 </div>
 </div>
 <div class="ulist">
@@ -258,6 +261,9 @@ If you&#8217;re at the RHODS Dashboard and need to navigate to the OpenShift Web
 <ul>
 <li>
 <p>You will see that OpenShift automatically validates the container image.</p>
+</li>
+<li>
+<p>Under Runtime icon, select <code>python</code>.</p>
 </li>
 </ul>
 </div>
@@ -397,7 +403,7 @@ This will result in messages in the log that look like:</p>
 </div>
 <div class="listingblock lines_space console-input">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">&lt;Your model's inference endpoint you copied from your RHODS project under Models and model servers&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">&lt;Your model's inference endpoint you copied from your RHOAI project under Models and model servers&gt;</code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -420,7 +426,7 @@ This will result in messages in the log that look like:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You will see that a build is going on from the build icon:</p>
+<p>If you&#8217;re building the application container from source, you will see that a build is going on from the build icon:</p>
 </li>
 </ul>
 </div>

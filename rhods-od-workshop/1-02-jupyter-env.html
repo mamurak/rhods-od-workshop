@@ -104,7 +104,10 @@
     <span class="nav-text">4. Fine Tuning and Training a Model</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="4-01-training-the-model.html">1. Training a Model</a>
+    <a class="nav-link" href="#4-01-training-the-model.adoc">1. Training a Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="4-02-integrating-the-new-model.html">2. Deploying and Integrating the New Model</a>
   </li>
 </ul>
   </li>
@@ -133,10 +136,10 @@
 <article class="doc">
 <h1 class="page">1.2 The Jupyter environment</h1>
 <div class="paragraph">
-<p>You are now inside your Jupyter environment. As you can see, it&#8217;s a web-based environment, but everything you&#8217;ll do here is in fact happening on the <strong>Red Hat OpenShift Data Science</strong>, powered underneath by the <strong>OpenShift</strong> cluster. This means that without having to install and maintain anything on your own computer, and without disposing of lots of local resources like CPU, GPU and RAM, you can still conduct your Data Science work in this powerful and stable managed environment.</p>
+<p>You are now inside your Jupyter environment. As you can see, it&#8217;s a web-based environment, but everything you&#8217;ll do here is in fact happening on the <strong>Red Hat OpenShift AI</strong>, powered underneath by the <strong>OpenShift</strong> cluster. This means that without having to install and maintain anything on your own computer, and without disposing of lots of local resources like CPU, GPU and RAM, you can still conduct your Data Science work in this powerful and stable managed environment.</p>
 </div>
 <div class="paragraph">
-<p>In the "file-browser" like window you&#8217;re in right now, you&#8217;ll find the files and folders that are saved inside your own personal space inside <strong>RHODS</strong>.</p>
+<p>In the "file-browser" like window you&#8217;re in right now, you&#8217;ll find the files and folders that are saved inside your own personal space inside <strong>RHOAI</strong>.</p>
 </div>
 <div class="paragraph">
 <p>It&#8217;s pretty empty right now though&#8230;&#8203; So the first thing we will do is to bring the content of the workshop inside this environment.</p>
@@ -201,7 +204,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Now let&#8217;s open another tab and connect to your <code>S3 Provider Console</code> with the URL provided by the workshop instructor.</p>
+<p>Now let&#8217;s open another tab and connect to the S3 object storage provider that we&#8217;re going to use throughout this course.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -210,31 +213,73 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-For simplicity, we are leveraging <a href="https://min.io/product/private-cloud-red-hat-openshift">MinIO</a> in this case as the S3 Provider and an instance has already been deployed on OpenShift next to RHODS. S3 buckets and users have been already provisioned for your convenience as well. For production environments we recommend scalable solutions like <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation">OpenShift Data Foundations (ODF)</a> or solutions from other storage vendors.
+For simplicity, we are leveraging <a href="https://min.io/product/private-cloud-red-hat-openshift">MinIO</a> in this case as the S3 Provider and an instance has already been deployed on OpenShift next to RHOAI. S3 buckets and users have been already provisioned for your convenience as well. For production environments we recommend scalable solutions like <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation">OpenShift Data Foundations (ODF)</a> or solutions from other storage vendors.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Log into the S3 Provider Console with the URL and credentials provided. You should be able to see the dashboard, that looks like this:</p>
+<p>Open the OpenShift Console through the Application Switcher in the top right navigation bar of the OpenShift AI dashboard.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you&#8217;re at the RHOAI Dashboard and need to navigate to the OpenShift Web Console, use the <strong>Application Switcher</strong> Icon in the top right of the navigation bar and click on the <strong>OpenShift Console</strong> menu item.
+</td>
+</tr>
+</table>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="_images/notebooks/minio_console.png" alt="S3 Provider Console">
+<img src="_images/s2i/rhods-dashboard-app-switcher.png" alt="RHOAI Dashboard App Switcher" width="400">
 </div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Use the <code>Object Browser</code> to navigate to the bucket associated with your user name.</p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
-<p>You can now browse the content of your S3 bucket including a number of images and the model artifact. We will access and work with that model in the following sections.</p>
+<p>From the <code>OpenShift Console</code> switch to the Developer Perspective from the menu on the top left if it&#8217;s not already selected:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/dev-view.png" alt="Developer Perspective">
+</div>
 </div>
 <div class="paragraph">
-<p>The <em>object-detection</em> data connection that was provisioned earlier for you and which you reviewed previously is pointing to your user S3 bucket.</p>
+<p>Navigate to the Topology view of your project (userX). You should now see a number of circular icons representing the pods running in your project. Find the <code>minio</code> pod and click on the small arrow icon in its top right corner.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/notebooks/minio-access.png" alt="alt text">
+</div>
+</div>
+<div class="paragraph">
+<p>A new tab opens with the login screen of Minio. Authenticate with the following login:</p>
+</div>
+<div class="listingblock lines_space console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">minio</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and password:</p>
+</div>
+<div class="listingblock lines_space console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">minio123</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can now browse the S3 buckets that are provided within this Minio instance. For the remainder of this course, we&#8217;re using the contents of the <code>object detection</code> bucket, which you can select in the left navigation bar. It includes a number of images in the <code>data</code> folder and some model artifacts in the <code>models</code> folder. We will access and work with these models in the following sections.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/notebooks/minio-od-bucket.png" alt="alt text">
+</div>
+</div>
+<div class="paragraph">
+<p>The <em>object-detection</em> data connection that was provisioned earlier for you and which you reviewed previously is pointing to this object detection bucket.</p>
 </div>
 <div class="paragraph">
 <p><a href="1-03-notebooks.html" class="xref page">Ready? Let&#8217;s go to the next section.</a></p>

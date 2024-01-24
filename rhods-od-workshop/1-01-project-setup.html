@@ -104,7 +104,10 @@
     <span class="nav-text">4. Fine Tuning and Training a Model</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="4-01-training-the-model.html">1. Training a Model</a>
+    <a class="nav-link" href="#4-01-training-the-model.adoc">1. Training a Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="4-02-integrating-the-new-model.html">2. Deploying and Integrating the New Model</a>
   </li>
 </ul>
   </li>
@@ -140,7 +143,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_the_openshift_data_science_dashboard"><a class="anchor" href="#_the_openshift_data_science_dashboard"></a>The OpenShift Data Science Dashboard</h2>
+<h2 id="_the_openshift_ai_dashboard"><a class="anchor" href="#_the_openshift_ai_dashboard"></a>The OpenShift AI Dashboard</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -149,13 +152,13 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-We&#8217;re going to refer to <em>Red Hat OpenShift Data Science</em> as <em>RHODS</em> throughout this workshop.
+We&#8217;re going to refer to <em>Red Hat OpenShift AI</em> as <em>RHOAI</em> throughout this workshop.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>You should be logged into <strong>Red Hat OpenShift Data Science</strong>, and be able to see the dashboard, that looks like this:</p>
+<p>You should be logged into <strong>Red Hat OpenShift AI</strong>, and be able to see the dashboard, that looks like this:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -163,12 +166,12 @@ We&#8217;re going to refer to <em>Red Hat OpenShift Data Science</em> as <em>RHO
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Red Hat OpenShift Data Science</strong> brings you a variety of containerized on-demand environments, such as Jupyter Notebooks. Don&#8217;t worry if you&#8217;ve never used notebooks before as this workshop will start with a small tutorial on what they are and how to use them.</p>
+<p><strong>Red Hat OpenShift AI</strong> brings you a variety of containerized on-demand environments, such as Jupyter Notebooks. Don&#8217;t worry if you&#8217;ve never used notebooks before as this workshop will start with a small tutorial on what they are and how to use them.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Now that you are logged into to <strong>Red Hat OpenShift Data Science</strong>, navigate to <code>Data Science Projects</code> in the left menu. Here you can see the list of existing projects that you have access to.</p>
+<p>Now that you are logged into to <strong>Red Hat OpenShift AI</strong>, navigate to <code>Data Science Projects</code> in the left menu. Here you can see the list of existing projects that you have access to.</p>
 </li>
 </ul>
 </div>
@@ -281,13 +284,13 @@ Projects allow you and your team to organize and collaborate on resources within
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Red Hat OpenShift</a> is the hybrid cloud Kubernetes-based engine that powers the RHODS platform and provides all the needed resources like storage, memory, CPUs and GPUs, as well as the DevSecOps and GitOps pipeline capabilities needed for Data Science Pipelines and MLOps flows. In the OpenShift Console you have two perspectives, <code>Administrator</code> and <code>Developer</code>, between which you can easily switch by selecting <code>Developer</code> or <code>Administrator</code> respectively in the top field of the left menu. Here you can inspect and edit all resources that you create throughout the workshop in the RHODS dashboard, as part of your Data Science Projects.
+<a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Red Hat OpenShift</a> is the hybrid cloud Kubernetes-based engine that powers the RHOAI platform and provides all the needed resources like storage, memory, CPUs and GPUs, as well as the DevSecOps and GitOps pipeline capabilities needed for Data Science Pipelines and MLOps flows. In the OpenShift Console you have two perspectives, <code>Administrator</code> and <code>Developer</code>, between which you can easily switch by selecting <code>Developer</code> or <code>Administrator</code> respectively in the top field of the left menu. Here you can inspect and edit all resources that you create throughout the workshop in the RHOAI dashboard, as part of your Data Science Projects.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>We&#8217;ll use the OpenShift Console tab to deploy the object detection app later in this workshop. For now, keep the tab open for reference and return to the RHODS Dashboard tab.</p>
+<p>We&#8217;ll use the OpenShift Console tab to deploy the object detection app later in this workshop. For now, keep the tab open for reference and return to the RHOAI Dashboard tab.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -296,7 +299,7 @@ Projects allow you and your team to organize and collaborate on resources within
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If you&#8217;re at the OpenShift Web Console and need to navigate back to the OpenShift Data Science Dashboard, use the <strong>Application Switcher</strong> icon in the top right of the navigation bar.
+If you&#8217;re at the OpenShift Web Console and need to navigate back to the OpenShift AI Dashboard, use the <strong>Application Switcher</strong> icon in the top right of the navigation bar.
 </td>
 </tr>
 </table>
@@ -307,7 +310,7 @@ If you&#8217;re at the OpenShift Web Console and need to navigate back to the Op
 </div>
 </div>
 <div class="paragraph">
-<p>You&#8217;re now all set. You got a bit familiar with the <code>RHODS dashboard</code> as well as the <code>OpenShift Console</code>. You&#8217;ve also configured your first Data Science Project!</p>
+<p>You&#8217;re now all set. You got a bit familiar with the <code>RHOAI dashboard</code> as well as the <code>OpenShift Console</code>. You&#8217;ve also configured your first Data Science Project!</p>
 </div>
 <div class="paragraph">
 <p>To start working with the object detection model, select the <code>Open</code> link next to your running workbench instance and

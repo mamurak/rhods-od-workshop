@@ -104,7 +104,10 @@
     <span class="nav-text">4. Fine Tuning and Training a Model</span>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="4-01-training-the-model.html">1. Training a Model</a>
+    <a class="nav-link" href="#4-01-training-the-model.adoc">1. Training a Model</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="4-02-integrating-the-new-model.html">2. Deploying and Integrating the New Model</a>
   </li>
 </ul>
   </li>
@@ -136,12 +139,12 @@
 <p>In the previous section, we learned how to create the code that will use an existing object detection model to identify object in a static image. But of course we cannot use a notebook directly like this in a production environment.</p>
 </div>
 <div class="paragraph">
-<p>So now we will learn how to service this model as an <strong>API</strong> that you can directly query from other applications. For this, we will use the model serving capabilities of RHODS:</p>
+<p>So now we will learn how to service this model as an <strong>API</strong> that you can directly query from other applications. For this, we will use the model serving capabilities of RHOAI:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Return to the RHODS Dashboard and enter your project. Let&#8217;s now take a look at the model server that was already provisioned and configured for your convenience. Let&#8217;s take a look at its configuration.</p>
+<p>Return to the RHOAI Dashboard and enter your project. Let&#8217;s now take a look at the model server that was already provisioned and configured for your convenience. Let&#8217;s take a look at its configuration.</p>
 </li>
 </ul>
 </div>
@@ -153,10 +156,9 @@
 <div class="paragraph">
 <p>Under <strong>Models and model servers</strong>, find <em>OVMS</em> and select <code>Edit model server</code> under the <strong>vertical ellipsis</strong>, <strong>⋮</strong>. In the configuration page, you can review the typical fields for a model server. When done hit <code>Cancel</code> or simply close the window.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
+<div class="paragraph">
 <p>You&#8217;re now ready to deploy the object detection model. Under the <em>OVMS</em> model server select <strong>Deploy model</strong> and set it up as follows:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -169,30 +171,23 @@
 <p>Under <strong>Model location</strong>, <strong>Existing data connection</strong> select the <em>object-detection</em> data connection that was provisioned earlier for you. As you have seen in sections 1.1 and 1.2, this data connection points to your user S3 bucket where the model and other data reside.</p>
 </li>
 <li>
-<p>Under <strong>Path</strong> enter <code>yolov5m.onnx</code>.</p>
+<p>Under <strong>Path</strong> enter <code>models/yolov5m.onnx</code>.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
+<div class="paragraph">
 <p>Select <strong>Deploy</strong> to deploy and start serving your object detection model on the model server. Click on <code>1</code> below <em>Deployed models</em> to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the <em>Inference endpoint</em> so we can test the model deployment.</p>
-</li>
-</ul>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="_images/notebooks/testing_model_deployment.png" alt="Testing the Model Deployment">
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
+<div class="paragraph">
 <p>In your workbench, open the <code>2_online-scoring</code> notebook. Insert the inference endpoint into the <code>prediction_url</code> placeholder and execute the notebook. You should see bounding boxes of the objects that the deployed model detected based on the image that it received.</p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
-<p>You just deployed your first model with RHODS model serving. Let&#8217;s now <a href="2-02-deploy-s2i.html" class="xref page">deploy a small application that consumer the model</a>.</p>
+<p>You just deployed your first model with RHOAI model serving. Let&#8217;s now <a href="2-02-deploy-s2i.html" class="xref page">deploy a small application that consumer the model</a>.</p>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="1-04-object-detection.html">4. Object Detection</a></span>

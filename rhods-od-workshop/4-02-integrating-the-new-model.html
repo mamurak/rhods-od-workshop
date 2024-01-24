@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Object Detection Workshop with Red Hat OpenShift AI :: Object Detection Workshop</title>
-    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/conclusion.html">
+    <title>4.2 Deploying and Integrating the New Model :: Object Detection Workshop</title>
+    <link rel="canonical" href="https://mamurak.github.io/rhods-od-workshop/rhods-od-workshop/4-02-integrating-the-new-model.html">
+    <link rel="prev" href="#4-01-training-the-model.adoc">
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../_/css/site.css">
   </head>
@@ -104,7 +105,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="#4-01-training-the-model.adoc">1. Training a Model</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="4-02-integrating-the-new-model.html">2. Deploying and Integrating the New Model</a>
   </li>
 </ul>
@@ -124,20 +125,70 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">Object Detection Workshop</a></li>
-    <li><a href="conclusion.html">Object Detection Workshop with Red Hat OpenShift AI</a></li>
+    <li>4. Fine Tuning and Training a Model</li>
+    <li><a href="4-02-integrating-the-new-model.html">2. Deploying and Integrating the New Model</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/conclusion.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/mamurak/rhods-od-workshop/edit/master/docs/modules/ROOT/pages/4-02-integrating-the-new-model.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Object Detection Workshop with Red Hat OpenShift AI</h1>
-<div class="sect1 text-center strong">
-<h2>Conclusion</h2>
-<div class="sectionbody">
-
+<h1 class="page">4.2 Deploying and Integrating the New Model</h1>
+<div class="paragraph">
+<p>In order to use the new model in the applications deployed before, you need to the reconfigure the service app created in section 2.2. You can try the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Following the guidelines from section 2.1 Serving a model, deploy the new model under <strong>Models and model servers</strong></p>
+</li>
+<li>
+<p>Copy the Inference endpoint of the new model</p>
+</li>
+<li>
+<p>Using the <strong>OpenShift Console</strong>, go to the service application created in section 2.2 and update the <code>PREDICTION_URL</code> environment variable to the new model&#8217;s inference endpoint (effectively switching models)</p>
+</li>
+<li>
+<p>In addition, while in the <strong>OpenShift Console</strong> create a ConfigMap containing the following class labels:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>'Laptop', 'Computer keyboard', 'Table'</pre>
 </div>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/app/configmap.png" alt="alt text">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In the same service application, add also the <code>CLASS_LABELS</code> environment variable pointing to the created ConfigMap:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/app/deployment.png" alt="alt text">
+</div>
+</div>
+<div class="paragraph">
+<p>Once both environment variables have been updated/added, the application will be redeployed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/s2i/topology.png" alt="alt text" width="400">
+</div>
+</div>
+<div class="paragraph">
+<p>Once the service has been redeployed and started consuming the new model through the new inference endpoint, you can test the changes brought by the new model using your camera or mobile device as before.</p>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="#4-01-training-the-model.adoc">1. Training a Model</a></span>
+</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
