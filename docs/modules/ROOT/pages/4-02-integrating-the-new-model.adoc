@@ -1,26 +1,60 @@
 = 4.2 Deploying and Integrating the New Model
 
-In order to use the new model in the applications deployed before, you need to the reconfigure the service app created in section 2.2. You can try the following:
+We can now update the object detection application by deploying and integrating the new object detection model. The overall steps are:
 
-* Following the guidelines from section 2.1 Serving a model, deploy the new model under *Models and model servers*
-* Copy the Inference endpoint of the new model
-* Using the *OpenShift Console*, go to the service application created in section 2.2 and update the `PREDICTION_URL` environment variable to the new model's inference endpoint (effectively switching models)
-* In addition, while in the *OpenShift Console* create a ConfigMap containing the following class labels:
+1. Deploy and test the model using RHOAI Model Serving.
+2. Reconfigure the model client to send its prediction requests to the new inference endpoint.
+
+== Deploy and test the model
+
+We can now follow the steps detailed in sectino 2.1 to deploy and test the new model:
+
+* Deploy the model through the RHOAI dashboard. Enter the updated model artifact ID in the `Path`.
+
+image::app/deploy-new-model.png[alt text]
+
+* Open the `2_online-scoring` notebook. Enter the new model's inference endpoint URL under `prediction_url` and update the class labels:
+
 [.lines_space]
 [.console-input]
 [source,text]
 ----
-'Laptop', 'Computer keyboard', 'Table'
+class_labels = ['Laptop', 'Computer keyboard', 'Table']
+----
+
+image::app/updated_class_labels_in_notebook.png[alt text]
+
+* Re-run the notebook to test the inference endpoint of the new deployed model.
+
+== Reconfigure the model client
+
+In section 2.2 we have deployed the model client. We don't need to deploy it again but instead change its configuration parameters, specifically the inference endpoint and the class labels.
+
+* In the OpenShift Console, navigate to `ConfigMaps` and *create* a new one (top right button) named `class-labels-secret` with key and value as indicated below:
+
+[.lines_space]
+[.console-input]
+[source,text]
+----
+class-labels
+----
+[.lines_space]
+[.console-input]
+[source,text]
+----
+['Laptop', 'Computer keyboard', 'Table']
 ----
 
 image::app/configmap.png[alt text]
 
-* In the same service application, add also the `CLASS_LABELS` environment variable pointing to the created ConfigMap:
+* Navigate to `Topology`, select the `object-detection-rest` pod, select `Actions` in the right menu, and choose `Edit Deployment`.
+
+* Scroll down to `Environment Variables` and select `Add from ConfigMap or Secret`. Enter `CLASS_LABELS` as the name, and select the `class-labels-secret` CM and the `class-labels` value as follows:
 
 image::app/deployment.png[alt text]
 
-Once both environment variables have been updated/added, the application will be redeployed.
+* Finally, update the value of the `PREDICTION_URL` environment variable, using the inference endpoint URL of the new model.
 
-image::s2i/topology.png[alt text, 400]
+* Click `Save` to trigger the re-deployment of the model client with the updated configuration.
 
 Once the service has been redeployed and started consuming the new model through the new inference endpoint, you can test the changes brought by the new model using your camera or mobile device as before.

@@ -13,8 +13,16 @@ The training pipeline will upload the refined model in your bucket.
 
 NOTE: With the current workshop implementation, only one training pipeline can run for each user at the same time.
 
-To test the updated model, go back to `2_online_scoring.ipynb` notebook.
-Make sure you use the updated class labels:
+Once the pipeline finishes running, you can find the new model artifact in the object detection S3 bucket under 2 IDs:
+
+* `model-latest.onnx` refers to the most recently trained model. It's a dynamic, mutable reference.
+* `model-[timestamp].onnx` refers to the very model artifact that was created at `[timestamp]`. It's used as a static, immutable reference.
+
+Note the ID of the new model artifact, preferrably the timestamped version.
+
+image::app/new-model.png[alt text]
+
+To test the new model, go back to the `1_explore` notebook. Update `model_id` to the ID of the new model artefact. Update the class labels as follows:
 [.lines_space]
 [.console-input]
 [source,text]
@@ -22,6 +30,8 @@ Make sure you use the updated class labels:
 class_labels = ['Laptop', 'Computer keyboard', 'Table']
 ----
 
-image::app/updated_class_labels_in_notebook.png[alt text]
+image::app/model-update-in-explore-notebook.png[alt text]
 
-After we have verified the model, we can finally deploy it and update the app.
+You can now re-run the whole notebook to test the model within the workbench and see the new object detection results.
+
+After we have verified the model in the workbench, we can finally deploy it and update the app.
