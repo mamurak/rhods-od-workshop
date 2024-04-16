@@ -22,7 +22,7 @@ Note the ID of the new model artifact, preferrably the timestamped version.
 
 image::app/new-model.png[alt text]
 
-To test the new model, go back to the `1_explore` notebook. Update `model_id` to the ID of the new model artefact. Update the class labels as follows:
+To test the new model, go back to the `1_explore` notebook. Update `model_path` to the path of the new model artefact. Update the class labels as follows:
 [.lines_space]
 [.console-input]
 [source,text]

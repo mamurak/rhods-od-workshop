@@ -20,7 +20,7 @@ You're now ready to deploy the object detection model. Under the _OVMS_ model se
 
 * Under *Model location*, *Existing data connection* select the _object-detection_ data connection that was provisioned earlier for you. As you have seen in sections 1.1 and 1.2, this data connection points to your user S3 bucket where the model and other data reside.
 
-* Under *Path* enter `models/yolov5m.onnx`.
+* Under *Path* enter `models/yolov5m`.
 
 Select *Deploy* to deploy and start serving your object detection model on the model server. Click on `1` below _Deployed models_ to monitor the status of the model deployment. It will indicate a green status once the model can be consumed. Copy the _Inference endpoint_ so we can test the model deployment.
 
