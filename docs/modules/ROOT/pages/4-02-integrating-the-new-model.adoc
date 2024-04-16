@@ -61,4 +61,6 @@ Once the service has been redeployed and started consuming the new model through
 
 image::app/laptop-prediction.jpg[alt text]
 
+As the final exercise of this lab, deploy and integrate the model that was pre-trained on the full laptop dataset. You can find the model in the `object-detection` bucket under `models/laptop`. Re-configure the app to consume this model and compare its performance with the model you finetuned.
+
 Congratulations, you have finished this lab on deploying and updating an object detection application!
